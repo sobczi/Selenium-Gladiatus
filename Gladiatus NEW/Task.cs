@@ -8,6 +8,7 @@ namespace Gladiatus_NEW
     class Task
     {
         private static readonly ChromeDriver driver = Program.driver;
+
         public static void Login()
         {
             driver.Navigate().GoToUrl("https://pl.gladiatus.gameforge.com/game/");
@@ -17,23 +18,40 @@ namespace Gladiatus_NEW
             Basic.Click_element("//*[@id='loginsubmit']");
         }
 
+        public static void Disable_notifications()
+        {
+            Basic.Click_element("//a[@href][text() = 'Profil']");
+            Basic.Click_element("//input[@value='Ustawienia']");
+
+            Basic.Click_element("//label[@for='top_fixed_bar__false']");
+            Basic.Click_element("//label[@for='sound_notifications__false']");
+            Basic.Click_element("//label[@for='cooldown_sound_notifications__false']");
+            Basic.Click_element("//label[@for='browser_notifications__false']");
+            Basic.Click_element("//input[@value='Zapisz wszystko']");
+
+            Basic.Click_element("//li[@data-category='market']");
+            Basic.Click_element("//label[@for='soulbound_warning__false']");
+            Basic.Click_element("//input[@value='Zapisz wszystko']");
+            Navigation.Review();
+        }
+
         public static void Heal_me()
         {
             while(Get.Hp() < User.Default.heal_level)
             {
-                Navigation.review();
-                Navigation.backpack(User.Default.heal_backpack);
+                Navigation.Review();
+                Navigation.Backpack(User.Default.heal_backpack);
                 Basic.Drag_and_drop("//div[@id='inv']//div[@data-content-type='16777215']",
                     "//div[@id='avatar']//div[@class='ui-droppable']");
                 Thread.Sleep(2000);
             }
         }
 
-        public static bool Take_hades_costume()
+        public static bool Hades_costume()
         {
             if (Basic.Search_element("//div[contains(@onmousemove,'Zbroja Disa Patera')]"))
                 return false;
-            Navigation.review();
+            Navigation.Review();
             Basic.Click_element("//input[@value='zmień']");
             if (Basic.Search_element("//input[contains(@onclick,'Zbroja Disa Patera')]"))
             {
@@ -63,11 +81,8 @@ namespace Gladiatus_NEW
                 return true;
         }
 
-        public static bool Dungeon(bool exit)
+        public static bool Dungeon()
         {
-            if (exit)
-                return false;
-            
             if (Basic.Search_element("//div[@id='cooldown_bar_dungeon']/a[@class='cooldown_bar_link']"))
                 if (!Get.Element("//div[@id='cooldown_bar_dungeon']/a[@class='cooldown_bar_link']").Displayed)
                     return false;
