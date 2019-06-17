@@ -7,7 +7,12 @@ namespace Gladiatus_NEW
     class Navigation
     {
         private static ChromeDriver driver = Program.driver;
-        public static void guild_market()
+
+        public static void Extract()
+        {
+            Basic.Click_element("//a[contains(text(),'Roztapiarka')]");
+        }
+        public static void Guild_market()
         {
             while(!Basic.Search_element("//a[contains(@href,'guildMarket')][@class='map_label']"))
             {
@@ -19,14 +24,14 @@ namespace Gladiatus_NEW
                 Basic.Click_element("//h2[@class='section-header'][text() = 'sprzedaj']");
         }
 
-        public static void packages()
+        public static void Packages()
         {
             Basic.Click_element("//a[@id='menue_packages']");
             if (Basic.Search_element("//section[@style='display: none;']"))
                 Basic.Click_element("//h2[@class='section-header'][contains(text(),'Opcje')]");
         }
 
-        public static void backpack(string v)
+        public static void Backpack(string v)
         {
             Basic.Click_element("//a[@data-bag-number='"+v+"']");
             Thread.Sleep(1000);
@@ -34,25 +39,21 @@ namespace Gladiatus_NEW
             Thread.Sleep(1000);
         }
 
-        public static void review()
+        public static void Review()
         {
             Basic.Click_element("//a[@title='Podgląd']");
         }
 
-        public static void main_menu(string path)
+        public static void Main_menu(string path)
         {
             if (!Get.Element(path).Displayed)
-                arena();
+                Arena();
             Basic.Click_element(path);
         }
 
-        public static void arena()
+        public static void Arena()
         {
-            while(true)
-            {
-                Basic.Click_element("//div[@id='cooldown_bar_arena']/a");
-                IWebElement element = Get.Element("//*[@id='mainnav']/li/table/tbody/tr/td[1]/a");
-            }
+            Basic.Click_element("//div[@id='cooldown_bar_arena']/a");
         }
     }
 }
