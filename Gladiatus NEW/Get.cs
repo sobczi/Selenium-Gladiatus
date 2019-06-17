@@ -96,7 +96,7 @@ namespace Gladiatus_NEW
         public static IWebElement Element(string path)
         {
             while (!Basic.Search_element(path))
-                Thread.Sleep(1000);
+                Thread.Sleep(200);
             return driver.FindElementByXPath(path);
         }
 
