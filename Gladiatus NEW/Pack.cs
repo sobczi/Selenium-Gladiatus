@@ -123,7 +123,7 @@ namespace Gladiatus_NEW
 
                 Prepare_xpath(item);
                 Navigation.Packages();
-                Filter_packages(categories[found_case], qualities[found_case]);
+                Navigation.Filter_packages(categories[found_case], qualities[found_case]);
                 Navigation.Backpack(User.Default.free_backpack);
                 if (!Take_from_packages())
                     return;
@@ -317,19 +317,6 @@ namespace Gladiatus_NEW
                 return "True";
             else
                 return "False";
-        }
-
-        private static void Filter_packages(string category, string quality)
-        {
-            try { Convert.ToInt32(category); category = Get.Category_packages(category); }
-            catch { }
-
-            try { Convert.ToInt32(quality); quality = Get.Quality_pack(quality); }
-            catch { }
-
-            Basic.Click_element("//select[@name='f']//option[text() = '"+category+"']");
-            Basic.Click_element("//select[@name='fq']//option[text() = '"+quality+"']");
-            Basic.Click_element("//input[@value='Filtr']");
         }
 
         private static void Prepare_xpath(int it)
