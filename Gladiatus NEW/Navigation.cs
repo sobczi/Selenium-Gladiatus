@@ -65,7 +65,7 @@ namespace Gladiatus_NEW
 
         public static void Main_menu(string path)
         {
-            path = "//a[@class='menuitem '][text() = '"+path+"']";
+            path = "//a[contains(@class,'menuitem')][text() = '"+path+"']";
             if (!Get.Element(path).Displayed)
                 Basic.Click_element("//a[@clas='menuitem '][text() = 'Arena']");
             Basic.Click_element(path);
