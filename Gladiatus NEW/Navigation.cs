@@ -30,10 +30,12 @@ namespace Gladiatus_NEW
         {
             Basic.Click_element("//a[contains(text(),'Magazyn surowców')]");
         }
+
         public static void Extract()
         {
             Basic.Click_element("//a[contains(text(),'Roztapiarka')]");
         }
+
         public static void Guild_market()
         {
             while(!Basic.Search_element("//a[contains(@href,'guildMarket')][@class='map_label']"))
@@ -61,21 +63,12 @@ namespace Gladiatus_NEW
             Thread.Sleep(1000);
         }
 
-        public static void Review()
-        {
-            Basic.Click_element("//a[@title='Podgląd']");
-        }
-
         public static void Main_menu(string path)
         {
+            path = "//a[@class='menuitem '][text() = '"+path+"']";
             if (!Get.Element(path).Displayed)
-                Arena();
+                Basic.Click_element("//a[@clas='menuitem '][text() = 'Arena']");
             Basic.Click_element(path);
-        }
-
-        public static void Arena()
-        {
-            Basic.Click_element("//div[@id='cooldown_bar_arena']/a");
         }
     }
 }

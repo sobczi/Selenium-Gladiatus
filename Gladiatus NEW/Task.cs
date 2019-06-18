@@ -32,14 +32,14 @@ namespace Gladiatus_NEW
             Basic.Click_element("//li[@data-category='market']");
             Basic.Click_element("//label[@for='soulbound_warning__false']");
             Basic.Click_element("//input[@value='Zapisz wszystko']");
-            Navigation.Review();
+            Navigation.Main_menu("Podgląd");
         }
 
         public static void Heal_me()
         {
             while(Get.Hp() < User.Default.heal_level)
             {
-                Navigation.Review();
+                Navigation.Main_menu("Podgląd");
                 Navigation.Backpack(User.Default.heal_backpack);
                 Basic.Drag_and_drop("//div[@id='inv']//div[@data-content-type='16777215']",
                     "//div[@id='avatar']//div[@class='ui-droppable']");
@@ -51,7 +51,7 @@ namespace Gladiatus_NEW
         {
             if (Basic.Search_element("//div[contains(@onmousemove,'Zbroja Disa Patera')]"))
                 return false;
-            Navigation.Review();
+            Navigation.Main_menu("Podgląd");
             Basic.Click_element("//input[@value='zmień']");
             if (Basic.Search_element("//input[contains(@onclick,'Zbroja Disa Patera')]"))
             {
