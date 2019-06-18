@@ -100,10 +100,10 @@ namespace Gladiatus_NEW
             ac.DragAndDrop(element1, element2).Perform();
         }
 
-        public static void Release(string path1)
+        public static void Release(string path)
         {
             ac = new Actions(driver);
-            ac.Release(Get.Element(path1)).Perform();
+            ac.Release(driver.FindElementByXPath(path)).Perform();
         }
 
         public static void Click_element(string path1)
