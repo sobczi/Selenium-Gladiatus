@@ -112,6 +112,16 @@ namespace Gladiatus_NEW
             Get.Element(path1).Click();
         }
 
+        public static bool Click_if(string path)
+        {
+            Check_events();
+            if (Basic.Search_element(path))
+                Basic.Click_element(path);
+            else
+                return false;
+            return true;
+        }
+
         public static string Get_digits(string path)
         {
             return Regex.Match(driver.FindElementByXPath(path).Text,@"\d+").Value;

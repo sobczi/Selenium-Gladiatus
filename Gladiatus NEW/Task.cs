@@ -53,14 +53,11 @@ namespace Gladiatus_NEW
                 return false;
             Navigation.Main_menu("Podgląd");
             Basic.Click_element("//input[@value='zmień']");
-            if (Basic.Search_element("//input[contains(@onclick,'Zbroja Disa Patera')]"))
-            {
-                Basic.Click_element("//input[contains(@onclick,'Zbroja Disa Patera')]");
+            if (Basic.Click_if("//input[contains(@onclick,'Zbroja Disa Patera')]"))
                 Basic.Click_element("//td[@id='buttonleftchangeCostume']/input[@value='Tak']");
-                return true;
-            }
             else
                 return false;
+            return true;
         }
 
         public static bool Expedition()
@@ -93,8 +90,7 @@ namespace Gladiatus_NEW
             Basic.Click_element("//div[@id='cooldown_bar_dungeon']/div[@class='cooldown_bar_link']");
             if(Basic.Search_element("input[@value='Normalne']") || Basic.Search_element("input[@value='zaawansowane']"))
             {
-                if(User.Default.dungeon_advenced && !Basic.Search_element("//input[@value='zaawansowane'][@disabled='disabled']"))
-                    Basic.Click_element("input[@value='zaawansowane']");
+                if(User.Default.dungeon_advenced && Basic.Click_if("input[@value='zaawansowane']")) { }
                 else
                     Basic.Click_element("//input[@value='Normalne']");
             }

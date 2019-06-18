@@ -28,9 +28,7 @@ namespace Gladiatus_NEW
                 {
                     Navigation.Filter_packages(Get.Category_packages(category++), "");
                     Navigation.Backpack(User.Default.free_backpack);
-                    if (Basic.Search_element("//a[@clas='paging_button paging_right_full']"))
-                        Basic.Click_element("//a[@clas='paging_button paging_right_full']");
-
+                    Basic.Click_if("//a[@clas='paging_button paging_right_full']");
                     elements = Get_items(driver.FindElementsByXPath("//div[@id='packages']//div[contains(@class,'draggable')]"));
                     foreach (IWebElement element in elements)
                     {

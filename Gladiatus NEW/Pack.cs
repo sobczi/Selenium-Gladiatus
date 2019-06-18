@@ -167,8 +167,7 @@ namespace Gladiatus_NEW
                     continue;
                 }
 
-                if (Basic.Search_element("//a[@class='paging_button paging_right_step']"))
-                    Basic.Click_element("//a[@class='paging_button paging_right_step']");
+                if (Basic.Click_if("//a[@class='paging_button paging_right_step']")) { }
                 else
                     return;
             }
@@ -212,8 +211,7 @@ namespace Gladiatus_NEW
                         "' sold='" + solds + "'";
                     File.AppendAllText(path, ready_line + Environment.NewLine);
                 }
-                if (Basic.Search_element("//a[contains(text(), 'Następna strona')]"))
-                    Basic.Click_element("//a[contains(text(), 'Następna strona')]");
+                if (Basic.Click_if("//a[contains(text(), 'Następna strona')]")) { }
                 else
                     return;
             }

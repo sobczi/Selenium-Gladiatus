@@ -23,13 +23,9 @@ namespace Gladiatus_NEW
                     return;
                 string first = "//div[contains(@class,'forge_closed "+Convert.ToString(i)+"')]";
                 string second = "//div[contains(@class,'forge_finished-succeeded "+Convert.ToString(i)+"')]";
-                if (Basic.Search_element(first))
-                    Basic.Click_element(first);
-                else if (Basic.Search_element(second))
-                {
-                    Basic.Click_element(second);
+                if (Basic.Click_if(first)) { }
+                else if (Basic.Click_if(second))
                     Basic.Click_element("//div[contains(text(),'Wyślij jako pakiet')]");
-                }
                 else
                     continue;
                 Basic.Wait_for_element("//div[@class='forge_closed "+Convert.ToString(i)+" tabActive']");
@@ -60,24 +56,21 @@ namespace Gladiatus_NEW
                 colour = "Olimp (czerwony)";
 
             Navigation.Filter_packages("", colour);
-            if (Basic.Search_element("//a[@class='paging_button paging_right_full']"))
-                Basic.Click_element("//a[@class='paging_button paging_right_full']");
-            while(true)
+            Basic.Click_if("//a[@class='paging_button paging_right_full']");
+            while (true)
             {
                 List<IWebElement> elements = Load_items();
-                if (elements.Count == 0 && Basic.Search_element("//a[@class='paging_button paging_right_step']"))
+                if(elements.Count == 0)
                 {
-                    Basic.Click_element("//a[@class='paging_button paging_right_step']");
-                    continue;
-                }
-                else if(elements.Count == 0)
+                    if (Basic.Click_if("//a[@class='paging_button paging_left_step']"))
+                        continue;
                     break;
+                }
 
                 it = Move_items(elements, it);
                 if (it < 0)
                     return;
-                if (Basic.Search_element("//a[@class='paging_button paging_right_step']"))
-                    Basic.Click_element("//a[@class='paging_button paging_right_step']");
+                Basic.Click_if("//a[@class='paging_button paging_left_step']");
             }
 
             if (it > 0)
@@ -95,6 +88,12 @@ namespace Gladiatus_NEW
                     textbox.SendKeys(customs[i]);
                     Basic.Click_element("//input[@value='Filtr']");
                     List<IWebElement> elements = Load_items();
+                    if (elements.Count == 0)
+                    {
+                        if (Basic.Click_if("//a[@class='paging_button paging_left_step']"))
+                            continue;
+                        break;
+                    }
                     it = Move_items(elements, it);
                     if (it < 0)
                         return;
@@ -105,16 +104,19 @@ namespace Gladiatus_NEW
             {
                 Navigation.Packages();
                 Navigation.Backpack(User.Default.extract_backpack);
-                if (Basic.Search_element("//a[@class='paging_button paging_right_full']"))
-                    Basic.Click_element("//a[@class='paging_button paging_right_full']");
+                Basic.Click_if("//a[@class='paging_button paging_right_full']");
                 while (true)
                 {
                     List<IWebElement> elements = Load_items();
+                    if (elements.Count == 0)
+                    {
+                        if (Basic.Click_if("//a[@class='paging_button paging_left_step']"))
+                            continue;
+                        break;
+                    }
                     it = Move_items(elements, it);
                     if (it < 0)
                         return;
-                    if (Basic.Search_element("//a[@class='paging_button paging_left_step']"))
-                        Basic.Click_element("//a[@class='paging_button paging_left_step']");
                 }
             }
         }
