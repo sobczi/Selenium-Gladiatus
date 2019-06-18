@@ -43,6 +43,35 @@ namespace Gladiatus_NEW
             }
         }
 
+        public static string Category_packages(int it)
+        {
+            switch(it)
+            {
+                case 1:
+                    return "Bronie";
+                case 2:
+                    return "Tarcze";
+                case 3:
+                    return "Napierśniki";
+                case 4:
+                    return "Hełmy";
+                case 5:
+                    return "Rękawice";
+                case 6:
+                    return "Buty";
+                case 7:
+                    return "Pierścienie";
+                case 8:
+                    return "Amulety";
+                case 9:
+                    return "Bonusy";
+                case 10:
+                    return "Błogosławieństwa";
+                default:
+                    return "Wszystko";
+            }
+        }
+
         public static string Backpack(string v)
         {
             switch (v)
