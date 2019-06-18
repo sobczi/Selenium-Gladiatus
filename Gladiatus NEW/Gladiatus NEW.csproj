@@ -65,9 +65,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Basic.cs" />
+    <Compile Include="Extract.cs" />
     <Compile Include="Get.cs" />
     <Compile Include="Navigation.cs" />
     <Compile Include="Pack.cs" />
+    <Compile Include="Items.cs" />
     <Compile Include="Task.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

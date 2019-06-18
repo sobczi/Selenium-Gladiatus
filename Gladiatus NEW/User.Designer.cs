@@ -166,5 +166,89 @@ namespace Gladiatus_NEW {
                 this["free_backpack"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool extract_red {
+            get {
+                return ((bool)(this["extract_red"]));
+            }
+            set {
+                this["extract_red"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool extract_orange {
+            get {
+                return ((bool)(this["extract_orange"]));
+            }
+            set {
+                this["extract_orange"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool extract_purple {
+            get {
+                return ((bool)(this["extract_purple"]));
+            }
+            set {
+                this["extract_purple"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string extract_backpack {
+            get {
+                return ((string)(this["extract_backpack"]));
+            }
+            set {
+                this["extract_backpack"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool sell_items {
+            get {
+                return ((bool)(this["sell_items"]));
+            }
+            set {
+                this["sell_items"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool sell_purple {
+            get {
+                return ((bool)(this["sell_purple"]));
+            }
+            set {
+                this["sell_purple"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool sell_rubles {
+            get {
+                return ((bool)(this["sell_rubles"]));
+            }
+            set {
+                this["sell_rubles"] = value;
+            }
+        }
     }
 }
