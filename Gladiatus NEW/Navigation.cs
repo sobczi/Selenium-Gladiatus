@@ -1,6 +1,6 @@
-﻿using OpenQA.Selenium;
-using OpenQA.Selenium.Chrome;
+﻿using OpenQA.Selenium.Chrome;
 using System.Threading;
+using System;
 
 namespace Gladiatus_NEW
 {
@@ -8,6 +8,28 @@ namespace Gladiatus_NEW
     {
         private static ChromeDriver driver = Program.driver;
 
+        public static void Filter_packages(string category, string quality)
+        {
+            if (category == "")
+                category = "Wszystko";
+            if (quality == "")
+                quality = "Normalny";
+
+            try { Convert.ToInt32(category); category = Get.Category_packages(category); }
+            catch { }
+
+            try { Convert.ToInt32(quality); quality = Get.Quality_pack(quality); }
+            catch { }
+
+            Basic.Click_element("//select[@name='f']//option[text() = '" + category + "']");
+            Basic.Click_element("//select[@name='fq']//option[text() = '" + quality + "']");
+            Basic.Click_element("//input[@value='Filtr']");
+        }
+
+        public static void Warehouse()
+        {
+            Basic.Click_element("//a[contains(txt(),'Magazyn surowców')]");
+        }
         public static void Extract()
         {
             Basic.Click_element("//a[contains(text(),'Roztapiarka')]");
