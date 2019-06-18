@@ -28,7 +28,7 @@ namespace Gladiatus_NEW
 
         public static void Warehouse()
         {
-            Basic.Click_element("//a[contains(txt(),'Magazyn surowców')]");
+            Basic.Click_element("//a[contains(text(),'Magazyn surowców')]");
         }
         public static void Extract()
         {
