@@ -15,7 +15,7 @@ namespace Gladiatus_NEW
         {
             Get_items();
             Navigation.Extract();
-            Navigation.Backpack(User.Default.free_backpack);
+            Navigation.Backpack(User.Default.extract_backpack);
             string inv_draggable = "//div[@id='inv']//div[contains(@class,'ui-draggable')]";
             for(int i=0; i<6; i++)
             {
@@ -33,7 +33,7 @@ namespace Gladiatus_NEW
                 else
                     continue;
                 Basic.Wait_for_element("//div[@class='forge_closed "+Convert.ToString(i)+" tabActive']");
-                Navigation.Backpack(User.Default.free_backpack);
+                Navigation.Backpack(User.Default.extract_backpack);
                 Basic.Move_release(inv_draggable, "//fieldset[@id='crafting_input']//div[@class='ui-droppable']");
                 while (!Get.Element("//div[@class='icon_gold']").Displayed) { Thread.Sleep(100); }
                 Basic.Click_element("//div[@class='icon_gold']");
@@ -44,9 +44,11 @@ namespace Gladiatus_NEW
         private static void Get_items()
         {
             Navigation.Extract();
+            Navigation.Backpack(User.Default.extract_backpack);
             int first_it = driver.FindElementsByXPath("//div[contains(@class,'forge_closed')]").Count;
             int second_it = driver.FindElementsByXPath("//div[contains(@class,'forge_finished-succeeded')]").Count;
-            int it = first_it + second_it;
+            int third_it = driver.FindElementsByXPath("//div[@id='inv']//div[contains(@class,'draggable')]").Count;
+            int it = first_it + second_it - third_it;
 
             Navigation.Packages();
             string colour = "";
@@ -84,7 +86,7 @@ namespace Gladiatus_NEW
                 if (File.Exists(@"settings/extract.txt"))
                     customs = File.ReadAllLines(@"settings/extract.txt");
                 Navigation.Packages();
-                Navigation.Backpack(User.Default.free_backpack);
+                Navigation.Backpack(User.Default.extract_backpack);
                 for (int i=0; i<customs.Length; i++)
                 {
                     IWebElement textbox = Get.Element("//input[@name='qry']");
@@ -102,7 +104,7 @@ namespace Gladiatus_NEW
             if(it > 0)
             {
                 Navigation.Packages();
-                Navigation.Backpack(User.Default.free_backpack);
+                Navigation.Backpack(User.Default.extract_backpack);
                 if (Basic.Search_element("//a[@class='paging_button paging_right_full']"))
                     Basic.Click_element("//a[@class='paging_button paging_right_full']");
                 while (true)
@@ -119,13 +121,14 @@ namespace Gladiatus_NEW
 
         private static int Move_items(List<IWebElement> elements, int it)
         {
-            Navigation.Backpack(User.Default.free_backpack);
+            Navigation.Backpack(User.Default.extract_backpack);
             foreach (IWebElement element in elements)
             {
                 Basic.Move_move(element, "//div[@id='inv']");
                 if (Basic.Search_element("//div[@class='ui-droppable grid-droparea image-grayed active']"))
                 {
                     Basic.Release("//div[@class='ui-droppable grid-droparea image-grayed active']");
+                    Basic.Wait_for_element("//div[@id='inv']//div[@data-hash='"+element.GetAttribute("data-hash")+"']");
                     it--;
                 }
                 else
@@ -142,7 +145,8 @@ namespace Gladiatus_NEW
                 "64",
                 "4096",
                 "8192",
-                "32768"
+                "32768",
+                "-1"
             };
 
             IReadOnlyCollection<IWebElement> elements = driver.FindElementsByXPath("//div[@id='packages']//div[contains(@class,'ui-draggable')]");
