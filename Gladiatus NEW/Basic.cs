@@ -39,14 +39,14 @@ namespace Gladiatus_NEW
         {
             while (!Search_element(path))
                 Thread.Sleep(100);
-            while (!driver.FindElementByXPath(path).Displayed)
+            while (!Get.Element(path).Displayed)
                 Thread.Sleep(100);
         }
 
         public static void Move_move(string path1, string path2)
         {
-            IWebElement element1 = driver.FindElementByXPath(path1);
-            IWebElement element2 = driver.FindElementByXPath(path2);
+            IWebElement element1 = Get.Element(path1);
+            IWebElement element2 = Get.Element(path2);
 
             ac = new Actions(driver);
             ac.ClickAndHold(element1);
@@ -69,8 +69,8 @@ namespace Gladiatus_NEW
 
         public static void Move_release(string path1, string path2)
         {
-            IWebElement element1 = driver.FindElementByXPath(path1);
-            IWebElement element2 = driver.FindElementByXPath(path2);
+            IWebElement element1 = Get.Element(path1);
+            IWebElement element2 = Get.Element(path2);
 
             ac = new Actions(driver);
             ac.ClickAndHold(element1);
@@ -87,15 +87,15 @@ namespace Gladiatus_NEW
         public static void Mouse_move(string path)
         {
             ac = new Actions(driver);
-            ac.MoveToElement(driver.FindElementByXPath(path)).Perform();
+            ac.MoveToElement(Get.Element(path)).Perform();
         }
 
         public static void Drag_and_drop(string path1, string path2)
         {
             Wait_for_element(path1);
-            IWebElement element1 = driver.FindElementByXPath(path1);
+            IWebElement element1 = Get.Element(path1);
             Wait_for_element(path2);
-            IWebElement element2 = driver.FindElementByXPath(path2);
+            IWebElement element2 = Get.Element(path2);
             ac = new Actions(driver);
             ac.DragAndDrop(element1, element2).Perform();
         }
@@ -103,18 +103,13 @@ namespace Gladiatus_NEW
         public static void Release(string path1)
         {
             ac = new Actions(driver);
-            ac.Release(driver.FindElementByXPath(path1)).Perform();
+            ac.Release(Get.Element(path1)).Perform();
         }
 
         public static void Click_element(string path1)
         {
             Check_events();
             Get.Element(path1).Click();
-        }
-
-        public static void Click_element(IWebElement element1)
-        {
-            element1.Click();
         }
 
         public static string Get_digits(string path)
