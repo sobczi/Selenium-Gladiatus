@@ -114,7 +114,7 @@ namespace Gladiatus_NEW
         public static bool Click_if(string path)
         {
             Check_events();
-            if(Basic.Search_element(path) && driver.FindElementByXPath(path).Enabled)
+            if(Basic.Search_element(path) && driver.FindElementByXPath(path).Displayed)
                 Basic.Click_element(path);
             else
                 return false;
