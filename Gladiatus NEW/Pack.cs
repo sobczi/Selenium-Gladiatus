@@ -264,7 +264,11 @@ namespace Gladiatus_NEW
                 if (!Basic.Search_element("//div[@class='message fail']"))
                     return;
                 else
+                {
+                    Basic.Wait_for_element("//div[@class='cooldown_bar_text'][text()='Na wyprawę']");
+                    driver.Navigate().Refresh();
                     Task.Expedition();
+                }
             }
         }
 
