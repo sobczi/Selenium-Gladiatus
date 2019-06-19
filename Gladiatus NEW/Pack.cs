@@ -145,9 +145,11 @@ namespace Gladiatus_NEW
                 Navigation.Backpack(User.Default.free_backpack);
                 elements = driver.FindElementsByXPath("//div[@id='inv']//div[contains(@class,'draggable')]");
                 found_element = Find_element(elements);
-                Prepare_xpath(found_it);
                 if (found_element != null)
+                {
+                    Prepare_xpath(found_it);
                     Sell_on_market();
+                }
                 else
                     break;
             }
@@ -158,9 +160,9 @@ namespace Gladiatus_NEW
             {
                 elements = driver.FindElementsByXPath("//div[@id='packages']//div[contains(@class,'draggable')]");
                 found_element = Find_element(elements);
-                Prepare_xpath(found_it);
                 if (found_element != null)
                 {
+                    Prepare_xpath(found_it);
                     Basic.Move_move(found_element, "//div[@id='inv']");
                     Basic.Release("//div[@class='ui-droppable grid-droparea image-grayed active']");
                     Sell_on_market();
