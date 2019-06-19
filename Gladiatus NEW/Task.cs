@@ -41,7 +41,7 @@ namespace Gladiatus_NEW
             {
                 Navigation.Main_menu("Podgląd");
                 Navigation.Backpack(User.Default.heal_backpack);
-                Basic.Drag_and_drop("//div[@id='inv']//div[@data-content-type='16777215']",
+                Basic.Drag_and_drop("//div[@id='inv']//div[@data-content-type='64']",
                     "//div[@id='avatar']//div[@class='ui-droppable']");
                 Thread.Sleep(2000);
             }
