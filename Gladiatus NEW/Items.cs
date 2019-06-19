@@ -37,6 +37,7 @@ namespace Gladiatus_NEW
                         {
                             hashes.Add(element.GetAttribute("data-hash"));
                             Basic.Release(free);
+                            while (Basic.Search_element("//div[@id='packages']//div[@data-hash='" + hashes[hashes.Count - 1] + "']")){ }
                         }
                         else
                         {
@@ -51,19 +52,32 @@ namespace Gladiatus_NEW
                 {
                     if (!Choose_shop(shop++))
                         return;
-                    foreach(string hash in hashes)
+                    //foreach(string hash in hashes)
+                    for(int i=0; i<hashes.Count; i++)
                     {
-                        string path = "//div[@id='inv']//div[@data-hash='"+hash+"']";
-                        if (!Basic.Search_element(hash))
+                        string path = "//div[@id='inv']//div[@data-hash='"+hashes[i]+"']";
+                        if (!Basic.Search_element(path))
                             continue;
                         Basic.Move_move(path, "//div[@id='inv']");
                         if (Basic.Search_element(free))
+                        {
                             Basic.Release(free);
+                            Basic.Wait_for_element("//div[@id='shop']//div[@data-hash='" + hashes[i] + "']");
+                            hashes[i] = "sold";
+                        }
                         else
                             break;
                     }
+                    hashes.RemoveAll(Remove_sold);
                 }
             }
+        }
+
+        private static bool Remove_sold(string hash)
+        {
+            if (hash == "sold")
+                return true;
+            return false;
         }
 
         public static void Buy()
@@ -100,7 +114,7 @@ namespace Gladiatus_NEW
                     Basic.Click_element("//input[@value='Nowe towary']");
                     break;
             }
-            Basic.Click_element("//div[@class='shopTab'][text() = 'Ⅱ']");
+            Basic.Click_element("//div[contains(@class,'shopTab')][contains(text(),'sprzedaj')]");
             Navigation.Backpack(User.Default.free_backpack);
             return true;
         }
