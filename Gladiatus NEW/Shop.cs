@@ -4,7 +4,7 @@ using OpenQA.Selenium.Chrome;
 
 namespace Gladiatus_NEW
 {
-    class Items
+    class Shop
     {
         private static readonly ChromeDriver driver = Program.driver;
         public static void Sell()
@@ -32,18 +32,22 @@ namespace Gladiatus_NEW
                     elements = Get_items(driver.FindElementsByXPath("//div[@id='packages']//div[contains(@class,'draggable')]"));
                     foreach (IWebElement element in elements)
                     {
-                        Basic.Move_move(element, "//div[@id='inv']");
-                        if (Basic.Search_element(free))
+                        while(hashes.Count != 0 && Basic.Search_element("//div[@id='packages'][//div[@data-hash='"+hashes[hashes.Count-1]+"']"))
                         {
-                            hashes.Add(element.GetAttribute("data-hash"));
-                            Basic.Release(free);
-                            while (Basic.Search_element("//div[@id='packages']//div[@data-hash='" + hashes[hashes.Count - 1] + "']")){ }
+                            Basic.Move_move(element, "//div[@id='inv']");
+                            if (Basic.Search_element(free))
+                            {
+                                hashes.Add(element.GetAttribute("data-hash"));
+                                Basic.Release(free);
+                            }
+                            else
+                            {
+                                space = false;
+                                break;
+                            }
                         }
-                        else
-                        {
-                            space = false;
+                        if (!space)
                             break;
-                        }
                     }
                 }
 
