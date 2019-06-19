@@ -28,8 +28,7 @@ namespace Gladiatus_NEW
         }
         public static bool Search_element(string path)
         {
-            IReadOnlyCollection<IWebElement> list_elements = driver.FindElementsByXPath(path);
-                if (list_elements.Count > 0)
+            if (driver.FindElementsByXPath(path).Count > 0)
                 return true;
             else
                 return false;
@@ -64,7 +63,7 @@ namespace Gladiatus_NEW
         {
             ac = new Actions(driver);
             ac.ClickAndHold(element1);
-            ac.MoveToElement(Get.Element(element2)).Perform();
+            ac.MoveToElement(driver.FindElementByXPath(element2)).Perform();
         }
 
         public static void Move_release(string path1, string path2)
@@ -115,7 +114,7 @@ namespace Gladiatus_NEW
         public static bool Click_if(string path)
         {
             Check_events();
-            if (Basic.Search_element(path))
+            if(Basic.Search_element(path) && driver.FindElementByXPath(path).Enabled)
                 Basic.Click_element(path);
             else
                 return false;
