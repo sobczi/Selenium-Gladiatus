@@ -26,16 +26,6 @@ namespace Gladiatus_NEW
             Basic.Click_element("//input[@value='Filtr']");
         }
 
-        public static void Warehouse()
-        {
-            Basic.Click_element("//a[contains(text(),'Magazyn surowców')]");
-        }
-
-        public static void Extract()
-        {
-            Basic.Click_element("//a[contains(text(),'Roztapiarka')]");
-        }
-
         public static void Guild_market()
         {
             while(!Basic.Search_element("//a[contains(@href,'guildMarket')][@class='map_label']"))

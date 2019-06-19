@@ -14,13 +14,13 @@ namespace Gladiatus_NEW
         public static void Extract_items()
         {
             Get_items();
-            Navigation.Extract();
+            Navigation.Main_menu("Roztapiarka");
             Navigation.Backpack(User.Default.extract_backpack);
             string inv_draggable = "//div[@id='inv']//div[contains(@class,'ui-draggable')]";
             for(int i=0; i<6; i++)
             {
                 if (!Basic.Search_element(inv_draggable))
-                    return;
+                    break;
                 string first = "//div[contains(@class,'forge_closed "+Convert.ToString(i)+"')]";
                 string second = "//div[contains(@class,'forge_finished-succeeded "+Convert.ToString(i)+"')]";
                 if (Basic.Click_if(first)) { }
@@ -39,7 +39,7 @@ namespace Gladiatus_NEW
         }
         private static void Get_items()
         {
-            Navigation.Extract();
+            Navigation.Main_menu("Roztapiarka");
             Navigation.Backpack(User.Default.extract_backpack);
             int first_it = driver.FindElementsByXPath("//div[contains(@class,'forge_closed')]").Count;
             int second_it = driver.FindElementsByXPath("//div[contains(@class,'forge_finished-succeeded')]").Count;
@@ -126,11 +126,12 @@ namespace Gladiatus_NEW
             Navigation.Backpack(User.Default.extract_backpack);
             foreach (IWebElement element in elements)
             {
-                Basic.Move_move(element, "//div[@id='inv']");
+                string hash = element.GetAttribute("data-hash");
+                Basic.Move_move(element, "//a[@class='awesome-tabs current']");
                 if (Basic.Search_element("//div[@class='ui-droppable grid-droparea image-grayed active']"))
                 {
                     Basic.Release("//div[@class='ui-droppable grid-droparea image-grayed active']");
-                    Basic.Wait_for_element("//div[@id='inv']//div[@data-hash='"+element.GetAttribute("data-hash")+"']");
+                    while (Basic.Search_element("//div[@id='packages']//div[@data-hash='" + hash + "']")) { }
                     it--;
                 }
                 else
@@ -163,7 +164,7 @@ namespace Gladiatus_NEW
 
         private static void Store()
         {
-            Navigation.Warehouse();
+            Navigation.Main_menu("Magazyn surowców");
             if (Basic.Search_element("//button[@id='store'][@disabled='']"))
                 Basic.Click_element("//input[@id='from-packages']");
             Basic.Click_element("//button[@id='store']");
