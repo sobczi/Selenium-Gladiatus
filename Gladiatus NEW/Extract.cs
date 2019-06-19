@@ -33,6 +33,9 @@ namespace Gladiatus_NEW
                 Basic.Move_release(inv_draggable, "//fieldset[@id='crafting_input']//div[@class='ui-droppable']");
                 while (!Get.Element("//div[@class='icon_gold']").Displayed) { Thread.Sleep(100); }
                 Basic.Click_element("//div[@class='icon_gold']");
+                Thread.Sleep(750);
+                if (Basic.Search_element("//div[@id='ajaxErrorDialog']"))
+                    break;
                 Basic.Wait_for_element("//div[@class='forge_crafting "+Convert.ToString(i)+" tabActive']");
             }
             Store();
@@ -127,15 +130,17 @@ namespace Gladiatus_NEW
             foreach (IWebElement element in elements)
             {
                 string hash = element.GetAttribute("data-hash");
-                Basic.Move_move(element, "//a[@class='awesome-tabs current']");
-                if (Basic.Search_element("//div[@class='ui-droppable grid-droparea image-grayed active']"))
+                while (Basic.Search_element("//div[@id='packages']//div[@data-hash='" + hash + "']"))
                 {
-                    Basic.Release("//div[@class='ui-droppable grid-droparea image-grayed active']");
-                    while (Basic.Search_element("//div[@id='packages']//div[@data-hash='" + hash + "']")) { }
-                    it--;
+                    Basic.Move_move(element, "//a[@class='awesome-tabs current']");
+                    if (Basic.Search_element("//div[@class='ui-droppable grid-droparea image-grayed active']"))
+                    {
+                        Basic.Release("//div[@class='ui-droppable grid-droparea image-grayed active']");
+                        it--;
+                    }
+                    else
+                        return -1;
                 }
-                else
-                    return -1;
             }
             return it;
         }
