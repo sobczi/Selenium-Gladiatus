@@ -70,6 +70,7 @@
     <Compile Include="Navigation.cs" />
     <Compile Include="Pack.cs" />
     <Compile Include="Items.cs" />
+    <Compile Include="Sys.cs" />
     <Compile Include="Task.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
