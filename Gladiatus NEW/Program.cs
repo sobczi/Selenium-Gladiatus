@@ -26,7 +26,8 @@ namespace Gladiatus_NEW
         {
             User.Default.headless = !User.Default.headless;
             User.Default.Save();
-            driver.Close();
+            if(driver != null)
+                driver.Close();
             Run_bot();
         }
 
