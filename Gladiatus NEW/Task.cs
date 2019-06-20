@@ -32,7 +32,6 @@ namespace Gladiatus_NEW
             Basic.Click_element("//li[@data-category='market']");
             Basic.Click_element("//label[@for='soulbound_warning__false']");
             Basic.Click_element("//input[@value='Zapisz wszystko']");
-            Navigation.Main_menu("Podgląd");
         }
 
         public static void Heal_me()
