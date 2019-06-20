@@ -130,17 +130,11 @@ namespace Gladiatus_NEW
             foreach (IWebElement element in elements)
             {
                 string hash = element.GetAttribute("data-hash");
-                while (Basic.Search_element("//div[@id='packages']//div[@data-hash='" + hash + "']"))
-                {
-                    Basic.Move_move(element, "//a[@class='awesome-tabs current']");
-                    if (Basic.Search_element("//div[@class='ui-droppable grid-droparea image-grayed active']"))
-                    {
-                        Basic.Release("//div[@class='ui-droppable grid-droparea image-grayed active']");
-                        it--;
-                    }
-                    else
-                        return -1;
-                }
+                Basic.Double_click(element);
+                if (Basic.Search_element("//div[@id='packages']//div[@data-hash='" + hash + "']"))
+                    it--;
+                else
+                    return -1;
             }
             return it;
         }
