@@ -1,6 +1,9 @@
 ﻿using System;
 using System.IO;
+using System.Diagnostics;
 using System.Runtime.InteropServices;
+using System.Collections.Generic;
+using System.Threading;
 
 namespace Gladiatus_NEW
 {
@@ -22,6 +25,23 @@ namespace Gladiatus_NEW
         public static void Sleep()
         {
             SetSuspendState(false, true, false);
+        }
+
+        public static void Kill_chromes()
+        {
+            foreach(Process process in Process.GetProcesses())
+            {
+                string name = process.ProcessName;
+                if(name == "chromedriver")
+                    process.Kill();
+            }
+        }
+
+        public static void Kill_all(List<Thread> threads)
+        {
+            Kill_chromes();
+            foreach (Thread thread in threads)
+                thread.Abort();
         }
     }
 }
