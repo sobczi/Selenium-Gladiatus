@@ -105,10 +105,13 @@ namespace Gladiatus_NEW
             ac.Release(driver.FindElementByXPath(path)).Perform();
         }
 
-        public static void Click_element(string path1)
+        public static void Click_element(string path)
         {
             Check_events();
-            Get.Element(path1).Click();
+            IWebElement element = Get.Element(path);
+            ac = new Actions(driver);
+            ac.MoveToElement(element).Perform();
+            element.Click();
         }
 
         public static bool Click_if(string path)
