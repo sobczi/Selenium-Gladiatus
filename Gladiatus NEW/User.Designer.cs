@@ -250,5 +250,17 @@ namespace Gladiatus_NEW {
                 this["sell_rubles"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool headless {
+            get {
+                return ((bool)(this["headless"]));
+            }
+            set {
+                this["headless"] = value;
+            }
+        }
     }
 }
