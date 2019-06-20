@@ -12,81 +12,57 @@ namespace Gladiatus_NEW
             if (!User.Default.sell_items)
                 return;
 
-            List<IWebElement> elements = new List<IWebElement>();
-            List<string> hashes = new List<string>();
-
             int category = 1;
             int shop = 1;
             while(category <= 10)
             {
-                elements.Clear();
-                hashes.Clear();
                 Navigation.Packages();
-                bool space = true;
-                string free = "//div[@id='inv']//div[contains(@class,'active')]";
-                while (space && category <= 10)
+                while (category <= 10)
                 {
                     Navigation.Filter_packages(Get.Category_packages(category++), "");
                     Navigation.Backpack(User.Default.free_backpack);
                     Basic.Click_if("//a[@clas='paging_button paging_right_full']");
-                    elements = Get_items(driver.FindElementsByXPath("//div[@id='packages']//div[contains(@class,'draggable')]"));
-                    foreach (IWebElement element in elements)
-                    {
-                        while(hashes.Count != 0 && Basic.Search_element("//div[@id='packages'][//div[@data-hash='"+hashes[hashes.Count-1]+"']"))
-                        {
-                            Basic.Move_move(element, "//div[@id='inv']");
-                            if (Basic.Search_element(free))
-                            {
-                                hashes.Add(element.GetAttribute("data-hash"));
-                                Basic.Release(free);
-                            }
-                            else
-                            {
-                                space = false;
-                                break;
-                            }
-                        }
-                        if (!space)
-                            break;
-                    }
+                    if (!Double_click_items(Get_items(driver.FindElementsByXPath("//div[@id='packages']//div[contains(@class,'draggable')]")), true))
+                        break;
                 }
 
-                free = "//div[@id='shop']//div[contains(@class,'active')]";
-                while (hashes.Count > 0)
+                while (true)
                 {
                     if (!Choose_shop(shop++))
                         return;
-                    //foreach(string hash in hashes)
-                    for(int i=0; i<hashes.Count; i++)
-                    {
-                        string path = "//div[@id='inv']//div[@data-hash='"+hashes[i]+"']";
-                        if (!Basic.Search_element(path))
-                            continue;
-                        Basic.Move_move(path, "//div[@id='inv']");
-                        if (Basic.Search_element(free))
-                        {
-                            Basic.Release(free);
-                            Basic.Wait_for_element("//div[@id='shop']//div[@data-hash='" + hashes[i] + "']");
-                            hashes[i] = "sold";
-                        }
-                        else
-                            break;
-                    }
-                    hashes.RemoveAll(Remove_sold);
+                    if (!Double_click_items(Get_items(driver.FindElementsByXPath("//div[@id='inv']//div[contains(@class,'draggable')]")), false))
+                        break;
                 }
             }
-        }
-
-        private static bool Remove_sold(string hash)
-        {
-            if (hash == "sold")
-                return true;
-            return false;
         }
 
         public static void Buy()
         {
 
+        }
+
+        private static bool Double_click_items(List<IWebElement> elements, bool packages)
+        {
+            bool result = false;
+            if (elements.Count == 0 && !packages)
+                result = false;
+
+            string var = "inv";
+            if (!packages)
+                var = "shop";
+            foreach(IWebElement element in elements)
+            {
+                string hash = element.GetAttribute("data-hash");
+                Basic.Double_click(element);
+                if (!Basic.Search_element("//div[@id='" + var + "']//div[@data-hash='" + hash + "']"))
+                {
+                    result = !result;
+                    break;
+                }
+            }
+            if (packages)
+                return !result;
+            return result;
         }
 
         private static bool Choose_shop(int shop)
@@ -135,6 +111,5 @@ namespace Gladiatus_NEW
             }
             return elements;
         }
-
     }
 }
