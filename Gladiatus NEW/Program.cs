@@ -13,6 +13,7 @@ namespace Gladiatus_NEW
     {
         static public ChromeDriver driver;
         static public Actions ac;
+        static public int wait = 250;
         static readonly NotifyIcon notify = new NotifyIcon();
         static readonly List<Thread> threads = new List<Thread>();
 
@@ -60,6 +61,7 @@ namespace Gladiatus_NEW
             User.Default.sell_items = true;
             User.Default.sell_purple = true;
             User.Default.sell_rubles = true;
+            User.Default.headless = false;
             User.Default.Save();
 
             try
@@ -75,11 +77,12 @@ namespace Gladiatus_NEW
                 driverOptions.AddExtension("settings/GladiatusTools.crx");
                 driver = new ChromeDriver(driverService, driverOptions);
                 driver.Manage().Window.Maximize();
+                driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromMilliseconds(wait);
                 ac = new Actions(driver);
                 Task.Login();
+                Task.Disable_notifications();
                 if (true)
                 {
-                    Task.Disable_notifications();
                     Extract.Extract_items();
                     bool exp = true;
                     bool dung = true;
@@ -90,13 +93,13 @@ namespace Gladiatus_NEW
                         Pack.Buy();
                     }
                     Pack.Search();
-                    //Shop.Sell();
+                    Shop.Sell();
                     driver.Close();
                 }
             }
             catch (Exception ex)
             {
-                //Sys.Handle_exception(ex);
+                Sys.Handle_exception(ex);
             }
             //Sys.Sleep();
         }
