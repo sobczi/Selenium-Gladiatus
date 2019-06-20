@@ -6,8 +6,6 @@ namespace Gladiatus_NEW
 {
     class Navigation
     {
-        private static ChromeDriver driver = Program.driver;
-
         public static void Filter_packages(string category, string quality)
         {
             if (category == "")
