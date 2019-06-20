@@ -4,6 +4,7 @@ using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Interactions;
 using System.Text.RegularExpressions;
+using System;
 
 namespace Gladiatus_NEW
 {
@@ -20,11 +21,13 @@ namespace Gladiatus_NEW
                 "//*[@id='linkcancelnotification']",
                 "//*[@id='linknotification']"
             };
+            driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromMilliseconds(0);
             foreach (string path in paths)
             {
                 try { driver.FindElementByXPath(path).Click(); }
                 catch { continue; }
             }
+            driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromMilliseconds(Program.wait);
         }
         public static bool Search_element(string path)
         {
@@ -112,6 +115,12 @@ namespace Gladiatus_NEW
             ac = new Actions(driver);
             ac.MoveToElement(element).Perform();
             element.Click();
+        }
+
+        public static void Double_click(IWebElement element)
+        {
+            ac = new Actions(driver);
+            ac.DoubleClick(element).Perform();
         }
 
         public static bool Click_if(string path)
