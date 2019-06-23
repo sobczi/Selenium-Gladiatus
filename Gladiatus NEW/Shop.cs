@@ -19,19 +19,29 @@ namespace Gladiatus_NEW
                 Navigation.Packages();
                 while (category <= 10)
                 {
-                    Navigation.Filter_packages(Get.Category_packages(category++), "");
+                    Navigation.Filter_packages(Get.Category_packages(category), "");
                     Navigation.Backpack(User.Default.free_backpack);
                     Basic.Click_if("//a[@clas='paging_button paging_right_full']");
-                    if (!Double_click_items(Get_items(driver.FindElementsByXPath("//div[@id='packages']//div[contains(@class,'draggable')]")), true))
-                        break;
+                    List<IWebElement> elements = Get_items(driver.FindElementsByXPath("//div[@id='packages']//div[contains(@class,'draggable')]"));
+                    if (elements.Count == 0)
+                        category++;
+                    if (!Double_click_items(elements, true))
+                            break;
                 }
 
                 while (true)
                 {
-                    if (!Choose_shop(shop++))
-                        return;
+                    if (!Choose_shop(shop))
+                    {
+                        if(!User.Default.sell_rubles)
+                            return;
+                        else
+                            shop = 0;
+                    }
                     if (!Double_click_items(Get_items(driver.FindElementsByXPath("//div[@id='inv']//div[contains(@class,'draggable')]")), false))
                         break;
+                    else
+                        shop++;
                 }
             }
         }
@@ -44,9 +54,6 @@ namespace Gladiatus_NEW
         private static bool Double_click_items(List<IWebElement> elements, bool packages)
         {
             bool result = false;
-            if (elements.Count == 0 && !packages)
-                result = false;
-
             string var = "inv";
             if (!packages)
                 var = "shop";
@@ -90,9 +97,8 @@ namespace Gladiatus_NEW
                 default:
                     Navigation.Main_menu("Broń");
                     if (!User.Default.sell_rubles)
-                        return false;
-                    Basic.Click_element("//input[@value='Nowe towary']");
-                    break;
+                        Basic.Click_element("//input[@value='Nowe towary']");
+                    return false;
             }
             Basic.Click_element("//div[contains(@class,'shopTab')][contains(text(),'sprzedaj')]");
             Navigation.Backpack(User.Default.free_backpack);
