@@ -55,7 +55,10 @@ namespace Gladiatus_NEW
         {
             path = "//a[contains(@class,'menuitem')][text() = '"+path+"']";
             if (!Get.Element(path).Displayed)
-                Basic.Click_element("//a[@clas='menuitem '][text() = 'Arena']");
+            {
+                Basic.Click_element("//a[contains(@href,'mod=arena')]");
+                Basic.Click_element("//a[contains(text(),'Arena')]");
+            }
             Basic.Click_element(path);
         }
     }
