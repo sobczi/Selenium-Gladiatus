@@ -4,6 +4,7 @@ using System.Diagnostics;
 using System.Runtime.InteropServices;
 using System.Collections.Generic;
 using System.Threading;
+using System.Windows.Forms;
 
 namespace Gladiatus_NEW
 {
@@ -11,6 +12,9 @@ namespace Gladiatus_NEW
     {
         [DllImport("PowrProf.dll", CharSet = CharSet.Auto, ExactSpelling = true)]
         public static extern bool SetSuspendState(bool hiberate, bool forceCritical, bool disableWakeEvent);
+
+        static bool sleep_mode = true;
+
         public static void Handle_exception(Exception ex)
         {
             string path = @"settings\exceptions.txt";
@@ -22,9 +26,24 @@ namespace Gladiatus_NEW
             File.AppendAllText(path, content);
         }
 
+        public static void Catch_mouse()
+        {
+            var main_pos = Cursor.Position; 
+            while(true)
+            {
+                if(main_pos != Cursor.Position)
+                {
+                    sleep_mode = false;
+                    return;
+                }
+                Thread.Sleep(Program.wait);
+            }
+        }
+
         public static void Sleep()
         {
-            SetSuspendState(false, true, false);
+            if(sleep_mode)
+                SetSuspendState(false, true, false);
         }
 
         public static void Kill_chromes()
