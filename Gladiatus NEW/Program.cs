@@ -64,56 +64,64 @@ namespace Gladiatus_NEW
             User.Default.headless = false;
             User.Default.Save();
 
-            try
+            Sys.Kill_chromes();
+            var driverService = ChromeDriverService.CreateDefaultService();
+            driverService.HideCommandPromptWindow = true;
+            var driverOptions = new ChromeOptions();
+            if (Screen.AllScreens.Length > 1)
+                driverOptions.AddArgument("--window-position=2000,0");
+            if (User.Default.headless)
+                driverOptions.AddArgument("--headless");
+            driverOptions.AddExtension("settings/GladiatusTools.crx");
+            driver = new ChromeDriver(driverService, driverOptions);
+            driver.Manage().Window.Maximize();
+            driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromMilliseconds(wait);
+            ac = new Actions(driver);
+
+            Task.Login();
+            Task.Disable_notifications();
+            if (true)
             {
-                Sys.Kill_chromes();
-                var driverService = ChromeDriverService.CreateDefaultService();
-                driverService.HideCommandPromptWindow = true;
-                var driverOptions = new ChromeOptions();
-                if (Screen.AllScreens.Length > 1)
-                    driverOptions.AddArgument("--window-position=2000,0");
-                if (User.Default.headless)
-                    driverOptions.AddArgument("--headless");
-                driverOptions.AddExtension("settings/GladiatusTools.crx");
-                driver = new ChromeDriver(driverService, driverOptions);
-                driver.Manage().Window.Maximize();
-                driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromMilliseconds(wait);
-                ac = new Actions(driver);
-                Task.Login();
-                Task.Disable_notifications();
-                if (true)
+                Extract.Extract_items();
+                bool exp = true;
+                bool dung = true;
+                int it = 0;
+                while (exp || dung || Task.Hades_costume())
                 {
-                    Extract.Extract_items();
-                    bool exp = true;
-                    bool dung = true;
-                    while (exp || dung || Task.Hades_costume())
+                    exp = Task.Expedition();
+                    dung = Task.Dungeon();
+                    if(++it == 5)
                     {
-                        exp = Task.Expedition();
-                        dung = Task.Dungeon();
-                        Pack.Buy();
+                        Extract.Extract_items();
+                        Pack.Search();
+                        it = 0;
                     }
-                    Pack.Search();
-                    Shop.Sell();
-                    driver.Close();
+                    Pack.Buy();
                 }
+                Shop.Sell();
+                Extract.Extract_items();
+                Pack.Buy();
+                Pack.Search();
+                driver.Close();
             }
-            catch (Exception ex)
-            {
-                Sys.Handle_exception(ex);
-            }
-            //Sys.Sleep();
+            Sys.Sleep();
         }
 
         static void Main()
         {
-            Run_bot();
+            Thread bot = new Thread(Bot);
+            bot.Start();
+            threads.Add(bot);
 
-            notify.Visible = true;
-            notify.Text = "Gladiatus BOT";
-            notify.Icon = new Icon("resources/icon.ico");
-            notify.DoubleClick += new System.EventHandler(Notify_doubleClick);
-            notify.Click += new System.EventHandler(Notify_click);
-            Application.Run();
+            Thread mouse_mov = new Thread(Sys.Catch_mouse);
+            mouse_mov.Start();
+
+            //notify.Visible = true;
+            //notify.Text = "Gladiatus BOT";
+            //notify.Icon = new Icon("resources/icon.ico");
+            //notify.DoubleClick += new System.EventHandler(Notify_doubleClick);
+            //notify.Click += new System.EventHandler(Notify_click);
+            //Application.Run();
         }
     }
 }
