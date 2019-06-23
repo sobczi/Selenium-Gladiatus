@@ -90,16 +90,15 @@ namespace Gladiatus_NEW
                     textbox.SendKeys(OpenQA.Selenium.Keys.Delete);
                     textbox.SendKeys(customs[i]);
                     Basic.Click_element("//input[@value='Filtr']");
-                    List<IWebElement> elements = Load_items();
-                    if (elements.Count == 0)
+                    do
                     {
-                        if (Basic.Click_if("//a[@class='paging_button paging_left_step']"))
-                            continue;
-                        break;
-                    }
-                    it = Move_items(elements, it);
-                    if (it < 0)
-                        return;
+                        List<IWebElement> elements = Load_items();
+                        if (elements.Count == 0)
+                            break;
+                        it = Move_items(elements, it);
+                        if (it < 0)
+                            return;
+                    } while (Basic.Click_if("//a[@class='paging_button paging_left_step']"));
                 }
             }
 
