@@ -92,6 +92,12 @@ namespace Gladiatus_NEW
             ac.MoveToElement(Get.Element(path)).Perform();
         }
 
+        public static void Mouse_move(IWebElement element)
+        {
+            ac = new Actions(driver);
+            ac.MoveToElement(element).Perform();
+        }
+
         public static void Drag_and_drop(string path1, string path2)
         {
             Wait_for_element(path1);
