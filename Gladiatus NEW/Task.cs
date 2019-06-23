@@ -2,6 +2,7 @@
 using OpenQA.Selenium.Chrome;
 using System.Threading;
 using System;
+using System.Collections.Generic;
 
 namespace Gladiatus_NEW
 {
@@ -40,8 +41,17 @@ namespace Gladiatus_NEW
             {
                 Navigation.Main_menu("Podgląd");
                 Navigation.Backpack(User.Default.heal_backpack);
-                Basic.Drag_and_drop("//div[@id='inv']//div[@data-content-type='64']",
-                    "//div[@id='avatar']//div[@class='ui-droppable']");
+                if(!Basic.Search_element("//div[@id='inv']//div[@data-content-type='64']"))
+                {
+                    Navigation.Packages();
+                    Navigation.Filter_packages("Jadalne","");
+                    IReadOnlyCollection<IWebElement> elements = driver.FindElementsByXPath("//div[@id='packages']//div[@data-content-type='64']");
+                    foreach (IWebElement element in elements)
+                        Basic.Double_click(element);
+                }
+                Navigation.Main_menu("Podgląd");
+                Navigation.Backpack(User.Default.heal_backpack);
+                Basic.Drag_and_drop("//div[@id='inv']//div[@data-content-type='64']","//div[@id='avatar']//div[@class='ui-droppable']");
                 Thread.Sleep(2000);
             }
         }
