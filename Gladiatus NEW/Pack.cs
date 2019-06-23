@@ -305,8 +305,7 @@ namespace Gladiatus_NEW
 
         private static bool Check_sold()
         {
-            ac = new Actions(driver);
-            ac.MoveToElement(Get.Element(xpath1)).Perform();
+            Basic.Mouse_move(xpath1);
             if (Basic.Search_element("//p[contains(text(),'Wskazówka')]"))
                 return true;
             else
@@ -315,8 +314,7 @@ namespace Gladiatus_NEW
 
         private static string Check_sold(IWebElement element)
         {
-            ac = new Actions(driver);
-            ac.MoveToElement(element).Perform();
+            Basic.Mouse_move(element);
             if (Basic.Search_element("//p[contains(text(),'Wskazówka')]"))
                 return "True";
             else
@@ -343,7 +341,7 @@ namespace Gladiatus_NEW
             xpath2 = "//div[@id='inv']//div";
             List<string> xpaths = new List<string>
             {
-                "[contains(concat(' ', normalize-space(@class), ' '), ' " + item.name + "')]",
+                "[contains(concat(' ', normalize-space(@class), ' '), '" + item.name + "')]",
                 "[@data-level='" + item.level + "']",
                 "[@data-quality='" + item.quality + "']",
                 "[@data-amount='" + item.amount + "']",
