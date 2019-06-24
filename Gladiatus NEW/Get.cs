@@ -1,5 +1,4 @@
 ﻿using OpenQA.Selenium;
-using OpenQA.Selenium.Chrome;
 using System.Threading;
 using System;
 
@@ -7,7 +6,6 @@ namespace Gladiatus_NEW
 {
     class Get
     {
-        private static readonly ChromeDriver driver = Program.driver;
         public static string Category_packages(string v)
         {
             switch (v)
@@ -126,7 +124,7 @@ namespace Gladiatus_NEW
         {
             while (!Basic.Search_element(path))
                 Thread.Sleep(200);
-            return driver.FindElementByXPath(path);
+            return Program.driver.FindElementByXPath(path);
         }
 
     }

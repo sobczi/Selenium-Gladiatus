@@ -1,5 +1,4 @@
 ﻿using OpenQA.Selenium;
-using OpenQA.Selenium.Chrome;
 using System.Threading;
 using System;
 using System.Collections.Generic;
@@ -8,11 +7,9 @@ namespace Gladiatus_NEW
 {
     class Task
     {
-        private static readonly ChromeDriver driver = Program.driver;
-
         public static void Login()
         {
-            driver.Navigate().GoToUrl("https://pl.gladiatus.gameforge.com/game/");
+            Program.driver.Navigate().GoToUrl("https://pl.gladiatus.gameforge.com/game/");
             Get.Element("//input[@id='login_username']").SendKeys(User.Default.username);
             Get.Element("//input[@id='login_password']").SendKeys(User.Default.password);
             Basic.Click_element("//optgroup[@label='Prowincje']//option[contains(text(),'"+User.Default.server+"')]");
@@ -45,7 +42,7 @@ namespace Gladiatus_NEW
                 {
                     Navigation.Packages();
                     Navigation.Filter_packages("Jadalne","");
-                    IReadOnlyCollection<IWebElement> elements = driver.FindElementsByXPath("//div[@id='packages']//div[@data-content-type='64']");
+                    IReadOnlyCollection<IWebElement> elements = Program.driver.FindElementsByXPath("//div[@id='packages']//div[@data-content-type='64']");
                     foreach (IWebElement element in elements)
                         Basic.Double_click(element);
                 }

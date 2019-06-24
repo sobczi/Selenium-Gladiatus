@@ -1,9 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Drawing;
 using System.Threading;
 using System.Windows.Forms;
-using Microsoft.SqlServer.Server;
 using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Interactions;
 
@@ -11,7 +9,7 @@ namespace Gladiatus_NEW
 {
     class Program
     {
-        static public ChromeDriver driver;
+        public static ChromeDriver driver;
         static public Actions ac;
         static public int wait = 250;
         static readonly NotifyIcon notify = new NotifyIcon();
@@ -29,18 +27,57 @@ namespace Gladiatus_NEW
             User.Default.Save();
             if(driver != null)
                 driver.Close();
-            Run_bot();
         }
 
-        static void Run_bot()
+        static bool Bot()
         {
-            Sys.Kill_all(threads);
-            Thread bot = new Thread(Bot);
-            bot.Start();
-            threads.Add(bot);
+            try
+            {
+                Sys.Kill_chromes();
+                var driverService = ChromeDriverService.CreateDefaultService();
+                driverService.HideCommandPromptWindow = true;
+                var driverOptions = new ChromeOptions();
+                if (Screen.AllScreens.Length > 1)
+                    driverOptions.AddArgument("--window-position=2000,0");
+                if (User.Default.headless)
+                    driverOptions.AddArgument("--headless");
+                driverOptions.AddExtension("settings/GladiatusTools.crx");
+                driver = new ChromeDriver(driverService, driverOptions);
+                driver.Manage().Window.Maximize();
+                driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromMilliseconds(wait);
+                ac = new Actions(driver);
+
+                Task.Login();
+                Task.Disable_notifications();
+                if (true)
+                {
+                    Extract.Extract_items();
+                    bool exp = true;
+                    bool dung = true;
+                    while (exp || dung || Task.Hades_costume())
+                    {
+                        exp = Task.Expedition();
+                        dung = Task.Dungeon();
+                        Pack.Buy();
+                    }
+                    Shop.Sell();
+                    Extract.Extract_items();
+                    Pack.Buy();
+                    Pack.Search();
+                    driver.Close();
+                }
+                Sys.Sleep();
+            }
+            catch(Exception ex)
+            {
+                driver.Close();
+                Sys.Handle_exception(ex);
+                return false;
+            }
+            return true;
         }
 
-        static void Bot()
+        static void Settings()
         {
             User.Default.username = "sobczi";
             User.Default.password = "p9su9w64";
@@ -63,58 +100,14 @@ namespace Gladiatus_NEW
             User.Default.sell_rubles = true;
             User.Default.headless = false;
             User.Default.Save();
-
-            Sys.Kill_chromes();
-            var driverService = ChromeDriverService.CreateDefaultService();
-            driverService.HideCommandPromptWindow = true;
-            var driverOptions = new ChromeOptions();
-            if (Screen.AllScreens.Length > 1)
-                driverOptions.AddArgument("--window-position=2000,0");
-            if (User.Default.headless)
-                driverOptions.AddArgument("--headless");
-            driverOptions.AddExtension("settings/GladiatusTools.crx");
-            driver = new ChromeDriver(driverService, driverOptions);
-            driver.Manage().Window.Maximize();
-            driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromMilliseconds(wait);
-            ac = new Actions(driver);
-
-            Task.Login();
-            Task.Disable_notifications();
-            if (true)
-            {
-                Extract.Extract_items();
-                bool exp = true;
-                bool dung = true;
-                int it = 0;
-                while (exp || dung || Task.Hades_costume())
-                {
-                    exp = Task.Expedition();
-                    dung = Task.Dungeon();
-                    if(++it == 5)
-                    {
-                        Extract.Extract_items();
-                        Pack.Search();
-                        it = 0;
-                    }
-                    Pack.Buy();
-                }
-                Shop.Sell();
-                Extract.Extract_items();
-                Pack.Buy();
-                Pack.Search();
-                driver.Close();
-            }
-            Sys.Sleep();
         }
 
         static void Main()
         {
-            Thread bot = new Thread(Bot);
-            bot.Start();
-            threads.Add(bot);
-
+            Settings();
             Thread mouse_mov = new Thread(Sys.Catch_mouse);
             mouse_mov.Start();
+            while (!Bot()) { }
 
             //notify.Visible = true;
             //notify.Text = "Gladiatus BOT";

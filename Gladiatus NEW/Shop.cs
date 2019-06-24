@@ -1,12 +1,10 @@
 ﻿using System.Collections.Generic;
 using OpenQA.Selenium;
-using OpenQA.Selenium.Chrome;
 
 namespace Gladiatus_NEW
 {
     class Shop
     {
-        private static readonly ChromeDriver driver = Program.driver;
         public static void Sell()
         {
             if (!User.Default.sell_items)
@@ -22,7 +20,7 @@ namespace Gladiatus_NEW
                     Navigation.Filter_packages(Get.Category_packages(category), "");
                     Navigation.Backpack(User.Default.free_backpack);
                     Basic.Click_if("//a[@clas='paging_button paging_right_full']");
-                    List<IWebElement> elements = Get_items(driver.FindElementsByXPath("//div[@id='packages']//div[contains(@class,'draggable')]"));
+                    List<IWebElement> elements = Get_items(Program.driver.FindElementsByXPath("//div[@id='packages']//div[contains(@class,'draggable')]"));
                     if (elements.Count == 0)
                         category++;
                     if (!Double_click_items(elements, true))
@@ -38,7 +36,7 @@ namespace Gladiatus_NEW
                         else
                             shop = 0;
                     }
-                    if (!Double_click_items(Get_items(driver.FindElementsByXPath("//div[@id='inv']//div[contains(@class,'draggable')]")), false))
+                    if (!Double_click_items(Get_items(Program.driver.FindElementsByXPath("//div[@id='inv']//div[contains(@class,'draggable')]")), false))
                         break;
                     else
                         shop++;
@@ -51,7 +49,7 @@ namespace Gladiatus_NEW
 
         }
 
-        private static bool Double_click_items(List<IWebElement> elements, bool packages)
+         static bool Double_click_items(List<IWebElement> elements, bool packages)
         {
             bool result = false;
             string var = "inv";
@@ -72,7 +70,7 @@ namespace Gladiatus_NEW
             return result;
         }
 
-        private static bool Choose_shop(int shop)
+         static bool Choose_shop(int shop)
         {
             switch(shop)
             {
@@ -105,7 +103,7 @@ namespace Gladiatus_NEW
             return true;
         }
 
-        private static List<IWebElement> Get_items(IReadOnlyCollection<IWebElement> all)
+         static List<IWebElement> Get_items(IReadOnlyCollection<IWebElement> all)
         {
             List<IWebElement> elements = new List<IWebElement>();
             foreach(IWebElement element in all)

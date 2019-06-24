@@ -1,35 +1,32 @@
-﻿using OpenQA.Selenium.Chrome;
-using OpenQA.Selenium;
+﻿using OpenQA.Selenium;
 using System.Text.RegularExpressions;
 using System.IO;
 using System.Linq;
 using OpenQA.Selenium.Interactions;
 using System;
 using System.Collections.Generic;
-using System.Threading;
 
 namespace Gladiatus_NEW
 {
     class Pack
     {
-        private static readonly ChromeDriver driver = Program.driver;
-        private static Actions ac = Program.ac;
+         static Actions ac = Program.ac;
 
-        private static string[] lines;
-        private static string[] classes;
-        private static string[] soulbounds;
-        private static string[] prices;
-        private static string[] levels;
-        private static string[] qualities;
-        private static string[] amounts;
-        private static string[] solds;
-        private static string[] categories;
+         static string[] lines;
+         static string[] classes;
+         static string[] soulbounds;
+         static string[] prices;
+         static string[] levels;
+         static string[] qualities;
+         static string[] amounts;
+         static string[] solds;
+         static string[] categories;
 
-        private static string xpath1;
-        private static string xpath2;
+         static string xpath1;
+         static string xpath2;
 
-        private static int found_it = -1;
-        private struct Item
+         static int found_it = -1;
+         struct Item
         {
             public string name;
             public string price;
@@ -62,8 +59,8 @@ namespace Gladiatus_NEW
                         break;
                     }
                 }
-                int first_it = driver.FindElementsByXPath("//input[@value='Kup']").Count;
-                int second_it = driver.FindElementsByXPath("//input[@value='Anuluj']").Count;
+                int first_it = Program.driver.FindElementsByXPath("//input[@value='Kup']").Count;
+                int second_it = Program.driver.FindElementsByXPath("//input[@value='Anuluj']").Count;
                 int it = first_it + second_it;
 
                 Item item = new Item();
@@ -143,7 +140,7 @@ namespace Gladiatus_NEW
             {
                 Navigation.Guild_market();
                 Navigation.Backpack(User.Default.free_backpack);
-                elements = driver.FindElementsByXPath("//div[@id='inv']//div[contains(@class,'draggable')]");
+                elements = Program.driver.FindElementsByXPath("//div[@id='inv']//div[contains(@class,'draggable')]");
                 found_element = Find_element(elements);
                 if (found_element != null)
                 {
@@ -158,7 +155,7 @@ namespace Gladiatus_NEW
             Navigation.Backpack(User.Default.free_backpack);
             while (true)
             {
-                elements = driver.FindElementsByXPath("//div[@id='packages']//div[contains(@class,'draggable')]");
+                elements = Program.driver.FindElementsByXPath("//div[@id='packages']//div[contains(@class,'draggable')]");
                 found_element = Find_element(elements);
                 if (found_element != null)
                 {
@@ -185,8 +182,8 @@ namespace Gladiatus_NEW
             Navigation.Guild_market();
             while (true)
             {
-                int first_it = driver.FindElementsByXPath("//input[@value='Kup']").Count;
-                int second_it = driver.FindElementsByXPath("//input[@value='Anuluj']").Count;
+                int first_it = Program.driver.FindElementsByXPath("//input[@value='Kup']").Count;
+                int second_it = Program.driver.FindElementsByXPath("//input[@value='Anuluj']").Count;
                 int it = first_it + second_it;
 
                 for (int i = 2; i < it + 2; i++)
@@ -202,7 +199,7 @@ namespace Gladiatus_NEW
                     string category = element.GetAttribute("data-content-type");
                     string name = Regex.Match(element.GetAttribute("class"), @"item-i-\d{1,2}-\d{1,2}").Value;
                     bool solds = false;
-                    ac = new Actions(driver);
+                    ac = new Actions(Program.driver);
                     ac.MoveToElement(Get.Element("//section[@id='market_table']//tr[position()='" +
                         Convert.ToString(i) + "']/td[@style]/div[@style]")).Perform();
                     if (Basic.Search_element("//p[contains(text(),'Wskazówka')]"))
@@ -219,7 +216,7 @@ namespace Gladiatus_NEW
             }
         }
 
-        private static bool Compare_elements(IWebElement element, int it)
+         static bool Compare_elements(IWebElement element, int it)
         {
             if (element.GetAttribute("soul") != null && element.GetAttribute("soul") != soulbounds[it])
                 return false;
@@ -233,7 +230,7 @@ namespace Gladiatus_NEW
                 return false;
         }
 
-        private static IWebElement Find_element(IReadOnlyCollection<IWebElement> elements)
+         static IWebElement Find_element(IReadOnlyCollection<IWebElement> elements)
         {
             foreach(IWebElement element in elements)
             {
@@ -249,7 +246,7 @@ namespace Gladiatus_NEW
             return null;
         }
 
-        private static void Sell_on_market()
+         static void Sell_on_market()
         {
             while (true)
             {
@@ -266,13 +263,13 @@ namespace Gladiatus_NEW
                 else
                 {
                     Basic.Wait_for_element("//div[@class='cooldown_bar_text'][text()='Na wyprawę']");
-                    driver.Navigate().Refresh();
+                    Program.driver.Navigate().Refresh();
                     Task.Expedition();
                 }
             }
         }
 
-        private static bool Take_from_packages()
+         static bool Take_from_packages()
         {
             bool found = false;
             if (!Basic.Search_element(xpath1) && Basic.Search_element(xpath2))
@@ -303,7 +300,7 @@ namespace Gladiatus_NEW
             return false;
         }
 
-        private static bool Check_sold()
+         static bool Check_sold()
         {
             Basic.Mouse_move(xpath1);
             if (Basic.Search_element("//p[contains(text(),'Wskazówka')]"))
@@ -312,7 +309,7 @@ namespace Gladiatus_NEW
                 return false;
         }
 
-        private static string Check_sold(IWebElement element)
+         static string Check_sold(IWebElement element)
         {
             Basic.Mouse_move(element);
             if (Basic.Search_element("//p[contains(text(),'Wskazówka')]"))
@@ -321,7 +318,7 @@ namespace Gladiatus_NEW
                 return "False";
         }
 
-        private static void Prepare_xpath(int it)
+         static void Prepare_xpath(int it)
         {
             Item item = new Item
             {
@@ -335,7 +332,7 @@ namespace Gladiatus_NEW
             Prepare_xpath(item);
         }
 
-        private static void Prepare_xpath(Item item)
+         static void Prepare_xpath(Item item)
         {
             xpath1 = "//div[@class='packageItem']//div";
             xpath2 = "//div[@id='inv']//div";
@@ -358,7 +355,7 @@ namespace Gladiatus_NEW
             }
         }
 
-        private static void Read_packages()
+         static void Read_packages()
         {
             if (!File.Exists("settings/packages.txt"))
                 return;

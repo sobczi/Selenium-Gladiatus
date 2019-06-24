@@ -1,5 +1,4 @@
-﻿using OpenQA.Selenium.Chrome;
-using System.Threading;
+﻿using System.Threading;
 using System;
 
 namespace Gladiatus_NEW

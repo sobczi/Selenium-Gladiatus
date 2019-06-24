@@ -2,15 +2,12 @@
 using System.IO;
 using System.Threading;
 using System.Collections.Generic;
-using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium;
 
 namespace Gladiatus_NEW
 {
     class Extract
     {
-        private static readonly ChromeDriver driver = Program.driver;
-
         public static void Extract_items()
         {
             Get_items();
@@ -40,13 +37,13 @@ namespace Gladiatus_NEW
             }
             Store();
         }
-        private static void Get_items()
+         static void Get_items()
         {
             Navigation.Main_menu("Roztapiarka");
             Navigation.Backpack(User.Default.extract_backpack);
-            int first_it = driver.FindElementsByXPath("//div[contains(@class,'forge_closed')]").Count;
-            int second_it = driver.FindElementsByXPath("//div[contains(@class,'forge_finished-succeeded')]").Count;
-            int third_it = driver.FindElementsByXPath("//div[@id='inv']//div[contains(@class,'draggable')]").Count;
+            int first_it = Program.driver.FindElementsByXPath("//div[contains(@class,'forge_closed')]").Count;
+            int second_it = Program.driver.FindElementsByXPath("//div[contains(@class,'forge_finished-succeeded')]").Count;
+            int third_it = Program.driver.FindElementsByXPath("//div[@id='inv']//div[contains(@class,'draggable')]").Count;
             int it = first_it + second_it - third_it;
 
             Navigation.Packages();
@@ -123,7 +120,7 @@ namespace Gladiatus_NEW
             }
         }
 
-        private static int Move_items(List<IWebElement> elements, int it)
+         static int Move_items(List<IWebElement> elements, int it)
         {
             Navigation.Backpack(User.Default.extract_backpack);
             foreach (IWebElement element in elements)
@@ -138,7 +135,7 @@ namespace Gladiatus_NEW
             return it;
         }
 
-        private static List<IWebElement> Load_items()
+         static List<IWebElement> Load_items()
         {
             List<IWebElement> ready = new List<IWebElement>();
             List<string> invalid = new List<string>
@@ -150,7 +147,7 @@ namespace Gladiatus_NEW
                 "-1"
             };
 
-            IReadOnlyCollection<IWebElement> elements = driver.FindElementsByXPath("//div[@id='packages']//div[contains(@class,'ui-draggable')]");
+            IReadOnlyCollection<IWebElement> elements = Program.driver.FindElementsByXPath("//div[@id='packages']//div[contains(@class,'ui-draggable')]");
             foreach (IWebElement element in elements)
             {
                 if (!invalid.Contains(element.GetAttribute("data-content-type")))
@@ -160,7 +157,7 @@ namespace Gladiatus_NEW
             return ready;
         }
 
-        private static void Store()
+         static void Store()
         {
             Navigation.Main_menu("Magazyn surowców");
             if (Basic.Search_element("//button[@id='store'][@disabled='']"))
