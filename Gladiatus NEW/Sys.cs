@@ -51,8 +51,8 @@ namespace Gladiatus_NEW
             foreach(Process process in Process.GetProcesses())
             {
                 string name = process.ProcessName;
-                if (name == "chromedriver")
-                    process.Close();
+                if (name == "chromedriver" || name == "chrome")
+                    process.Kill();
             }
         }
 
