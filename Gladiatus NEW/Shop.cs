@@ -34,7 +34,7 @@ namespace Gladiatus_NEW
                         if(!User.Default.sell_rubles)
                             return;
                         else
-                            shop = 0;
+                            shop = 1;
                     }
                     if (!Double_click_items(Get_items(Program.driver.FindElementsByXPath("//div[@id='inv']//div[contains(@class,'draggable')]")), false))
                         break;
@@ -94,7 +94,7 @@ namespace Gladiatus_NEW
                     break;
                 default:
                     Navigation.Main_menu("Broń");
-                    if (!User.Default.sell_rubles)
+                    if (User.Default.sell_rubles)
                         Basic.Click_element("//input[@value='Nowe towary']");
                     return false;
             }
