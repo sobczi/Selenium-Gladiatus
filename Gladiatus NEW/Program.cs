@@ -10,6 +10,8 @@ namespace Gladiatus_NEW
     class Program
     {
         public static ChromeDriver driver;
+        public static bool sleep_mode = true;
+        public static bool work = true;
         static public Actions ac;
         static public int wait = 250;
         static readonly NotifyIcon notify = new NotifyIcon();
@@ -66,11 +68,9 @@ namespace Gladiatus_NEW
                     Pack.Search();
                     driver.Close();
                 }
-                Sys.Sleep();
             }
             catch(Exception ex)
             {
-                driver.Close();
                 Sys.Handle_exception(ex);
                 return false;
             }
@@ -102,12 +102,45 @@ namespace Gladiatus_NEW
             User.Default.Save();
         }
 
+        static void Write_sleep()
+        {
+            bool last_sleep = false;
+            while (work)
+            {
+                if(last_sleep != sleep_mode)
+                {
+                    Console.Clear();
+                    Console.WriteLine("Sleep mode: " + Convert.ToString(sleep_mode));
+                    last_sleep = sleep_mode;
+                }
+            }
+        }
+
+        static void Read_input()
+        {
+            while(work)
+            {
+                if (Console.ReadLine().Contains("sleep"))
+                    sleep_mode = !sleep_mode;
+            }
+        }
+
         static void Main()
         {
             Settings();
-            Thread mouse_mov = new Thread(Sys.Catch_mouse);
-            mouse_mov.Start();
+
+            Thread catch_mouse = new Thread(Sys.Catch_mouse);
+            catch_mouse.Start();
+
+            Thread write_sleep = new Thread(Write_sleep);
+            write_sleep.Start();
+
+            Thread read_input = new Thread(Read_input);
+            read_input.Start();
+
             while (!Bot()) { }
+            work = false;
+            Sys.Sleep();
 
             //notify.Visible = true;
             //notify.Text = "Gladiatus BOT";
