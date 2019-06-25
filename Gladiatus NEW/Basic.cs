@@ -37,8 +37,9 @@ namespace Gladiatus_NEW
 
         public static void Wait_for_element(string path)
         {
-            while (!Search_element(path))
-                Thread.Sleep(100);
+            Program.driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromMinutes(2);
+            Program.driver.FindElementByXPath(path);
+            Program.driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromMilliseconds(Program.wait);
             while (!Get.Element(path).Displayed)
                 Thread.Sleep(100);
         }
