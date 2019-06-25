@@ -144,7 +144,12 @@ namespace Gladiatus_NEW
                 "4096",
                 "8192",
                 "32768",
-                "-1"
+                "-1",
+                "131072",
+                "8388608",
+                "1048576",
+                "4194304",
+                "2097152",
             };
 
             IReadOnlyCollection<IWebElement> elements = Program.driver.FindElementsByXPath("//div[@id='packages']//div[contains(@class,'ui-draggable')]");
