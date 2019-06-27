@@ -4,17 +4,17 @@
   <trustInfo xmlns="urn:schemas-microsoft-com:asm.v2">
     <security>
       <requestedPrivileges xmlns="urn:schemas-microsoft-com:asm.v3">
-        <!-- UAC Manifest Options
-             If you want to change the Windows User Account Control level replace the 
-             requestedExecutionLevel node with one of the following.
+        <!-- Opcje manifestu Kontroli konta użytkownika
+             Jeśli chcesz zmienić poziom Kontroli konta użytkownika systemu Windows, zastąp 
+             węzeł requestedExecutionLevel jednym z następujących.
 
         <requestedExecutionLevel  level="asInvoker" uiAccess="false" />
         <requestedExecutionLevel  level="requireAdministrator" uiAccess="false" />
         <requestedExecutionLevel  level="highestAvailable" uiAccess="false" />
 
-            Specifying requestedExecutionLevel element will disable file and registry virtualization. 
-            Remove this element if your application requires this virtualization for backwards
-            compatibility.
+            Określenie elementu requestedExecutionLevel spowoduje wyłączenie wirtualizacji plików i rejestru. 
+            Usuń ten element, jeśli aplikacja wymaga wirtualizacji w celu zachowania
+            zgodności z poprzednimi wersjami.
         -->
         <requestedExecutionLevel level="asInvoker" uiAccess="false" />
       </requestedPrivileges>
@@ -23,9 +23,9 @@
 
   <compatibility xmlns="urn:schemas-microsoft-com:compatibility.v1">
     <application>
-      <!-- A list of the Windows versions that this application has been tested on
-           and is designed to work with. Uncomment the appropriate elements
-           and Windows will automatically select the most compatible environment. -->
+      <!-- Lista wersji systemu Windows, na których ta aplikacja została przetestowana
+           i dla których została zaprojektowana. Odkomentuj odpowiednie elementy, a system Windows
+           automatycznie wybierze najbardziej zgodne środowisko. -->
 
       <!-- Windows Vista -->
       <!--<supportedOS Id="{e2011457-1546-43c5-a5fe-008deee3d3f0}" />-->
@@ -45,10 +45,10 @@
     </application>
   </compatibility>
 
-  <!-- Indicates that the application is DPI-aware and will not be automatically scaled by Windows at higher
-       DPIs. Windows Presentation Foundation (WPF) applications are automatically DPI-aware and do not need 
-       to opt in. Windows Forms applications targeting .NET Framework 4.6 that opt into this setting, should 
-       also set the 'EnableWindowsFormsHighDpiAutoResizing' setting to 'true' in their app.config. -->
+  <!-- Wskazuje, że aplikacja rozpoznaje wartości DPI i nie będzie automatycznie skalowana przez system Windows przy dużych
+       wartościach DPI. Aplikacje korzystające z technologii Windows Presentation Foundation (WPF) automatycznie rozpoznają wartości DPI i nie potrzebują
+       tej opcji. Aplikacje korzystające z technologii Windows Forms przeznaczone dla platformy .NET Framework 4.6, które korzystają z tej opcji, powinny
+       ustawić także wartość „true” dla parametru „EnableWindowsFormsHighDpiAutoResizing” w pliku app.config. -->
 
   <application xmlns="urn:schemas-microsoft-com:asm.v3">
     <windowsSettings>
@@ -56,8 +56,7 @@
     </windowsSettings>
   </application>
 
-
-  <!-- Enable themes for Windows common controls and dialogs (Windows XP and later) -->
+  <!-- Włącz motywy dla typowych formantów systemu Windows i okien dialogowych (system Windows XP i nowsze) -->
   <!--
   <dependency>
     <dependentAssembly>
@@ -74,5 +73,3 @@
   -->
 
 </assembly>
-
-

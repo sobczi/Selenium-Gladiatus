@@ -6,7 +6,7 @@ using System.Collections.Generic;
 using System.Threading;
 using System.Windows.Forms;
 
-namespace Gladiatus_NEW
+namespace GladiatusScript
 {
     class Sys
     {

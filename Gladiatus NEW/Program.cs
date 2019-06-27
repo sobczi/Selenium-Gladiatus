@@ -1,11 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Threading;
 using System.Windows.Forms;
 using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Interactions;
 
-namespace Gladiatus_NEW
+namespace GladiatusScript
 {
     class Program
     {
@@ -14,22 +15,7 @@ namespace Gladiatus_NEW
         public static bool work = true;
         static public Actions ac;
         static public int wait = 250;
-        static readonly NotifyIcon notify = new NotifyIcon();
         static readonly List<Thread> threads = new List<Thread>();
-
-        static void Notify_doubleClick(object Sender, EventArgs e)
-        {
-            Sys.Kill_all(threads);
-            Application.Exit();
-        }
-
-        static void Notify_click(object Sender, EventArgs e)
-        {
-            User.Default.headless = !User.Default.headless;
-            User.Default.Save();
-            if(driver != null)
-                driver.Close();
-        }
 
         static bool Bot()
         {
@@ -43,7 +29,8 @@ namespace Gladiatus_NEW
                     driverOptions.AddArgument("--window-position=2000,0");
                 if (User.Default.headless)
                     driverOptions.AddArgument("--headless");
-                driverOptions.AddExtension("settings/GladiatusTools.crx");
+                Directory.SetCurrentDirectory(@"../settings");
+                driverOptions.AddExtension("GladiatusAddon.crx");
                 driver = new ChromeDriver(driverService, driverOptions);
                 driver.Manage().Window.Maximize();
                 driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromMilliseconds(wait);
@@ -53,7 +40,7 @@ namespace Gladiatus_NEW
                 Task.Disable_notifications();
                 if (true)
                 {
-                    Extract.Extract_items();
+                    //Extract.Extract_items();
                     bool exp = true;
                     bool dung = true;
                     while (exp || dung || Task.Hades_costume())
@@ -102,41 +89,11 @@ namespace Gladiatus_NEW
             User.Default.Save();
         }
 
-        static void Write_sleep()
-        {
-            bool last_sleep = false;
-            while (work)
-            {
-                if(last_sleep != sleep_mode)
-                {
-                    Console.Clear();
-                    Console.WriteLine("Sleep mode: " + Convert.ToString(sleep_mode));
-                    last_sleep = sleep_mode;
-                }
-            }
-        }
-
-        static void Read_input()
-        {
-            while(work)
-            {
-                if (Console.ReadLine().Contains("sleep"))
-                    sleep_mode = !sleep_mode;
-            }
-        }
-
         static void Main()
         {
             Settings();
-
             Thread catch_mouse = new Thread(Sys.Catch_mouse);
             catch_mouse.Start();
-
-            Thread write_sleep = new Thread(Write_sleep);
-            write_sleep.Start();
-
-            Thread read_input = new Thread(Read_input);
-            read_input.Start();
 
             while (!Bot()) { }
             work = false;

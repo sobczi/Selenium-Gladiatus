@@ -5,7 +5,7 @@ using OpenQA.Selenium.Interactions;
 using System.Text.RegularExpressions;
 using System;
 
-namespace Gladiatus_NEW
+namespace GladiatusScript
 {
     class Basic
     {

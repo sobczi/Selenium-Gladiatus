@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // Ogólne informacje o zestawie są kontrolowane poprzez następujący 
 // zestaw atrybutów. Zmień wartości tych atrybutów, aby zmodyfikować informacje
 // powiązane z zestawem.
-[assembly: AssemblyTitle("SettingsGladiatus")]
+[assembly: AssemblyTitle("GladiatusBOT")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("HP Inc.")]
-[assembly: AssemblyProduct("SettingsGladiatus")]
+[assembly: AssemblyProduct("GladiatusBOT")]
 [assembly: AssemblyCopyright("Copyright © HP Inc. 2019")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // Następujący identyfikator GUID jest identyfikatorem biblioteki typów w przypadku udostępnienia tego projektu w modelu COM
-[assembly: Guid("103eba43-42f5-4036-80f4-bf7a3b8b53a6")]
+[assembly: Guid("20181fac-c9e4-4ba3-b4d2-90c05d77dee7")]
 
 // Informacje o wersji zestawu zawierają następujące cztery wartości:
 //

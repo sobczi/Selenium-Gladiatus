@@ -6,7 +6,7 @@ using OpenQA.Selenium.Interactions;
 using System;
 using System.Collections.Generic;
 
-namespace Gladiatus_NEW
+namespace GladiatusScript
 {
     class Pack
     {
@@ -174,7 +174,7 @@ namespace Gladiatus_NEW
 
         public static void Save()
         {
-            string path = "settings/packages.txt";
+            string path = "packages.txt";
             if (File.Exists(path))
                 File.Delete(path);
 
@@ -357,11 +357,11 @@ namespace Gladiatus_NEW
 
          static void Read_packages()
         {
-            if (!File.Exists("settings/packages.txt"))
+            if (!File.Exists("packages.txt"))
                 return;
-            int lineCount = File.ReadLines("settings/packages.txt").Count();
+            int lineCount = File.ReadLines("packages.txt").Count();
             if (lineCount == 0) { return; }
-            lines = File.ReadAllLines("settings/packages.txt");
+            lines = File.ReadAllLines("packages.txt");
             classes = new string[lines.Length];
             soulbounds = new string[lines.Length];
             prices = new string[lines.Length];

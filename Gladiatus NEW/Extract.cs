@@ -4,7 +4,7 @@ using System.Threading;
 using System.Collections.Generic;
 using OpenQA.Selenium;
 
-namespace Gladiatus_NEW
+namespace GladiatusScript
 {
     class Extract
     {
@@ -76,8 +76,8 @@ namespace Gladiatus_NEW
             if (it > 0)
             {
                 string[] customs = null;
-                if (File.Exists(@"settings/extract.txt"))
-                    customs = File.ReadAllLines(@"settings/extract.txt");
+                if (File.Exists(@"extract.txt"))
+                    customs = File.ReadAllLines(@"extract.txt");
                 Navigation.Packages();
                 Navigation.Backpack(User.Default.extract_backpack);
                 for (int i=0; i<customs.Length; i++)

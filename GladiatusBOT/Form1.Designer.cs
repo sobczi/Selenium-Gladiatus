@@ -1,4 +1,4 @@
-﻿namespace SettingsGladiatus
+﻿namespace GladiatusBOT
 {
     partial class Form1
     {

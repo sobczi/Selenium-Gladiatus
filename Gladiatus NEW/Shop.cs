@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using OpenQA.Selenium;
 
-namespace Gladiatus_NEW
+namespace GladiatusScript
 {
     class Shop
     {

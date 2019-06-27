@@ -1,7 +1,7 @@
 ﻿using System.Threading;
 using System;
 
-namespace Gladiatus_NEW
+namespace GladiatusScript
 {
     class Navigation
     {

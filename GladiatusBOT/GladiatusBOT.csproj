@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{103EBA43-42F5-4036-80F4-BF7A3B8B53A6}</ProjectGuid>
+    <ProjectGuid>{20181FAC-C9E4-4BA3-B4D2-90C05D77DEE7}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <RootNamespace>SettingsGladiatus</RootNamespace>
-    <AssemblyName>SettingsGladiatus</AssemblyName>
+    <RootNamespace>GladiatusBOT</RootNamespace>
+    <AssemblyName>GladiatusBOT</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -36,6 +36,9 @@
     <ApplicationManifest>app.manifest</ApplicationManifest>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="BOT">
+      <HintPath>..\BOT\bin\Release\netstandard2.0\BOT.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />

@@ -3,7 +3,7 @@ using System.Threading;
 using System;
 using System.Collections.Generic;
 
-namespace Gladiatus_NEW
+namespace GladiatusScript
 {
     class Task
     {

@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace SettingsGladiatus.Properties
+namespace GladiatusBOT.Properties
 {
 
 
