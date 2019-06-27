@@ -1,13 +1,84 @@
 ﻿using Microsoft.Win32;
 using System;
 using System.Text.RegularExpressions;
+using System.Threading;
 using System.Windows.Forms;
 
 namespace GladiatusBOT
 {
     public partial class Form1 : Form
     {
+
         static readonly RegistryKey key = Registry.CurrentUser.OpenSubKey(@"SOFTWARE\Gladiatus", true);
+        public static string username = Read_s("username");
+        public static string password = Read_s("password");
+        public static string server = Read_server(Read_i("server"));
+
+        public static int heal_level = Read_i("heal_level");
+        public static int gold_pack = Read_i("gold_pack");
+        public static int gold_text = Read_i("gold_take");
+        public static int food_pages = Read_i("food_pages");
+        public static int boosters_pages = Read_i("boosters");
+        public static int difference = Read_i("difference");
+        public static int o_dungeon = Read_i("o_dungeon");
+        public static int o_expedition = Read_i("o_expedition")+1;
+
+        public static bool c_expedition = Read_b("c_expedition");
+        public static bool c_dungeon = Read_b("c_dungeon");
+        public static bool c_event = Read_b("c_event");
+        public static bool c_heal = Read_b("c_heal");
+        public static bool c_food = Read_b("c_food");
+        public static bool c_extract = Read_b("c_extract");
+        public static bool c_sell = Read_b("c_sell");
+        public static bool c_auctions = Read_b("c_auctions");
+        public static bool c_boosters = Read_b("c_boosters");
+
+        public static string b_extract = Read_backpack(Read_i("b_extract"));
+        public static string b_food = Read_backpack(Read_i("b_food"));
+        public static string b_sell = Read_backpack(Read_i("b_sell"));
+
+        static string Read_server(int var)
+        {
+            switch(var)
+            {
+                case 0:
+                    return "1";
+                case 1:
+                    return "25";
+                case 2:
+                    return "34";
+                case 3:
+                    return "35";
+                case 4:
+                    return "36";
+                case 5:
+                    return "37";
+                case 6:
+                    return "38";
+                default:
+                    return "1";
+            }
+        }
+
+        static string Read_backpack(int var)
+        {
+            switch(var)
+            {
+                case 0:
+                    return "512";
+                case 1:
+                    return "513";
+                case 2:
+                    return "514";
+                case 3:
+                    return "515";
+                case 4:
+                    return "516";
+                default:
+                    return "512";
+            }
+        }
+
         public Form1()
         {
             InitializeComponent();
@@ -75,13 +146,11 @@ namespace GladiatusBOT
             checkBoosters.Checked = Read_b("c_boosters");
         }
 
-        void Form1_FormClosing(object sender, FormClosingEventArgs e) { Save_settings(); }
+        static string Read_s(string var) { return Convert.ToString(key.GetValue(var)); }
 
-        string Read_s(string var) { return Convert.ToString(key.GetValue(var)); }
+        static bool Read_b(string var) { return Convert.ToBoolean(key.GetValue(var)); }
 
-        bool Read_b(string var) { return Convert.ToBoolean(key.GetValue(var)); }
-
-        int Read_i(string var)
+        static int Read_i(string var)
         {
             int temp = Convert.ToInt32(key.GetValue(var));
             if (temp == 0)
@@ -105,6 +174,14 @@ namespace GladiatusBOT
             t.Text = Regex.Match(t.Text, @"\d*").Value;
             t.SelectionStart = t.Text.Length;
             t.SelectionLength = 0;
+        }
+
+        private void Form1_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            this.Hide();
+            Save_settings();
+            Bot.driver.Quit();
+            Application.Exit();
         }
     }
 }

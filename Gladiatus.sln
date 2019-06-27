@@ -7,8 +7,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GladiatusScript", "Gladiatu
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GladiatusBOT", "GladiatusBOT\GladiatusBOT.csproj", "{20181FAC-C9E4-4BA3-B4D2-90C05D77DEE7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GladiatusDLL", "GladiatusDLL\GladiatusDLL.csproj", "{DF35768D-C539-4255-A72E-87078394F96E}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -23,10 +21,6 @@ Global
 		{20181FAC-C9E4-4BA3-B4D2-90C05D77DEE7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{20181FAC-C9E4-4BA3-B4D2-90C05D77DEE7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{20181FAC-C9E4-4BA3-B4D2-90C05D77DEE7}.Release|Any CPU.Build.0 = Release|Any CPU
-		{DF35768D-C539-4255-A72E-87078394F96E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{DF35768D-C539-4255-A72E-87078394F96E}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{DF35768D-C539-4255-A72E-87078394F96E}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{DF35768D-C539-4255-A72E-87078394F96E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
