@@ -2,7 +2,6 @@
 using System.Threading;
 using System;
 using System.Collections.Generic;
-using System.Windows.Forms;
 
 namespace GladiatusBOT
 {
@@ -11,9 +10,9 @@ namespace GladiatusBOT
         public static void Login()
         {
             Bot.driver.Navigate().GoToUrl("https://pl.gladiatus.gameforge.com/game/");
-            Get.Element("//input[@id='login_username']").SendKeys(Form1.username);
-            Get.Element("//input[@id='login_password']").SendKeys(Form1.password);
-            Basic.Click_element("//optgroup[@label='Prowincje']//option[contains(text(),'"+Form1.server+"')]");
+            Get.Element("//input[@id='login_username']").SendKeys(Settings.username);
+            Get.Element("//input[@id='login_password']").SendKeys(Settings.password);
+            Basic.Click_element("//optgroup[@label='Prowincje']//option[contains(text(),'"+Settings.server+"')]");
             Basic.Click_element("//*[@id='loginsubmit']");
         }
 
@@ -33,22 +32,24 @@ namespace GladiatusBOT
             Basic.Click_element("//input[@value='Zapisz wszystko']");
         }
 
+        public static void Take_food()
+        {
+            Navigation.Packages();
+            Navigation.Filter_packages("Jadalne", "");
+            Basic.Click_if("//a[@class='paging_button paging_right_full']");
+            IReadOnlyCollection<IWebElement> elements = Bot.driver.FindElementsByXPath("//div[@id='packages']//div[@data-content-type='64']");
+            foreach (IWebElement element in elements)
+                Basic.Double_click(element);
+        }
+
         public static void Heal_me()
         {
-            while(Get.Hp() < Form1.heal_level)
+            while(Get.Hp() < Settings.heal_level)
             {
                 Navigation.Main_menu("Podgląd");
-                Navigation.Backpack(Form1.b_food);
-                if(!Basic.Search_element("//div[@id='inv']//div[@data-content-type='64']"))
-                {
-                    Navigation.Packages();
-                    Navigation.Filter_packages("Jadalne","");
-                    IReadOnlyCollection<IWebElement> elements = Bot.driver.FindElementsByXPath("//div[@id='packages']//div[@data-content-type='64']");
-                    foreach (IWebElement element in elements)
-                        Basic.Double_click(element);
-                }
-                Navigation.Main_menu("Podgląd");
-                Navigation.Backpack(Form1.b_food);
+                Navigation.Backpack(Settings.b_food);
+                if (!Basic.Search_element("//div[@id='inv']//div[@data-content-type='64']"))
+                    return;
                 Basic.Drag_and_drop("//div[@id='inv']//div[@data-content-type='64']","//div[@id='avatar']//div[@class='ui-droppable']");
                 Thread.Sleep(2000);
             }
@@ -70,13 +71,13 @@ namespace GladiatusBOT
         public static bool Expedition()
         {
             int points = Convert.ToInt32(Get.Element("//*[@id='expeditionpoints_value_point']").Text);
-            if (!Form1.c_expedition || points == 0)
+            if (!Settings.c_expedition || points == 0)
                 return false;
             Heal_me();
             Basic.Wait_for_element("//div[@id='cooldown_bar_expedition']/div[@class='cooldown_bar_text']");
             Basic.Click_element("//div[@id='cooldown_bar_expedition']/a[@class='cooldown_bar_link']");
 
-            Basic.Click_element("//button[contains(@onclick,'"+Form1.o_expedition+"')]");
+            Basic.Click_element("//button[contains(@onclick,'"+Settings.o_expedition+"')]");
             Basic.Wait_for_element("//table[@style='border-spacing:0;']//td[2]");
 
             if (points == 1)
@@ -97,7 +98,7 @@ namespace GladiatusBOT
             Basic.Click_element("//div[@id='cooldown_bar_dungeon']/div[@class='cooldown_bar_link']");
             if(Basic.Search_element("input[@value='Normalne']") || Basic.Search_element("input[@value='zaawansowane']"))
             {
-                if(Form1.o_dungeon == 1 && Basic.Click_if("input[@value='zaawansowane']")) { }
+                if(Settings.o_dungeon == 1 && Basic.Click_if("input[@value='zaawansowane']")) { }
                 else
                     Basic.Click_element("//input[@value='Normalne']");
             }

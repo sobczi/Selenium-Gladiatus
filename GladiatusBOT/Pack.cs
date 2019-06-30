@@ -38,10 +38,10 @@ namespace GladiatusBOT
 
         public static void Buy()
         {
-            if (/*Form1.c_pack ||*/Form1.gold_pack > Get.Gold())
+            if (/*Form1.c_pack ||*/Settings.gold_pack > Get.Gold())
                 return;
             Read_packages();
-            while (Get.Gold() > Form1.gold_pack)
+            while (Get.Gold() > Settings.gold_pack)
             {
                 Navigation.Guild_market();
                 if (!Basic.Search_element("//input[@value='Kup']"))
@@ -121,7 +121,7 @@ namespace GladiatusBOT
                 Prepare_xpath(item);
                 Navigation.Packages();
                 Navigation.Filter_packages(categories[found_case], qualities[found_case]);
-                Navigation.Backpack(Form1.b_sell);
+                Navigation.Backpack(Settings.b_sell);
                 if (!Take_from_packages())
                     return;
                 Sell_on_market();
@@ -139,7 +139,7 @@ namespace GladiatusBOT
             while (true)
             {
                 Navigation.Guild_market();
-                Navigation.Backpack(Form1.b_sell);
+                Navigation.Backpack(Settings.b_sell);
                 elements = Bot.driver.FindElementsByXPath("//div[@id='inv']//div[contains(@class,'draggable')]");
                 found_element = Find_element(elements);
                 if (found_element != null)
@@ -152,7 +152,7 @@ namespace GladiatusBOT
             }
 
             Navigation.Packages();
-            Navigation.Backpack(Form1.b_sell);
+            Navigation.Backpack(Settings.b_sell);
             while (true)
             {
                 elements = Bot.driver.FindElementsByXPath("//div[@id='packages']//div[contains(@class,'draggable')]");
@@ -251,7 +251,7 @@ namespace GladiatusBOT
             while (true)
             {
                 Navigation.Guild_market();
-                Navigation.Backpack(Form1.b_sell);
+                Navigation.Backpack(Settings.b_sell);
                 Basic.Drag_and_drop(xpath2, "//div[@id='market_sell']/div[@class='ui-droppable']");
                 Basic.Click_element("//select[@id='dauer']//option[@value='3']");
                 IWebElement element = Get.Element("//input[@name='preis']");

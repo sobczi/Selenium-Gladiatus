@@ -7,7 +7,7 @@ namespace GladiatusBOT
     {
         public static void Sell()
         {
-            if (!Form1.c_sell)
+            if (!Settings.c_sell)
                 return;
 
             int category = 1;
@@ -18,7 +18,7 @@ namespace GladiatusBOT
                 while (category <= 10)
                 {
                     Navigation.Filter_packages(Get.Category_packages(category), "");
-                    Navigation.Backpack(Form1.b_sell);
+                    Navigation.Backpack(Settings.b_sell);
                     Basic.Click_if("//a[@clas='paging_button paging_right_full']");
                     List<IWebElement> elements = Get_items(Bot.driver.FindElementsByXPath("//div[@id='packages']//div[contains(@class,'draggable')]"));
                     if (elements.Count == 0)
@@ -101,7 +101,7 @@ namespace GladiatusBOT
                     return false;
             }
             Basic.Click_element("//div[contains(@class,'shopTab')][contains(text(),'sprzedaj')]");
-            Navigation.Backpack(Form1.b_sell);
+            Navigation.Backpack(Settings.b_sell);
             return true;
         }
 
