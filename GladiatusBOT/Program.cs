@@ -25,9 +25,6 @@ namespace GladiatusBOT
 
             Bot.form = new Main();
             Application.Run(Bot.form);
-
-            //Bot.form = new Settings();
-            //Application.Run(Bot.form);
         }
     }
 }

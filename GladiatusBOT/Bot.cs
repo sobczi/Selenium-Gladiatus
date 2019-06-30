@@ -11,7 +11,8 @@ namespace GladiatusBOT
     {
         public static Main form;
         public static ChromeDriver driver;
-        public static bool sleep_mode = true;
+        public static bool logged = false;
+        public static bool sleep_mode = RegistryValues.Read_b("c_sleep");
         public static bool work = true;
         static public Actions ac;
         static public int wait = 250;
@@ -19,7 +20,6 @@ namespace GladiatusBOT
         public static void Run()
         {
             Directory.SetCurrentDirectory(@"../../../settings");
-            sleep_mode = RegistryValues.Read_b("c_sleep");
             while (true)
             {
                 try
@@ -39,6 +39,7 @@ namespace GladiatusBOT
                     ac = new Actions(driver);
 
                     Task.Login();
+                    logged = true;
                     Task.Disable_notifications();
                     if (true)
                     {
@@ -46,6 +47,7 @@ namespace GladiatusBOT
                         bool dung = true;
                         while (exp || dung || Task.Hades_costume())
                         {
+                            Update_ui();
                             exp = Task.Expedition();
                             dung = Task.Dungeon();
                             Pack.Buy();
@@ -59,10 +61,20 @@ namespace GladiatusBOT
                     }
                 }
                 catch (Exception ex) { Sys.Handle_exception(ex); continue; }
-                form.Invoke((MethodInvoker)delegate { form.Close(); });
+                form.Invoke((MethodInvoker) delegate { form.Close(); });
                 Sys.Sleep();
                 return;
             }
+        }
+
+        static void Update_ui()
+        {
+            form.Invoke((MethodInvoker)delegate { form.labelGold.Text = Convert.ToString(Get.Gold_s()); });
+            form.Invoke((MethodInvoker)delegate { form.labelRubles.Text = Convert.ToString(Get.Rubles()); });
+            form.Invoke((MethodInvoker)delegate { form.labelExpedition.Text = Convert.ToString(Get.Points_expedition()); });
+            form.Invoke((MethodInvoker)delegate { form.labelDungeon.Text = Convert.ToString(Get.Points_dungeon()); });
+            form.Invoke((MethodInvoker)delegate { form.labelLevel.Text = Convert.ToString(Get.Level()); });
+            form.Invoke((MethodInvoker)delegate { form.labelProgress.Text = Convert.ToString(Get.Progress()); });
         }
     }
 }

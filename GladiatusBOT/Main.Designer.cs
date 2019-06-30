@@ -328,23 +328,23 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label labelName;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label labelProgress;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label labelLevel;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.Label labelRubles;
-        private System.Windows.Forms.Label labelGold;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.Label labelDungeon;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Label labelExpedition;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.Button sleep_btn;
         private System.Windows.Forms.Button settings_btn;
         private System.Windows.Forms.Button sell_btn;
         private System.Windows.Forms.Button gold_btn;
+        public System.Windows.Forms.Label labelRubles;
+        public System.Windows.Forms.Label labelGold;
+        public System.Windows.Forms.Label labelExpedition;
+        public System.Windows.Forms.Label labelDungeon;
+        public System.Windows.Forms.Label labelLevel;
+        public System.Windows.Forms.Label labelProgress;
     }
 }

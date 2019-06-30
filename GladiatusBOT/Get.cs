@@ -6,6 +6,37 @@ namespace GladiatusBOT
 {
     class Get
     {
+        public static string Level()
+        {
+            return Element("//div[@id='header_values_level']").Text;
+        }
+
+        public static string Progress()
+        {
+            return Element("//div[@id='header_values_xp_percent']").Text;
+        }
+        public static string Rubles()
+        {
+            return Element("//*[@id='sstat_ruby_val']").Text;
+        }
+
+        public static string Gold_s()
+        {
+            return Element("//*[@id='sstat_gold_val']").Text;
+        }
+
+        public static string Points_expedition()
+        {
+            return Element("//span[@id='expeditionpoints_value_point']").Text;
+        }
+
+        public static string Points_dungeon()
+        {
+            string p = Element("//span[@id='dungeonpoints_value_point']").Text;
+            if(p=="")
+                return "0";
+            return p;
+        }
 
         public static string Read_server(int var)
         {
