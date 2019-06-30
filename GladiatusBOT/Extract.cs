@@ -12,7 +12,7 @@ namespace GladiatusBOT
         {
             Get_items();
             Navigation.Main_menu("Roztapiarka");
-            Navigation.Backpack(Form1.b_extract);
+            Navigation.Backpack(Settings.b_extract);
             string inv_draggable = "//div[@id='inv']//div[contains(@class,'ui-draggable')]";
             for(int i=0; i<6; i++)
             {
@@ -26,7 +26,7 @@ namespace GladiatusBOT
                 else
                     continue;
                 Basic.Wait_for_element("//div[@class='forge_closed "+Convert.ToString(i)+" tabActive']");
-                Navigation.Backpack(Form1.b_extract);
+                Navigation.Backpack(Settings.b_extract);
                 Basic.Move_release(inv_draggable, "//fieldset[@id='crafting_input']//div[@class='ui-droppable']");
                 while (!Get.Element("//div[@class='icon_gold']").Displayed) { Thread.Sleep(100); }
                 Basic.Click_element("//div[@class='icon_gold']");
@@ -40,7 +40,7 @@ namespace GladiatusBOT
          static void Get_items()
         {
             Navigation.Main_menu("Roztapiarka");
-            Navigation.Backpack(Form1.b_extract);
+            Navigation.Backpack(Settings.b_extract);
             int first_it = Bot.driver.FindElementsByXPath("//div[contains(@class,'forge_closed')]").Count;
             int second_it = Bot.driver.FindElementsByXPath("//div[contains(@class,'forge_finished-succeeded')]").Count;
             int third_it = Bot.driver.FindElementsByXPath("//div[@id='inv']//div[contains(@class,'draggable')]").Count;
@@ -79,7 +79,7 @@ namespace GladiatusBOT
                 if (File.Exists(@"extract.txt"))
                     customs = File.ReadAllLines(@"extract.txt");
                 Navigation.Packages();
-                Navigation.Backpack(Form1.b_extract);
+                Navigation.Backpack(Settings.b_extract);
                 for (int i=0; i<customs.Length; i++)
                 {
                     IWebElement textbox = Get.Element("//input[@name='qry']");
@@ -102,7 +102,7 @@ namespace GladiatusBOT
             if(it > 0)
             {
                 Navigation.Packages();
-                Navigation.Backpack(Form1.b_extract);
+                Navigation.Backpack(Settings.b_extract);
                 Basic.Click_if("//a[@class='paging_button paging_right_full']");
                 while (true)
                 {
@@ -122,7 +122,7 @@ namespace GladiatusBOT
 
          static int Move_items(List<IWebElement> elements, int it)
         {
-            Navigation.Backpack(Form1.b_extract);
+            Navigation.Backpack(Settings.b_extract);
             foreach (IWebElement element in elements)
             {
                 string hash = element.GetAttribute("data-hash");
