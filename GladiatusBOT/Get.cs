@@ -6,6 +6,48 @@ namespace GladiatusBOT
 {
     class Get
     {
+
+        public static string Read_server(int var)
+        {
+            switch (var)
+            {
+                case 0:
+                    return "1";
+                case 1:
+                    return "25";
+                case 2:
+                    return "34";
+                case 3:
+                    return "35";
+                case 4:
+                    return "36";
+                case 5:
+                    return "37";
+                case 6:
+                    return "38";
+                default:
+                    return "1";
+            }
+        }
+
+        public static string Read_backpack(int var)
+        {
+            switch (var)
+            {
+                case 0:
+                    return "512";
+                case 1:
+                    return "513";
+                case 2:
+                    return "514";
+                case 3:
+                    return "515";
+                case 4:
+                    return "516";
+                default:
+                    return "512";
+            }
+        }
         public static string Category_packages(string v)
         {
             switch (v)
