@@ -52,6 +52,7 @@
             this.gold_btn = new System.Windows.Forms.Button();
             this.sleep_btn = new System.Windows.Forms.Button();
             this.settings_btn = new System.Windows.Forms.Button();
+            this.btnBotting = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -245,13 +246,14 @@
             // 
             // groupBox3
             // 
+            this.groupBox3.Controls.Add(this.btnBotting);
             this.groupBox3.Controls.Add(this.sell_btn);
             this.groupBox3.Controls.Add(this.gold_btn);
             this.groupBox3.Controls.Add(this.sleep_btn);
             this.groupBox3.Controls.Add(this.settings_btn);
             this.groupBox3.Location = new System.Drawing.Point(12, 146);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(414, 95);
+            this.groupBox3.Size = new System.Drawing.Size(414, 122);
             this.groupBox3.TabIndex = 2;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "author: sobczi";
@@ -265,6 +267,7 @@
             this.sell_btn.TabIndex = 6;
             this.sell_btn.Text = "Sell Items";
             this.sell_btn.UseVisualStyleBackColor = true;
+            this.sell_btn.Click += new System.EventHandler(this.Sell_btn_Click);
             // 
             // gold_btn
             // 
@@ -275,6 +278,7 @@
             this.gold_btn.TabIndex = 5;
             this.gold_btn.Text = "Take Gold";
             this.gold_btn.UseVisualStyleBackColor = true;
+            this.gold_btn.Click += new System.EventHandler(this.Gold_btn_Click);
             // 
             // sleep_btn
             // 
@@ -298,11 +302,23 @@
             this.settings_btn.UseVisualStyleBackColor = true;
             this.settings_btn.Click += new System.EventHandler(this.Settings_btn_Click);
             // 
+            // btnBotting
+            // 
+            this.btnBotting.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnBotting.Font = new System.Drawing.Font("Verdana", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.btnBotting.Location = new System.Drawing.Point(9, 88);
+            this.btnBotting.Name = "btnBotting";
+            this.btnBotting.Size = new System.Drawing.Size(398, 27);
+            this.btnBotting.TabIndex = 7;
+            this.btnBotting.Text = "Botting";
+            this.btnBotting.UseVisualStyleBackColor = true;
+            this.btnBotting.Click += new System.EventHandler(this.BtnBotting_Click);
+            // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(432, 245);
+            this.ClientSize = new System.Drawing.Size(432, 273);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
@@ -338,13 +354,14 @@
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.Button sleep_btn;
         private System.Windows.Forms.Button settings_btn;
-        private System.Windows.Forms.Button sell_btn;
-        private System.Windows.Forms.Button gold_btn;
         public System.Windows.Forms.Label labelRubles;
         public System.Windows.Forms.Label labelGold;
         public System.Windows.Forms.Label labelExpedition;
         public System.Windows.Forms.Label labelDungeon;
         public System.Windows.Forms.Label labelLevel;
         public System.Windows.Forms.Label labelProgress;
+        public System.Windows.Forms.Button sell_btn;
+        public System.Windows.Forms.Button gold_btn;
+        public System.Windows.Forms.Button btnBotting;
     }
 }
