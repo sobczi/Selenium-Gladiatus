@@ -1,4 +1,5 @@
-﻿using System.Drawing;
+﻿using System;
+using System.Drawing;
 using System.Threading;
 using System.Windows.Forms;
 
@@ -11,14 +12,17 @@ namespace GladiatusBOT
         {
             InitializeComponent();
             Read_settings();
+
             Thread w_sleep = new Thread(Watch_sleep);
+            w_sleep.Name = "update_sleep_button";
             w_sleep.IsBackground = true;
             w_sleep.Start();
+
         }
-        
+
         void Watch_sleep()
         {
-            bool last = Bot.sleep_mode;
+            bool last = RegistryValues.Read_b("c_sleep");
             while(!force_sleep)
             {
                 if(last != Bot.sleep_mode)
@@ -45,8 +49,7 @@ namespace GladiatusBOT
 
         private void Settings_btn_Click(object sender, System.EventArgs e)
         {
-            Settings s = new Settings();
-            s.Show();
+            new Settings().Show();
         }
 
         private void Main_FormClosed(object sender, FormClosedEventArgs e)
