@@ -117,13 +117,13 @@ namespace GladiatusBOT
             Navigation.Packages();
             Navigation.Filter_packages("Złoto", "");
             Basic.Click_if("//a[@class='paging_button paging_right_full']");
-            while(Get.Gold() < 185000000 && Basic.Search_element("//div[@id='packages']//div[contains(@class,'draggable')]"))
+            while(Get.Gold() < RegistryValues.Read_i("gold_take") && Basic.Search_element("//div[@id='packages']//div[contains(@class,'draggable')]"))
             {
                 IReadOnlyCollection<IWebElement> elements = Bot.driver.FindElementsByXPath("//div[@id='packages']//div[contains(@class,'draggable')]");
                 foreach(IWebElement element in elements)
                 {
                     Basic.Double_click(element);
-                    if (Get.Gold() < 185000000)
+                    if (Get.Gold() < RegistryValues.Read_i("gold_take"))
                         break;
                 }
             }
