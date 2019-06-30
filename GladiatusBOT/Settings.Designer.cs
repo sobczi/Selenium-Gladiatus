@@ -68,6 +68,7 @@
             this.textFood = new System.Windows.Forms.TextBox();
             this.label15 = new System.Windows.Forms.Label();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.checkSleep = new System.Windows.Forms.CheckBox();
             this.checkAuctions = new System.Windows.Forms.CheckBox();
             this.checkBoosters = new System.Windows.Forms.CheckBox();
             this.checkSell = new System.Windows.Forms.CheckBox();
@@ -75,8 +76,9 @@
             this.checkHeal = new System.Windows.Forms.CheckBox();
             this.checkFood = new System.Windows.Forms.CheckBox();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
-            this.checkSleep = new System.Windows.Forms.CheckBox();
+            this.buttonDownloadPackages = new System.Windows.Forms.Button();
             this.checkHeadless = new System.Windows.Forms.CheckBox();
+            this.checkSpentRubles = new System.Windows.Forms.CheckBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -370,6 +372,9 @@
             // 
             // groupBox5
             // 
+            this.groupBox5.Controls.Add(this.checkSpentRubles);
+            this.groupBox5.Controls.Add(this.checkHeadless);
+            this.groupBox5.Controls.Add(this.checkSleep);
             this.groupBox5.Controls.Add(this.checkAuctions);
             this.groupBox5.Controls.Add(this.checkBoosters);
             this.groupBox5.Controls.Add(this.checkSell);
@@ -382,6 +387,12 @@
             resources.ApplyResources(this.groupBox5, "groupBox5");
             this.groupBox5.Name = "groupBox5";
             this.groupBox5.TabStop = false;
+            // 
+            // checkSleep
+            // 
+            resources.ApplyResources(this.checkSleep, "checkSleep");
+            this.checkSleep.Name = "checkSleep";
+            this.checkSleep.UseVisualStyleBackColor = true;
             // 
             // checkAuctions
             // 
@@ -421,24 +432,30 @@
             // 
             // groupBox6
             // 
-            this.groupBox6.Controls.Add(this.checkHeadless);
-            this.groupBox6.Controls.Add(this.checkSleep);
+            this.groupBox6.Controls.Add(this.buttonDownloadPackages);
             this.groupBox6.Controls.Add(this.btnSave);
             resources.ApplyResources(this.groupBox6, "groupBox6");
             this.groupBox6.Name = "groupBox6";
             this.groupBox6.TabStop = false;
             // 
-            // checkSleep
+            // buttonDownloadPackages
             // 
-            resources.ApplyResources(this.checkSleep, "checkSleep");
-            this.checkSleep.Name = "checkSleep";
-            this.checkSleep.UseVisualStyleBackColor = true;
+            resources.ApplyResources(this.buttonDownloadPackages, "buttonDownloadPackages");
+            this.buttonDownloadPackages.Name = "buttonDownloadPackages";
+            this.buttonDownloadPackages.UseVisualStyleBackColor = true;
+            this.buttonDownloadPackages.Click += new System.EventHandler(this.ButtonDownloadPackages_Click);
             // 
             // checkHeadless
             // 
             resources.ApplyResources(this.checkHeadless, "checkHeadless");
             this.checkHeadless.Name = "checkHeadless";
             this.checkHeadless.UseVisualStyleBackColor = true;
+            // 
+            // checkSpentRubles
+            // 
+            resources.ApplyResources(this.checkSpentRubles, "checkSpentRubles");
+            this.checkSpentRubles.Name = "checkSpentRubles";
+            this.checkSpentRubles.UseVisualStyleBackColor = true;
             // 
             // Settings
             // 
@@ -465,7 +482,6 @@
             this.groupBox5.ResumeLayout(false);
             this.groupBox5.PerformLayout();
             this.groupBox6.ResumeLayout(false);
-            this.groupBox6.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -517,7 +533,9 @@
         private System.Windows.Forms.CheckBox checkExtract;
         private System.Windows.Forms.CheckBox checkHeal;
         private System.Windows.Forms.GroupBox groupBox6;
+        private System.Windows.Forms.Button buttonDownloadPackages;
         private System.Windows.Forms.CheckBox checkSleep;
+        private System.Windows.Forms.CheckBox checkSpentRubles;
         private System.Windows.Forms.CheckBox checkHeadless;
     }
 }

@@ -73,6 +73,7 @@ namespace GladiatusBOT
             key.SetValue("c_boosters",checkBoosters.Checked);
             key.SetValue("c_sleep", checkSleep.Checked);
             key.SetValue("c_headless", checkHeadless.Checked);
+            key.SetValue("c_rubles", checkSpentRubles.Checked);
         }
 
         void Read_settings()
@@ -105,6 +106,7 @@ namespace GladiatusBOT
             checkBoosters.Checked = RegistryValues.Read_b("c_boosters");
             checkSleep.Checked = RegistryValues.Read_b("c_sleep");
             checkHeadless.Checked = RegistryValues.Read_b("c_headless");
+            checkSpentRubles.Checked = RegistryValues.Read_b("c_rubles");
         }
 
         void BtnSave_Click(object sender, EventArgs e) { Save_settings(); }
@@ -125,10 +127,8 @@ namespace GladiatusBOT
             t.SelectionLength = 0;
         }
 
-        private void Form1_FormClosed(object sender, FormClosedEventArgs e)
-        {
-            Save_settings();
-            this.Hide();
-        }
+        private void Form1_FormClosed(object sender, FormClosedEventArgs e) { this.Hide(); }
+
+        private void ButtonDownloadPackages_Click(object sender, EventArgs e) { Bot.Download_packages = true; }
     }
 }

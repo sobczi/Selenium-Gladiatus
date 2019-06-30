@@ -29,15 +29,13 @@ namespace GladiatusBOT
 
                 while (true)
                 {
-                    //if (!Choose_shop(shop))
-                    //{
-                    //    if(!Form1.c_rubles)
-                    //        return;
-                    //    else
-                    //        shop = 1;
-                    //}
                     if (!Choose_shop(shop))
-                        shop = 1;
+                    {
+                        if(!RegistryValues.Read_b("c_rubles"))
+                            return;
+                        else
+                            shop = 1;
+                    }
                     if (!Double_click_items(Get_items(Bot.driver.FindElementsByXPath("//div[@id='inv']//div[contains(@class,'draggable')]")), false))
                         break;
                     else
@@ -96,8 +94,8 @@ namespace GladiatusBOT
                     break;
                 default:
                     Navigation.Main_menu("Broń");
-                    //if (User.Default.sell_rubles)
-                    Basic.Click_element("//input[@value='Nowe towary']");
+                    if (RegistryValues.Read_b("c_rubles"))
+                        Basic.Click_element("//input[@value='Nowe towary']");
                     return false;
             }
             Basic.Click_element("//div[contains(@class,'shopTab')][contains(text(),'sprzedaj')]");
