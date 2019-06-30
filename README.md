@@ -57,8 +57,10 @@ Bot with user-friendly GUI to setup for online game Gladiatus.
 
 ## Future
 * Installator,
-* Write functionality for buying items from auction house (rings, amulets, boosters, food),
-* Write functionality for trening,
+* Buying items from auction house (rings, amulets, boosters, food),
+* Trainigs,
+* Pack checkbox,
+* Determine colours of items for sell/extract,
 * Auto-Hades (tried in the past but unssuccesfully, kinda tricky).
 
 ## Acknowledgments
