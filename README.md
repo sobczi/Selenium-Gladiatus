@@ -61,6 +61,6 @@ Bot with user-friendly GUI to setup for online game Gladiatus.
 
 ## Acknowledgments
 * Community of
- * Visual Studio
- * StackOverFlow
- * GitHub
+  * Visual Studio
+  * StackOverFlow
+  * GitHub
