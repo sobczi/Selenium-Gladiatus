@@ -7,13 +7,17 @@ namespace GladiatusBOT
 {
     class Task
     {
-        public static void Login()
+        public static bool Login()
         {
             Bot.driver.Navigate().GoToUrl("https://pl.gladiatus.gameforge.com/game/");
             Get.Element("//input[@id='login_username']").SendKeys(Settings.username);
             Get.Element("//input[@id='login_password']").SendKeys(Settings.password);
             Basic.Click_element("//optgroup[@label='Prowincje']//option[contains(text(),'"+Settings.server+"')]");
             Basic.Click_element("//*[@id='loginsubmit']");
+            if (Basic.Search_element("//a[@href][text()='Profil']"))
+                return true;
+            else
+                return false;
         }
 
         public static void Disable_notifications()
