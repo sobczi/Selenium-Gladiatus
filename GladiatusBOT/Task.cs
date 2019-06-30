@@ -2,6 +2,7 @@
 using System.Threading;
 using System;
 using System.Collections.Generic;
+using Microsoft.Win32;
 
 namespace GladiatusBOT
 {
@@ -18,6 +19,17 @@ namespace GladiatusBOT
                 return true;
             else
                 return false;
+        }
+
+        public static void Training()
+        {
+            if (!RegistryValues.Read_b("c_training"))
+                return;
+            Navigation.Main_menu("Trening");
+            if (!Basic.Search_element("//a[@title='trenuj']"))
+                return;
+            Bot.driver.FindElementsByXPath("//div[@id='training_box']//img[@alt='']")
+                [RegistryValues.Read_i("o_training")+1].Click();
         }
 
         public static void Disable_notifications()
@@ -48,6 +60,8 @@ namespace GladiatusBOT
 
         public static void Heal_me()
         {
+            if (RegistryValues.Read_b("c_heal"))
+                return;
             while(Get.Hp() < Settings.heal_level)
             {
                 Navigation.Main_menu("Podgląd");
@@ -61,7 +75,7 @@ namespace GladiatusBOT
 
         public static bool Hades_costume()
         {
-            if (Basic.Search_element("//div[contains(@onmousemove,'Zbroja Disa Patera')]"))
+            if (!RegistryValues.Read_b("c_costume") || Basic.Search_element("//div[contains(@onmousemove,'Zbroja Disa Patera')]"))
                 return false;
             Navigation.Main_menu("Podgląd");
             Basic.Click_element("//input[@value='zmień']");
@@ -75,7 +89,7 @@ namespace GladiatusBOT
         public static bool Expedition()
         {
             int points = Convert.ToInt32(Get.Element("//*[@id='expeditionpoints_value_point']").Text);
-            if (!Settings.c_expedition || points == 0)
+            if (!RegistryValues.Read_b("c_expedition") || points == 0)
                 return false;
             Heal_me();
             Basic.Wait_for_element("//div[@id='cooldown_bar_expedition']/div[@class='cooldown_bar_text']");
@@ -96,7 +110,7 @@ namespace GladiatusBOT
                 if (!Get.Element("//div[@id='cooldown_bar_dungeon']/a[@class='cooldown_bar_link']").Displayed)
                     return false;
             int points = Convert.ToInt32(Get.Element("//*[@id='dungeonpoints_value_point']").Text);
-            if (points == 0)
+            if (!RegistryValues.Read_b("c_dungeon") || points == 0)
                 return false;
             Basic.Wait_for_element("//div[@id='cooldown_bar_dungeon']/div[@class='cooldown_bar_text']");
             Basic.Click_element("//div[@id='cooldown_bar_dungeon']/div[@class='cooldown_bar_link']");

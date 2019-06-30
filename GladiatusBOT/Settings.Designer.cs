@@ -68,6 +68,10 @@
             this.textFood = new System.Windows.Forms.TextBox();
             this.label15 = new System.Windows.Forms.Label();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.checkCostume = new System.Windows.Forms.CheckBox();
+            this.checkPack = new System.Windows.Forms.CheckBox();
+            this.checkSpentRubles = new System.Windows.Forms.CheckBox();
+            this.checkHeadless = new System.Windows.Forms.CheckBox();
             this.checkSleep = new System.Windows.Forms.CheckBox();
             this.checkAuctions = new System.Windows.Forms.CheckBox();
             this.checkBoosters = new System.Windows.Forms.CheckBox();
@@ -77,14 +81,23 @@
             this.checkFood = new System.Windows.Forms.CheckBox();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
             this.buttonDownloadPackages = new System.Windows.Forms.Button();
-            this.checkHeadless = new System.Windows.Forms.CheckBox();
-            this.checkSpentRubles = new System.Windows.Forms.CheckBox();
+            this.groupBox7 = new System.Windows.Forms.GroupBox();
+            this.checkSellRed = new System.Windows.Forms.CheckBox();
+            this.checkSellOrange = new System.Windows.Forms.CheckBox();
+            this.checkSellPurple = new System.Windows.Forms.CheckBox();
+            this.checkExtractRed = new System.Windows.Forms.CheckBox();
+            this.label17 = new System.Windows.Forms.Label();
+            this.label16 = new System.Windows.Forms.Label();
+            this.checkExtractOrange = new System.Windows.Forms.CheckBox();
+            this.checkExtractPurple = new System.Windows.Forms.CheckBox();
+            this.checkTraining = new System.Windows.Forms.CheckBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.groupBox4.SuspendLayout();
             this.groupBox5.SuspendLayout();
             this.groupBox6.SuspendLayout();
+            this.groupBox7.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnSave
@@ -372,6 +385,9 @@
             // 
             // groupBox5
             // 
+            this.groupBox5.Controls.Add(this.checkTraining);
+            this.groupBox5.Controls.Add(this.checkCostume);
+            this.groupBox5.Controls.Add(this.checkPack);
             this.groupBox5.Controls.Add(this.checkSpentRubles);
             this.groupBox5.Controls.Add(this.checkHeadless);
             this.groupBox5.Controls.Add(this.checkSleep);
@@ -387,6 +403,30 @@
             resources.ApplyResources(this.groupBox5, "groupBox5");
             this.groupBox5.Name = "groupBox5";
             this.groupBox5.TabStop = false;
+            // 
+            // checkCostume
+            // 
+            resources.ApplyResources(this.checkCostume, "checkCostume");
+            this.checkCostume.Name = "checkCostume";
+            this.checkCostume.UseVisualStyleBackColor = true;
+            // 
+            // checkPack
+            // 
+            resources.ApplyResources(this.checkPack, "checkPack");
+            this.checkPack.Name = "checkPack";
+            this.checkPack.UseVisualStyleBackColor = true;
+            // 
+            // checkSpentRubles
+            // 
+            resources.ApplyResources(this.checkSpentRubles, "checkSpentRubles");
+            this.checkSpentRubles.Name = "checkSpentRubles";
+            this.checkSpentRubles.UseVisualStyleBackColor = true;
+            // 
+            // checkHeadless
+            // 
+            resources.ApplyResources(this.checkHeadless, "checkHeadless");
+            this.checkHeadless.Name = "checkHeadless";
+            this.checkHeadless.UseVisualStyleBackColor = true;
             // 
             // checkSleep
             // 
@@ -445,22 +485,77 @@
             this.buttonDownloadPackages.UseVisualStyleBackColor = true;
             this.buttonDownloadPackages.Click += new System.EventHandler(this.ButtonDownloadPackages_Click);
             // 
-            // checkHeadless
+            // groupBox7
             // 
-            resources.ApplyResources(this.checkHeadless, "checkHeadless");
-            this.checkHeadless.Name = "checkHeadless";
-            this.checkHeadless.UseVisualStyleBackColor = true;
+            this.groupBox7.Controls.Add(this.checkSellRed);
+            this.groupBox7.Controls.Add(this.checkSellOrange);
+            this.groupBox7.Controls.Add(this.checkSellPurple);
+            this.groupBox7.Controls.Add(this.checkExtractRed);
+            this.groupBox7.Controls.Add(this.label17);
+            this.groupBox7.Controls.Add(this.label16);
+            this.groupBox7.Controls.Add(this.checkExtractOrange);
+            this.groupBox7.Controls.Add(this.checkExtractPurple);
+            resources.ApplyResources(this.groupBox7, "groupBox7");
+            this.groupBox7.Name = "groupBox7";
+            this.groupBox7.TabStop = false;
             // 
-            // checkSpentRubles
+            // checkSellRed
             // 
-            resources.ApplyResources(this.checkSpentRubles, "checkSpentRubles");
-            this.checkSpentRubles.Name = "checkSpentRubles";
-            this.checkSpentRubles.UseVisualStyleBackColor = true;
+            resources.ApplyResources(this.checkSellRed, "checkSellRed");
+            this.checkSellRed.Name = "checkSellRed";
+            this.checkSellRed.UseVisualStyleBackColor = true;
+            // 
+            // checkSellOrange
+            // 
+            resources.ApplyResources(this.checkSellOrange, "checkSellOrange");
+            this.checkSellOrange.Name = "checkSellOrange";
+            this.checkSellOrange.UseVisualStyleBackColor = true;
+            // 
+            // checkSellPurple
+            // 
+            resources.ApplyResources(this.checkSellPurple, "checkSellPurple");
+            this.checkSellPurple.Name = "checkSellPurple";
+            this.checkSellPurple.UseVisualStyleBackColor = true;
+            // 
+            // checkExtractRed
+            // 
+            resources.ApplyResources(this.checkExtractRed, "checkExtractRed");
+            this.checkExtractRed.Name = "checkExtractRed";
+            this.checkExtractRed.UseVisualStyleBackColor = true;
+            // 
+            // label17
+            // 
+            resources.ApplyResources(this.label17, "label17");
+            this.label17.Name = "label17";
+            // 
+            // label16
+            // 
+            resources.ApplyResources(this.label16, "label16");
+            this.label16.Name = "label16";
+            // 
+            // checkExtractOrange
+            // 
+            resources.ApplyResources(this.checkExtractOrange, "checkExtractOrange");
+            this.checkExtractOrange.Name = "checkExtractOrange";
+            this.checkExtractOrange.UseVisualStyleBackColor = true;
+            // 
+            // checkExtractPurple
+            // 
+            resources.ApplyResources(this.checkExtractPurple, "checkExtractPurple");
+            this.checkExtractPurple.Name = "checkExtractPurple";
+            this.checkExtractPurple.UseVisualStyleBackColor = true;
+            // 
+            // checkTraining
+            // 
+            resources.ApplyResources(this.checkTraining, "checkTraining");
+            this.checkTraining.Name = "checkTraining";
+            this.checkTraining.UseVisualStyleBackColor = true;
             // 
             // Settings
             // 
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.groupBox7);
             this.Controls.Add(this.groupBox6);
             this.Controls.Add(this.groupBox5);
             this.Controls.Add(this.groupBox4);
@@ -482,6 +577,8 @@
             this.groupBox5.ResumeLayout(false);
             this.groupBox5.PerformLayout();
             this.groupBox6.ResumeLayout(false);
+            this.groupBox7.ResumeLayout(false);
+            this.groupBox7.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -537,6 +634,18 @@
         private System.Windows.Forms.CheckBox checkSleep;
         private System.Windows.Forms.CheckBox checkSpentRubles;
         private System.Windows.Forms.CheckBox checkHeadless;
+        private System.Windows.Forms.CheckBox checkCostume;
+        private System.Windows.Forms.CheckBox checkPack;
+        private System.Windows.Forms.GroupBox groupBox7;
+        private System.Windows.Forms.CheckBox checkSellRed;
+        private System.Windows.Forms.CheckBox checkSellOrange;
+        private System.Windows.Forms.CheckBox checkSellPurple;
+        private System.Windows.Forms.CheckBox checkExtractRed;
+        private System.Windows.Forms.Label label17;
+        private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.CheckBox checkExtractOrange;
+        private System.Windows.Forms.CheckBox checkExtractPurple;
+        private System.Windows.Forms.CheckBox checkTraining;
     }
 }
 

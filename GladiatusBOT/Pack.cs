@@ -38,7 +38,7 @@ namespace GladiatusBOT
 
         public static void Buy()
         {
-            if (/*Form1.c_pack ||*/Settings.gold_pack > Get.Gold())
+            if (RegistryValues.Read_b("c_pack") || RegistryValues.Read_i("gold_pack") > Get.Gold())
                 return;
             Read_packages();
             while (Get.Gold() > Settings.gold_pack)
@@ -130,8 +130,8 @@ namespace GladiatusBOT
 
         public static void Search()
         {
-            //if (!User.Default.pack)
-            //    return;
+            if (!RegistryValues.Read_b("c_pack"))
+                return;
 
             Read_packages();
             IReadOnlyCollection<IWebElement> elements;

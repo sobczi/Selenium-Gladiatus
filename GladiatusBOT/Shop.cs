@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using Microsoft.Win32;
 using OpenQA.Selenium;
 
 namespace GladiatusBOT
@@ -109,8 +110,9 @@ namespace GladiatusBOT
             foreach(IWebElement element in all)
             {
                 string quality = element.GetAttribute("data-quality");
-                if (/*!User.Default.sell_purple && quality == "2" || */quality == "3" || quality == "4")
-                    continue;
+                if (!RegistryValues.Read_b("c_sell_purple") && quality == "2" ||
+                    !RegistryValues.Read_b("c_sell_orange") && quality == "3" ||
+                    !RegistryValues.Read_b("c_sell_red") && quality == "4") continue;
                 elements.Add(element);
             }
             return elements;

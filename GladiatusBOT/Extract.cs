@@ -46,15 +46,15 @@ namespace GladiatusBOT
             int third_it = Bot.driver.FindElementsByXPath("//div[@id='inv']//div[contains(@class,'draggable')]").Count;
             int it = first_it + second_it - third_it;
 
-            //if (User.Default.extract_purple)
-            //    colour = "Mars (purpurowy)";
-            //else if (User.Default.extract_orange)
-            //    colour = "Jupiter (pomarańczowy)";
-            //else if (User.Default.extract_red)
-            //    colour = "Olimp (czerwony)";
+            string colour = "Neptun (niebieski)";
+            if (RegistryValues.Read_b("c_extract_purple"))
+                colour = "Mars (purpurowy)";
+            else if (RegistryValues.Read_b("c_extract_orange"))
+                colour = "Jupiter (pomarańczowy)";
+            else if (RegistryValues.Read_b("c_extract_red"))
+                colour = "Olimp (czerwony)";
 
             Navigation.Packages();
-            string colour = "Jupiter (pomarańczowy)";
             Navigation.Filter_packages("", colour);
             Basic.Click_if("//a[@class='paging_button paging_right_full']");
             while (true)
@@ -125,6 +125,10 @@ namespace GladiatusBOT
             Navigation.Backpack(Settings.b_extract);
             foreach (IWebElement element in elements)
             {
+                int quality = Convert.ToInt32(element.GetAttribute("data-quality"));
+                if (!RegistryValues.Read_b("c_extract_purple") && quality == 2 ||
+                    !RegistryValues.Read_b("c_extract_orange") && quality == 3 ||
+                    !RegistryValues.Read_b("c_extract_red") && quality == 4) continue;
                 string hash = element.GetAttribute("data-hash");
                 Basic.Double_click(element);
                 if (Basic.Search_element("//div[@id='packages']//div[@data-hash='" + hash + "']"))

@@ -74,6 +74,15 @@ namespace GladiatusBOT
             key.SetValue("c_sleep", checkSleep.Checked);
             key.SetValue("c_headless", checkHeadless.Checked);
             key.SetValue("c_rubles", checkSpentRubles.Checked);
+            key.SetValue("c_pack", checkPack.Checked);
+            key.SetValue("c_costume", checkCostume.Checked);
+            key.SetValue("c_training", checkTraining.Checked);
+            key.SetValue("c_extract_purple", checkExtractPurple.Checked);
+            key.SetValue("c_extract_orange", checkExtractOrange.Checked);
+            key.SetValue("c_extract_red", checkExtractRed.Checked);
+            key.SetValue("c_sell_purple", checkSellPurple.Checked);
+            key.SetValue("c_sell_orange", checkSellOrange.Checked);
+            key.SetValue("c_sell_red", checkSellRed.Checked);
         }
 
         void Read_settings()
@@ -107,6 +116,15 @@ namespace GladiatusBOT
             checkSleep.Checked = RegistryValues.Read_b("c_sleep");
             checkHeadless.Checked = RegistryValues.Read_b("c_headless");
             checkSpentRubles.Checked = RegistryValues.Read_b("c_rubles");
+            checkPack.Checked = RegistryValues.Read_b("c_pack");
+            checkCostume.Checked = RegistryValues.Read_b("c_costume");
+            checkTraining.Checked = RegistryValues.Read_b("c_training");
+            checkExtractPurple.Checked = RegistryValues.Read_b("c_extract_purple");
+            checkExtractOrange.Checked = RegistryValues.Read_b("c_extract_orange");
+            checkExtractRed.Checked = RegistryValues.Read_b("c_extract_red");
+            checkSellPurple.Checked = RegistryValues.Read_b("c_sell_purple");
+            checkSellOrange.Checked = RegistryValues.Read_b("c_sell_orange");
+            checkSellRed.Checked = RegistryValues.Read_b("c_sell_red");
         }
 
         void BtnSave_Click(object sender, EventArgs e) { Save_settings(); }
