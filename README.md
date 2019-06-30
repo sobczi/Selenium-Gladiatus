@@ -1,7 +1,7 @@
 # Automation for Gladiatus Game
 Bot with user-friendly GUI to setup for online game Gladiatus.
 ## Main
-![Alt Text](https://i.imgur.com/Y3i4TQc.jpg)
+![Screenshot](resources/Gladiatus_main_form.JPG)
 
 * Displays whole data about player,
 * Sleep (deactivate on mouse-move),
@@ -13,14 +13,14 @@ Bot with user-friendly GUI to setup for online game Gladiatus.
   * If Take Gold or Sell Items is pressed Botting is deactivated untill user will turn it on back again.
 
 ## Settings
-![Alt Text](https://i.imgur.com/gxS7bkn.jpg)
+![Screenshot](resources/Gladiatus_settings_form.JPG)
 * Logging (hopefully here is everything clear),
 * Backpacks (determine which backpack bot should use for specific functions),
   * Food (move from packages found/bought food and heal from there).
 * General
   * Expedition (choose which enemy bot should attack),
   * Dungeon (determine which dungeons bot should do),
-    * Advanced only if currently avaliable,
+    * Bot will go to advanced only if will be currently avaliable,
   * Training (choose skill which bot should training on ending work).
 * Limits
   * Heal (below which % bot should heal),
@@ -40,7 +40,12 @@ Bot with user-friendly GUI to setup for online game Gladiatus.
   * Auctions (bot should pack rest of unpackable gold in auction house items e.g. rings, amulets),
   * Boosters (bot should buy new boosters under limit from auction house),
   * Sleep (turn sleep mode if user is AFK - didn't found any mouse-move during bot session),
-  * Headless (run chrome in headless mode).
+  * Headless (run chrome in headless mode),
+  * Spent rubles (determine if bot should use rubles during his work e.g. loading new shops).
+* Buttons
+  * Save all,
+  * Download packages (goes to guild market and loads all items to .txt file for pack function).
+  
 
 ## Built with
 * C#
@@ -52,10 +57,7 @@ Bot with user-friendly GUI to setup for online game Gladiatus.
 
 ## Future
 * Installator,
-* Add save packages button which will download data from guild market and save it to .txt file to use for gold pack function,
-  * Already wrote this, need just to pin it to Settings form.
 * Write functionality for buying items from auction house (rings, amulets, boosters, food),
-* Let user decide if bot should spent rubles on switching to new shops,
 * Write functionality for trening,
 * Auto-Hades (tried in the past but unssuccesfully, kinda tricky).
 
