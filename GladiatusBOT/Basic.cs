@@ -17,7 +17,8 @@ namespace GladiatusBOT
                 "//input[@id='linkLoginBonus']",
                 "//a[contains(@onclick,'MAX_simplepop')]",
                 "//*[@id='linkcancelnotification']",
-                "//*[@id='linknotification']"
+                "//*[@id='linknotification']",
+                "//a[@id='accept_btn']"
             };
             Bot.driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromMilliseconds(0);
             foreach (string path in paths)
