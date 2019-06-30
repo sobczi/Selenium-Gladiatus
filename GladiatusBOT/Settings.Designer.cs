@@ -1,6 +1,6 @@
 ﻿namespace GladiatusBOT
 {
-    partial class Form1
+    partial class Settings
     {
         /// <summary>
         /// Wymagana zmienna projektanta.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Settings));
             this.btnSave = new System.Windows.Forms.Button();
             this.textNick = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -75,7 +75,8 @@
             this.checkHeal = new System.Windows.Forms.CheckBox();
             this.checkFood = new System.Windows.Forms.CheckBox();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
-            this.button1 = new System.Windows.Forms.Button();
+            this.checkSleep = new System.Windows.Forms.CheckBox();
+            this.checkHeadless = new System.Windows.Forms.CheckBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -420,19 +421,26 @@
             // 
             // groupBox6
             // 
-            this.groupBox6.Controls.Add(this.button1);
+            this.groupBox6.Controls.Add(this.checkHeadless);
+            this.groupBox6.Controls.Add(this.checkSleep);
             this.groupBox6.Controls.Add(this.btnSave);
             resources.ApplyResources(this.groupBox6, "groupBox6");
             this.groupBox6.Name = "groupBox6";
             this.groupBox6.TabStop = false;
             // 
-            // button1
+            // checkSleep
             // 
-            resources.ApplyResources(this.button1, "button1");
-            this.button1.Name = "button1";
-            this.button1.UseVisualStyleBackColor = true;
+            resources.ApplyResources(this.checkSleep, "checkSleep");
+            this.checkSleep.Name = "checkSleep";
+            this.checkSleep.UseVisualStyleBackColor = true;
             // 
-            // Form1
+            // checkHeadless
+            // 
+            resources.ApplyResources(this.checkHeadless, "checkHeadless");
+            this.checkHeadless.Name = "checkHeadless";
+            this.checkHeadless.UseVisualStyleBackColor = true;
+            // 
+            // Settings
             // 
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -442,7 +450,9 @@
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
-            this.Name = "Form1";
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.HelpButton = true;
+            this.Name = "Settings";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Form1_FormClosed);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
@@ -455,6 +465,7 @@
             this.groupBox5.ResumeLayout(false);
             this.groupBox5.PerformLayout();
             this.groupBox6.ResumeLayout(false);
+            this.groupBox6.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -506,7 +517,8 @@
         private System.Windows.Forms.CheckBox checkExtract;
         private System.Windows.Forms.CheckBox checkHeal;
         private System.Windows.Forms.GroupBox groupBox6;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.CheckBox checkSleep;
+        private System.Windows.Forms.CheckBox checkHeadless;
     }
 }
 
