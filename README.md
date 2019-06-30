@@ -59,7 +59,7 @@ Bot with user-friendly GUI to setup for online game Gladiatus.
 * Installator,
 * Buying items from auction house (rings, amulets, boosters, food),
 * Trainigs,
-* Pack checkbox,
+* Pack and hades costume checkbox,
 * Determine colours of items for sell/extract,
 * Auto-Hades (tried in the past but unssuccesfully, kinda tricky).
 
