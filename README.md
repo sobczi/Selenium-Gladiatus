@@ -51,6 +51,7 @@ Bot with user-friendly GUI to setup for online game Gladiatus.
 * Daniel Sobczak - whole work - student of WI ZUT SZCZECIN, POLAND.
 
 ## Future
+* Installator,
 * Add save packages button which will download data from guild market and save it to .txt file to use for gold pack function,
   * Already wrote this, need just to pin it to Settings form.
 * Wrote functionality for buying items from auction house (rings, amulets, boosters, food),
