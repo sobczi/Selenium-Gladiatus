@@ -19,7 +19,7 @@ namespace GladiatusBOT
             content += "Error Message: " + ex.Message + Environment.NewLine;
             content += "Stack Trace: " + ex.StackTrace + Environment.NewLine;
             content += "Date: " + DateTime.Now + Environment.NewLine;
-            content += "=======END=======" + Environment.NewLine;
+            content += "=======END=======" + Environment.NewLine + Environment.NewLine;
             File.AppendAllText("exceptions.txt", content);
         }
 
@@ -49,15 +49,8 @@ namespace GladiatusBOT
             {
                 string name = process.ProcessName;
                 if (name == "chromedriver" || name == "chrome")
-                    process.Kill();
+                    try { process.Kill(); } catch { }
             }
-        }
-
-        public static void Kill_all(List<Thread> threads)
-        {
-            Kill_chromes();
-            foreach (Thread thread in threads)
-                thread.Abort();
         }
     }
 }
