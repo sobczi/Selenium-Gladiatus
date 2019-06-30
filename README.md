@@ -60,7 +60,7 @@ Bot with user-friendly GUI to setup for online game Gladiatus.
 * Auto-Hades (tried in the past but unssuccesfully, kinda tricky).
 
 ## Acknowledgments
-* Community of Selenium Framework
-* Community of Visual Studio
-* Community of StackOverFlow :)
-* Community of GitHub
+* Community of
+ * Visual Studio
+ * StackOverFlow
+ * GitHub
