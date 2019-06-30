@@ -19,26 +19,23 @@ namespace GladiatusBOT
         public static bool work = true;
         static bool bool_sell_items = false;
         static bool bool_take_gold = false;
+        static bool bool_download_packages = false;
+
+        public static bool Download_packages
+        {
+            get { return bool_download_packages; }
+            set { bool_download_packages = value; work = false; Set_regular_text(form.btnBotting); }
+        }
         public static bool Sell_items
         {
             get { return bool_sell_items; }
-            set
-            {
-                bool_sell_items = value;
-                work = false;
-                form.Invoke((MethodInvoker)delegate { form.btnBotting.Font = new Font(form.btnBotting.Font.Name, form.btnBotting.Font.Size, FontStyle.Regular); });
-            }
+            set { bool_sell_items = value; work = false; Set_regular_text(form.btnBotting); }
         }
 
         public static bool Take_gold
         {
             get { return bool_take_gold; }
-            set
-            {
-                bool_take_gold = value;
-                work = false;
-                form.Invoke((MethodInvoker)delegate { form.btnBotting.Font = new Font(form.btnBotting.Font.Name, form.btnBotting.Font.Size, FontStyle.Regular); });
-            }
+            set { bool_take_gold = value; work = false; Set_regular_text(form.btnBotting); }
         }
         static public Actions ac;
         static public int wait = 250;
@@ -65,8 +62,8 @@ namespace GladiatusBOT
                     driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromMilliseconds(wait);
                     ac = new Actions(driver);
 
-                    Task.Login();
-                    logged = true;
+                    logged = Task.Login();
+                    if (!logged) { MessageBox.Show("Bot couldn't login into account..", "Error!"); work = false; break; }
                     Update_ui();
                     Task.Disable_notifications();
                     if (true)
@@ -84,8 +81,7 @@ namespace GladiatusBOT
                                     dung = Task.Dungeon();
                                     Pack.Buy();
                                 }
-                                if (!work)
-                                    continue;
+                                if (!work) continue;
                                 Shop.Sell();
                                 Extract.Extract_items();
                                 Pack.Buy();
@@ -95,19 +91,11 @@ namespace GladiatusBOT
                                 break;
                             }
 
-                            if(Take_gold)
-                            {
-                                Task.Take_Gold();
-                                Take_gold = false;
-                                form.Invoke((MethodInvoker)delegate { form.gold_btn.Font = new Font(form.gold_btn.Font.Name, form.gold_btn.Font.Size, FontStyle.Regular); });
-                            }
+                            if(Take_gold) { Task.Take_Gold(); Take_gold = false; Set_regular_text(form.gold_btn); }
 
-                            if(Sell_items)
-                            {
-                                Shop.Sell();
-                                Sell_items = false;
-                                form.Invoke((MethodInvoker)delegate { form.sell_btn.Font = new Font(form.sell_btn.Font.Name, form.sell_btn.Font.Size, FontStyle.Regular); });
-                            }
+                            if(Sell_items) { Shop.Sell(); Sell_items = false; Set_regular_text(form.sell_btn); }
+
+                            if (Download_packages) { Pack.Save(); Download_packages = false; }
 
                             while (!work && !Sell_items && !Take_gold)
                                 Thread.Sleep(Bot.wait);
@@ -129,6 +117,11 @@ namespace GladiatusBOT
             form.Invoke((MethodInvoker)delegate { form.labelDungeon.Text = Convert.ToString(Get.Points_dungeon()); });
             form.Invoke((MethodInvoker)delegate { form.labelLevel.Text = Convert.ToString(Get.Level()); });
             form.Invoke((MethodInvoker)delegate { form.labelProgress.Text = Convert.ToString(Get.Progress()); });
+        }
+
+        static void Set_regular_text(Button b)
+        {
+            form.Invoke((MethodInvoker)delegate { b.Font = new Font(b.Font.Name, b.Font.Size, FontStyle.Regular); });
         }
     }
 }
