@@ -81,13 +81,18 @@ Determine where program should search described things.
   * Goes to guild market and saves all found items to settings/packages.txt 
 
 ## :hammer: Built with
-* C#
-* WinForms
-* [Selenium Framework](https://github.com/SeleniumHQ/selenium)
-* [Gladiatus Crazy Addon](https://github.com/DinoDevs/GladiatusCrazyAddon)
+:books: C#
+
+:books: WinForms
+
+:link: [Selenium Framework](https://github.com/SeleniumHQ/selenium)
+
+:link: [Gladiatus Crazy Addon](https://github.com/DinoDevs/GladiatusCrazyAddon)
 
 ## :person_with_blond_hair: Authors
-:computer: Daniel Sobczak - :mortar_board: student of WI ZUT SZCZECIN, POLAND.
+:computer: Daniel Sobczak
+
+:mortar_board: Student of WI ZUT Szczecin, Poland
 
 ## :pushpin: Future
 * Installator
