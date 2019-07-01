@@ -1,56 +1,81 @@
 # Automation for Gladiatus Game
-Bot with user-friendly GUI to setup for online game Gladiatus.
+Automate farming in Gladiatus! Setup your bot with user-friendly GUI!
 ## Main
 ![Screenshot](resources/Gladiatus_main_form.JPG)
 
-* Displays whole data about player,
-* Sleep (deactivate on mouse-move),
-* Take Gold (takes specified amount of gold),
-* Sell Items (sells items, moves them on specified backpack),
-* Settings (opens settings GUI, descripted below),
-* Botting (determines if bot is currently running in normal mode),
-  * bold: activated, regular: deactivated,
-  * If Take Gold or Sell Items is pressed Botting is deactivated untill user will turn it on back again.
+### Displays whole data about player
+If player is on location where dungeons are unavaliable it will show 0.
+### Sleep
+Deactivate on mouse-move detect.
+### Take gold 
+Starts taking gold from packages.
+### Sell Items
+Starts selling items from packages.
+### Botting 
+Determines if program is currently running in normal mode.
+### Status of buttons:
+* Bold -> active
+* Regular -> !active
+
+If take gold or sell items action is pressed default scheme is deactivated untill user will turn it on back again.
 
 ## Settings
 ![Screenshot](resources/Gladiatus_settings_form.JPG)
-* Logging (hopefully here is everything clear),
-* Backpacks (determine which backpack bot should use for specific functions),
-  * Food (move from packages found/bought food and heal from there).
-* General
-  * Expedition (choose which enemy bot should attack),
-  * Dungeon (determine which dungeons bot should do),
-    * Bot will go to advanced only if will be currently avaliable,
-  * Training (choose skill which bot should training on ending work).
-* Limits
-  * Heal (below which % bot should heal),
-  * Gold pack (over which gold bot should search pack items),
-  * Gold take (maximum gold level to take out gold),
-  * Food (maximum pages of food to buy from auction house),
-  * Boosters (maximum pages of boosters to buy from auction house),
-  * Difference (maximum difference between price and value in auction house of items).
-* Functions
-  * Expedition (bot should go to expeditions),
-  * Dungeons (bot should go to dungeons),
-  * Event Wars (bot should participate in event wars),
-  * Heal (bot should heal player on specified limit),
-  * Food (bot should buy new food under limit from auction house),
-  * Extract (bot should melt items - currently: orange and red),
-    * Specify custom items for extract in settings/extract.txt e.g. Lucius (write one name per line),
-  * Sell (bot should sell items - currently: all below orange colours),
-  * Auctions (bot should pack rest of unpackable gold in auction house items e.g. rings, amulets),
-  * Boosters (bot should buy new boosters under limit from auction house),
-  * Sleep (turn sleep mode if user is AFK - didn't found any mouse-move during bot session),
-  * Headless (run chrome in headless mode),
-  * Pack (pack gold - based on .txt file from download packages - on guild market),
-  * Training (train specified skill on end),
-  * Costume (take hades costume if used whole points),
-  * Spent rubles (determine if bot should use rubles during his work e.g. loading new shops).
-  * Colours (specify which colours bot should extract/sell),
-* Buttons
-  * Save all,
-  * Download packages (goes to guild market and loads all items to .txt file for pack function).
+### Backpacks
+* Determine where program should search described things
+### General
+* Expedition
+  * Counting enemies from left
+* Dungeon
+  * Level of dungeon standard/advenced
+  * If advenced dungeon is unavaliable then goes to standard one
+* Training 
+### Limits
+* Heal
+  * Percentage
+* Gold pack
+  * Minimum gold
+* Gold take
+  * Maximum gold
+* Food  
+  * Maximum number of pages in packages
+* Boosters
+  * Maximum number of pages in packages
+* Difference 
+  * Maximum difference between price and value in auction house
+### Functions
+* Expeditions
+* Dungeons
+* Event Wars
+* Heal
+* Food 
+  * Buys new food from auction house
+* Extract 
+  * Specify custom items for extract in settings/extract.txt (e.g. Lucius - write one name per line)
+* Sell 
+  * Sells items before exit (w/o scrolls, mercenaries, food, additives and event items)
+* Auctions 
+  * Buys items from auction house before exit (e.g. rings, amulets, food - hides whole gold)
+* Boosters 
+  * Buys boosters from auction house before exit (useful in 100+ levels for Hades)
+* Sleep 
+  * Turns sleep mode if user is AFK (if didn't found any mouse-move during bot session)
+* Headless 
+  * Runs browser in headless mode
+* Pack 
+  * Buys packs from guild market - based on settings/packages.txt 
+* Training 
+  * Trains specified skill before exit
+* Costume 
+  * Takes hades costume if used all points
+* Spent rubles 
+  * Determines if bot should use rubles during his work (e.g. loading new shops)
+* Colours 
+  * Specify which colours bot should extract and sell
   
+### Buttons
+* Save all
+* Download packages (goes to guild market and loads all items to .txt file for pack function)  
 
 ## Built with
 * C#
