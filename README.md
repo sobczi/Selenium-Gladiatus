@@ -55,6 +55,7 @@ Bot with user-friendly GUI to setup for online game Gladiatus.
 * C#
 * Selenium Framework
 * WinForms
+* [Gladiatus Crazy Addon](https://github.com/DinoDevs/GladiatusCrazyAddon)
 
 ## Authors
 * Daniel Sobczak - whole work - student of WI ZUT SZCZECIN, POLAND.
@@ -69,3 +70,4 @@ Bot with user-friendly GUI to setup for online game Gladiatus.
   * Visual Studio
   * StackOverFlow
   * GitHub
+  * Gladiatus Crazy Addon
