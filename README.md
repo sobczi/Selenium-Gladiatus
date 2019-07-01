@@ -36,6 +36,7 @@ Bot with user-friendly GUI to setup for online game Gladiatus.
   * Heal (bot should heal player on specified limit),
   * Food (bot should buy new food under limit from auction house),
   * Extract (bot should melt items - currently: orange and red),
+    * Specify custom items for extract in settings/extract.txt e.g. Lucius (write one name per line),
   * Sell (bot should sell items - currently: all below orange colours),
   * Auctions (bot should pack rest of unpackable gold in auction house items e.g. rings, amulets),
   * Boosters (bot should buy new boosters under limit from auction house),
