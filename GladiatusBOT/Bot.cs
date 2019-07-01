@@ -42,7 +42,7 @@ namespace GladiatusBOT
 
         public static void Run()
         {
-            Directory.SetCurrentDirectory(@"../../../settings");
+            Directory.SetCurrentDirectory(@"../../../");
             work = true;
             while (true)
             {
@@ -56,7 +56,7 @@ namespace GladiatusBOT
                         driverOptions.AddArgument("--window-position=2000,0");
                     if (RegistryValues.Read_b("c_headless"))
                         driverOptions.AddArgument("--headless");
-                    driverOptions.AddExtension("GladiatusAddon.crx");
+                    driverOptions.AddExtension("resources/GladiatusAddon.crx");
                     driver = new ChromeDriver(driverService, driverOptions);
                     driver.Manage().Window.Maximize();
                     driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromMilliseconds(wait);

@@ -20,7 +20,7 @@ namespace GladiatusBOT
             content += "Stack Trace: " + ex.StackTrace + Environment.NewLine;
             content += "Date: " + DateTime.Now + Environment.NewLine;
             content += "=======END=======" + Environment.NewLine + Environment.NewLine;
-            File.AppendAllText("exceptions.txt", content);
+            File.AppendAllText("settings/exceptions.txt", content);
         }
 
         public static void Catch_mouse()

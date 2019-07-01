@@ -357,11 +357,11 @@ namespace GladiatusBOT
 
          static void Read_packages()
         {
-            if (!File.Exists("packages.txt"))
+            if (!File.Exists("settings/packages.txt"))
                 return;
-            int lineCount = File.ReadLines("packages.txt").Count();
+            int lineCount = File.ReadLines("settings/packages.txt").Count();
             if (lineCount == 0) { return; }
-            lines = File.ReadAllLines("packages.txt");
+            lines = File.ReadAllLines("settings/packages.txt");
             classes = new string[lines.Length];
             soulbounds = new string[lines.Length];
             prices = new string[lines.Length];

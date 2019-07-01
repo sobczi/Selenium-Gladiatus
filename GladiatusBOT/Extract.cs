@@ -76,8 +76,8 @@ namespace GladiatusBOT
             if (it > 0)
             {
                 string[] customs = null;
-                if (File.Exists(@"extract.txt"))
-                    customs = File.ReadAllLines(@"extract.txt");
+                if (File.Exists(@"settings/extract.txt"))
+                    customs = File.ReadAllLines(@"settings/extract.txt");
                 Navigation.Packages();
                 Navigation.Backpack(Settings.b_extract);
                 for (int i=0; i<customs.Length; i++)
