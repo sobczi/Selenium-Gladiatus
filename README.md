@@ -1,36 +1,38 @@
-# Automation for Gladiatus Game
+# :video_game: Automation for Gladiatus Game
 Automate farming in Gladiatus! Setup your bot with user-friendly GUI!
 ## Main
 ![Screenshot](resources/Gladiatus_main_form.JPG)
 
-### Displays whole data about player
+### :chart_with_upwards_trend: Displays whole data about player
 If player is on location where dungeons are unavaliable it will show 0.
-### Sleep
+### :zzz: Sleep
 Deactivate on mouse-move detect.
-### Take gold 
+### :moneybag: Take gold
 Starts taking gold from packages.
-### Sell Items
+### :bank: Sell Items
 Starts selling items from packages.
-### Botting 
+### :sparkles: Botting
 Determines if program is currently running in normal mode.
-### Status of buttons:
+### :radio_button: Status of buttons
 * Bold -> active
 * Regular -> !active
 
 If take gold or sell items action is pressed default scheme is deactivated untill user will turn it on back again.
 
-## Settings
+:heavy_exclamation_mark: By default runs minimized in taskbar as notify icon.
+
+## :wrench: Settings
 ![Screenshot](resources/Gladiatus_settings_form.JPG)
-### Backpacks
+### :handbag: Backpacks
 Determine where program should search described things.
-### General
+### :clipboard: General
 * Expedition
   * Counting enemies from left
 * Dungeon
   * Level of dungeon standard/advenced
   * If advenced dungeon is unavaliable then goes to standard one
 * Training 
-### Limits
+### :no_entry: Limits
 * Heal
   * Percentage
 * Gold pack
@@ -43,7 +45,7 @@ Determine where program should search described things.
   * Maximum number of pages in packages
 * Difference 
   * Maximum difference between price and value in auction house
-### Functions
+### :bulb: Functions
 * Expeditions
 * Dungeons
 * Event Wars
@@ -73,21 +75,21 @@ Determine where program should search described things.
 * Colours 
   * Specify which colours bot should extract and sell
   
-### Buttons
+### :radio_button: Buttons
 * Save all
 * Download packages 
   * Goes to guild market and saves all found items to settings/packages.txt 
 
-## Built with
+## :hammer: Built with
 * C#
 * WinForms
 * [Selenium Framework](https://github.com/SeleniumHQ/selenium)
 * [Gladiatus Crazy Addon](https://github.com/DinoDevs/GladiatusCrazyAddon)
 
-## Authors
-* Daniel Sobczak - whole work - student of WI ZUT SZCZECIN, POLAND.
+## :person_with_blond_hair: Authors
+:computer: Daniel Sobczak - :mortar_board: student of WI ZUT SZCZECIN, POLAND.
 
-## Future
+## :pushpin: Future
 * Installator
 * Buying items from auction house
   * Rings
@@ -96,7 +98,7 @@ Determine where program should search described things.
   * Boosters
 * Auto-Hades
 
-## Acknowledgments
+## :trophy: Acknowledgments
 * Community of
   * Visual Studio
   * StackOverFlow
