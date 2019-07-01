@@ -3,8 +3,6 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29009.5
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GladiatusScript", "Gladiatus NEW\GladiatusScript.csproj", "{1351835B-6B57-473B-9EC0-CF56DD513F66}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GladiatusBOT", "GladiatusBOT\GladiatusBOT.csproj", "{20181FAC-C9E4-4BA3-B4D2-90C05D77DEE7}"
 EndProject
 Global
@@ -13,10 +11,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{1351835B-6B57-473B-9EC0-CF56DD513F66}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{1351835B-6B57-473B-9EC0-CF56DD513F66}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{1351835B-6B57-473B-9EC0-CF56DD513F66}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{1351835B-6B57-473B-9EC0-CF56DD513F66}.Release|Any CPU.Build.0 = Release|Any CPU
 		{20181FAC-C9E4-4BA3-B4D2-90C05D77DEE7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{20181FAC-C9E4-4BA3-B4D2-90C05D77DEE7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{20181FAC-C9E4-4BA3-B4D2-90C05D77DEE7}.Release|Any CPU.ActiveCfg = Release|Any CPU
