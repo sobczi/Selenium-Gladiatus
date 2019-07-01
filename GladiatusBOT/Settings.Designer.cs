@@ -68,6 +68,7 @@
             this.textFood = new System.Windows.Forms.TextBox();
             this.label15 = new System.Windows.Forms.Label();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.checkTraining = new System.Windows.Forms.CheckBox();
             this.checkCostume = new System.Windows.Forms.CheckBox();
             this.checkPack = new System.Windows.Forms.CheckBox();
             this.checkSpentRubles = new System.Windows.Forms.CheckBox();
@@ -90,7 +91,6 @@
             this.label16 = new System.Windows.Forms.Label();
             this.checkExtractOrange = new System.Windows.Forms.CheckBox();
             this.checkExtractPurple = new System.Windows.Forms.CheckBox();
-            this.checkTraining = new System.Windows.Forms.CheckBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -404,6 +404,12 @@
             this.groupBox5.Name = "groupBox5";
             this.groupBox5.TabStop = false;
             // 
+            // checkTraining
+            // 
+            resources.ApplyResources(this.checkTraining, "checkTraining");
+            this.checkTraining.Name = "checkTraining";
+            this.checkTraining.UseVisualStyleBackColor = true;
+            // 
             // checkCostume
             // 
             resources.ApplyResources(this.checkCostume, "checkCostume");
@@ -544,12 +550,6 @@
             resources.ApplyResources(this.checkExtractPurple, "checkExtractPurple");
             this.checkExtractPurple.Name = "checkExtractPurple";
             this.checkExtractPurple.UseVisualStyleBackColor = true;
-            // 
-            // checkTraining
-            // 
-            resources.ApplyResources(this.checkTraining, "checkTraining");
-            this.checkTraining.Name = "checkTraining";
-            this.checkTraining.UseVisualStyleBackColor = true;
             // 
             // Settings
             // 

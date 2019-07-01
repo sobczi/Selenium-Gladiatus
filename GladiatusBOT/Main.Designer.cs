@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Main));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.labelProgress = new System.Windows.Forms.Label();
@@ -48,14 +49,18 @@
             this.labelExpedition = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.btnBotting = new System.Windows.Forms.Button();
             this.sell_btn = new System.Windows.Forms.Button();
             this.gold_btn = new System.Windows.Forms.Button();
             this.sleep_btn = new System.Windows.Forms.Button();
             this.settings_btn = new System.Windows.Forms.Button();
-            this.btnBotting = new System.Windows.Forms.Button();
+            this.taskbar = new System.Windows.Forms.NotifyIcon(this.components);
+            this.taskbarMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
+            this.taskbarMenu.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -258,6 +263,18 @@
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "author: sobczi";
             // 
+            // btnBotting
+            // 
+            this.btnBotting.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnBotting.Font = new System.Drawing.Font("Verdana", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.btnBotting.Location = new System.Drawing.Point(9, 88);
+            this.btnBotting.Name = "btnBotting";
+            this.btnBotting.Size = new System.Drawing.Size(398, 27);
+            this.btnBotting.TabIndex = 7;
+            this.btnBotting.Text = "Botting";
+            this.btnBotting.UseVisualStyleBackColor = true;
+            this.btnBotting.Click += new System.EventHandler(this.BtnBotting_Click);
+            // 
             // sell_btn
             // 
             this.sell_btn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -302,17 +319,28 @@
             this.settings_btn.UseVisualStyleBackColor = true;
             this.settings_btn.Click += new System.EventHandler(this.Settings_btn_Click);
             // 
-            // btnBotting
+            // taskbar
             // 
-            this.btnBotting.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnBotting.Font = new System.Drawing.Font("Verdana", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.btnBotting.Location = new System.Drawing.Point(9, 88);
-            this.btnBotting.Name = "btnBotting";
-            this.btnBotting.Size = new System.Drawing.Size(398, 27);
-            this.btnBotting.TabIndex = 7;
-            this.btnBotting.Text = "Botting";
-            this.btnBotting.UseVisualStyleBackColor = true;
-            this.btnBotting.Click += new System.EventHandler(this.BtnBotting_Click);
+            this.taskbar.Icon = ((System.Drawing.Icon)(resources.GetObject("taskbar.Icon")));
+            this.taskbar.Text = "Gladiatus Bot";
+            this.taskbar.Visible = true;
+            this.taskbar.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.NotifyIcon1_MouseDoubleClick);
+            // 
+            // taskbarMenu
+            // 
+            this.taskbarMenu.ImageScalingSize = new System.Drawing.Size(20, 20);
+            this.taskbarMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.exitToolStripMenuItem});
+            this.taskbarMenu.Name = "contextMenuStrip1";
+            this.taskbarMenu.Size = new System.Drawing.Size(105, 26);
+            // 
+            // exitToolStripMenuItem
+            // 
+            this.exitToolStripMenuItem.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(210, 22);
+            this.exitToolStripMenuItem.Text = "Exit";
+            this.exitToolStripMenuItem.Click += new System.EventHandler(this.ExitToolStripMenuItem_Click);
             // 
             // Main
             // 
@@ -328,11 +356,14 @@
             this.Name = "Main";
             this.Text = "Gladiatus Bot v0.1";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Main_FormClosed);
+            this.Load += new System.EventHandler(this.Main_Load);
+            this.Resize += new System.EventHandler(this.Main_Resize);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             this.groupBox3.ResumeLayout(false);
+            this.taskbarMenu.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -363,5 +394,8 @@
         public System.Windows.Forms.Button sell_btn;
         public System.Windows.Forms.Button gold_btn;
         public System.Windows.Forms.Button btnBotting;
+        private System.Windows.Forms.NotifyIcon taskbar;
+        private System.Windows.Forms.ContextMenuStrip taskbarMenu;
+        private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
     }
 }

@@ -12,11 +12,8 @@ namespace GladiatusBOT
         {
             InitializeComponent();
             Read_settings();
-
-            Thread w_sleep = new Thread(Watch_sleep);
-            w_sleep.Name = "update_sleep_button";
-            w_sleep.IsBackground = true;
-            w_sleep.Start();
+            this.MaximizeBox = false;
+            taskbar.ContextMenuStrip = taskbarMenu;
         }
 
         void Watch_sleep()
@@ -50,6 +47,7 @@ namespace GladiatusBOT
 
         private void Main_FormClosed(object sender, FormClosedEventArgs e)
         {
+            Bot.work = false;
             this.Hide();
             while (Bot.driver == null) { }
             Bot.driver.Quit();
@@ -83,5 +81,31 @@ namespace GladiatusBOT
                 var = FontStyle.Regular;
             btnBotting.Font = new Font(btnBotting.Font.Name, btnBotting.Font.Size, var);
         }
+
+        private void NotifyIcon1_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            taskbar.Visible = false;
+            this.Show();
+            this.WindowState = FormWindowState.Normal;
+            this.ShowInTaskbar = true;
+        }
+
+        private void Main_Load(object sender, EventArgs e)
+        {
+            Thread w_sleep = new Thread(Watch_sleep);
+            w_sleep.Name = "update_sleep_button";
+            w_sleep.IsBackground = true;
+            w_sleep.Start();
+            if(this.WindowState == FormWindowState.Normal)
+            { this.Hide(); this.ShowInTaskbar = false; taskbar.Visible = true; }
+        }
+
+        private void Main_Resize(object sender, EventArgs e)
+        {
+            if(this.WindowState == FormWindowState.Minimized)
+            { this.Hide(); taskbar.Visible = true; }
+        }
+
+        private void ExitToolStripMenuItem_Click(object sender, EventArgs e) { Main_FormClosed(null, null); }
     }
 }

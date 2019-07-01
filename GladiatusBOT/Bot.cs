@@ -48,6 +48,7 @@ namespace GladiatusBOT
             {
                 try
                 {
+                    if (!Bot.work) continue;
                     Sys.Kill_chromes();
                     var driverService = ChromeDriverService.CreateDefaultService();
                     driverService.HideCommandPromptWindow = true;

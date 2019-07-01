@@ -40,6 +40,7 @@ namespace GladiatusBOT
         {
             InitializeComponent();
             Read_settings();
+            this.MaximizeBox = false;
         }
 
         void Save_settings()
