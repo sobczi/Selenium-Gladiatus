@@ -75,7 +75,8 @@ Determine where program should search described things.
   
 ### Buttons
 * Save all
-* Download packages (goes to guild market and loads all items to .txt file for pack function)  
+* Download packages 
+  * Goes to guild market and loads all items to .txt file for pack function  
 
 ## Built with
 * C#
@@ -88,8 +89,12 @@ Determine where program should search described things.
 
 ## Future
 * Installator,
-* Buying items from auction house (rings, amulets, boosters, food),
-* Auto-Hades (tried in the past but unssuccesfully, kinda tricky).
+* Buying items from auction house
+  * Rings
+  * Amulets
+  * Food
+  * Boosters
+* Auto-Hades
 
 ## Acknowledgments
 * Community of
