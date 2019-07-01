@@ -76,7 +76,7 @@ Determine where program should search described things.
 ### Buttons
 * Save all
 * Download packages 
-  * Goes to guild market and loads all items to .txt file for pack function  
+  * Goes to guild market and saves all found items to settings/packages.txt 
 
 ## Built with
 * C#
