@@ -22,7 +22,7 @@ If take gold or sell items action is pressed default scheme is deactivated until
 ## Settings
 ![Screenshot](resources/Gladiatus_settings_form.JPG)
 ### Backpacks
-* Determine where program should search described things
+Determine where program should search described things.
 ### General
 * Expedition
   * Counting enemies from left
