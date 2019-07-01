@@ -53,8 +53,8 @@ Bot with user-friendly GUI to setup for online game Gladiatus.
 
 ## Built with
 * C#
-* Selenium Framework
 * WinForms
+* [Selenium Framework](https://github.com/SeleniumHQ/selenium)
 * [Gladiatus Crazy Addon](https://github.com/DinoDevs/GladiatusCrazyAddon)
 
 ## Authors
