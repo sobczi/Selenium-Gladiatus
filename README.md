@@ -41,7 +41,11 @@ Bot with user-friendly GUI to setup for online game Gladiatus.
   * Boosters (bot should buy new boosters under limit from auction house),
   * Sleep (turn sleep mode if user is AFK - didn't found any mouse-move during bot session),
   * Headless (run chrome in headless mode),
+  * Pack (pack gold - based on .txt file from download packages - on guild market),
+  * Training (train specified skill on end),
+  * Costume (take hades costume if used whole points),
   * Spent rubles (determine if bot should use rubles during his work e.g. loading new shops).
+  * Colours (specify which colours bot should extract/sell),
 * Buttons
   * Save all,
   * Download packages (goes to guild market and loads all items to .txt file for pack function).
@@ -58,9 +62,6 @@ Bot with user-friendly GUI to setup for online game Gladiatus.
 ## Future
 * Installator,
 * Buying items from auction house (rings, amulets, boosters, food),
-* Trainigs,
-* Pack and hades costume checkbox,
-* Determine colours of items for sell/extract,
 * Auto-Hades (tried in the past but unssuccesfully, kinda tricky).
 
 ## Acknowledgments
