@@ -88,7 +88,7 @@ Determine where program should search described things.
 * Daniel Sobczak - whole work - student of WI ZUT SZCZECIN, POLAND.
 
 ## Future
-* Installator,
+* Installator
 * Buying items from auction house
   * Rings
   * Amulets
