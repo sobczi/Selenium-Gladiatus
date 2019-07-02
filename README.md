@@ -36,13 +36,13 @@ Determine where program should search described things.
 * Heal
   * Percentage
 * Gold pack
-  * Minimum gold
+  * Minimum gold to trigger packing gold on guild market
 * Gold take
-  * Maximum gold
+  * Maximum gold to reach (gold taking triggered from main form)
 * Food  
-  * Maximum number of pages in packages
+  * Maximum number of food pages in packages
 * Boosters
-  * Maximum number of pages in packages
+  * Maximum number of boosters pages in packages
 * Difference 
   * Maximum difference between price and value in auction house
 ### :bulb: Functions
