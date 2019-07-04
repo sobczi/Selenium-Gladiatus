@@ -7,7 +7,7 @@ I don't have any commercial experience yet using documentations or test cases.
 I'm saying commercial because i did some of them during my studies but i guess that's not the same as in work.
 Anyway i guess it won't be hard when someone will provide me tools and examples of ready projects. 
 I'm learning quite fast and i like to spend incredible amount of time for learning in IT.
-## About future
+### About future
 I'm now rewriting this program to a Java language.
 I'm willing to learn Appium and other automation tools in close future or asap if someone will offer me a job which will include some of tools which i don't have currently in my bag of knowledge :) I can create in a short period of time a new project using desired tool/language and prove you that i will get into it pretty fast. 
 
