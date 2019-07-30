@@ -107,11 +107,6 @@ Determine where program should search described things.
 
 ## :pushpin: Future
 * Installator
-* Buying items from auction house
-  * Rings
-  * Amulets
-  * Food
-  * Boosters
 * Auto-Hades
 
 ## :trophy: Acknowledgments
