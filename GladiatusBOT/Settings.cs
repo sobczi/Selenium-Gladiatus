@@ -17,7 +17,7 @@ namespace GladiatusBOT
         public static int gold_pack = RegistryValues.Read_i("gold_pack");
         public static int gold_text = RegistryValues.Read_i("gold_take");
         public static int food_pages = RegistryValues.Read_i("food_pages");
-        public static int boosters_pages = RegistryValues.Read_i("boosters");
+        public static int boosters_pages = RegistryValues.Read_i("boosters_pages");
         public static int difference = RegistryValues.Read_i("difference");
         public static int o_dungeon = RegistryValues.Read_i("o_dungeon");
         public static int o_expedition = RegistryValues.Read_i("o_expedition")+1;
@@ -52,7 +52,7 @@ namespace GladiatusBOT
             key.SetValue("gold_pack", Convert.ToInt32(textGoldPack.Text));
             key.SetValue("gold_take", Convert.ToInt32(textGoldTake.Text));
             key.SetValue("food_pages", Convert.ToInt32(textFood.Text));
-            key.SetValue("boosters", Convert.ToInt32(textBoosters.Text));
+            key.SetValue("boosters_pages", Convert.ToInt32(textBoosters.Text));
             key.SetValue("difference", Convert.ToInt32(textDifference.Text));
 
             key.SetValue("server", comboServer.SelectedIndex);
@@ -94,7 +94,7 @@ namespace GladiatusBOT
             textGoldPack.Text = RegistryValues.Read_s("gold_pack");
             textGoldTake.Text = RegistryValues.Read_s("gold_take");
             textFood.Text = RegistryValues.Read_s("food_pages");
-            textBoosters.Text = RegistryValues.Read_s("boosters");
+            textBoosters.Text = RegistryValues.Read_s("boosters_pages");
             textDifference.Text = RegistryValues.Read_s("difference");
 
             comboServer.SelectedIndex = RegistryValues.Read_i("server");
