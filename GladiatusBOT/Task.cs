@@ -38,9 +38,10 @@ namespace GladiatusBOT
             Basic.Click_element("//input[@value='Ustawienia']");
 
             Basic.Click_element("//label[@for='top_fixed_bar__false']");
+            Basic.Click_element("//input[@value='Zapisz wszystko']");
+            Basic.Click_element("//label[@for='browser_notifications__false']");
             Basic.Click_element("//label[@for='sound_notifications__false']");
             Basic.Click_element("//label[@for='cooldown_sound_notifications__false']");
-            Basic.Click_element("//label[@for='browser_notifications__false']");
             Basic.Click_element("//input[@value='Zapisz wszystko']");
 
             Basic.Click_element("//li[@data-category='market']");
@@ -52,6 +53,7 @@ namespace GladiatusBOT
         {
             Navigation.Packages();
             Navigation.Filter_packages("Jadalne", "");
+            Navigation.Backpack(Settings.b_food);
             Basic.Click_if("//a[@class='paging_button paging_right_full']");
             IReadOnlyCollection<IWebElement> elements = Bot.driver.FindElementsByXPath("//div[@id='packages']//div[@data-content-type='64']");
             foreach (IWebElement element in elements)
