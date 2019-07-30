@@ -1,49 +1,62 @@
-# Automation for Gladiatus Game
+# :video_game: Automation for Gladiatus Game
 Automate farming in Gladiatus! Setup your bot with user-friendly GUI!
+
+## Note for employers || recruiters
+My biggest experience definitely is in C#/Python and the Selenium framework as you can see here and in the another repositories.
+I don't have any commercial experience yet using documentations or test cases.
+I'm saying commercial because i did some of them during my studies but i guess that's not the same as in work.
+Anyway i guess it won't be hard when someone will provide me tools and examples of ready projects. 
+I'm learning quite fast and i like to spend incredible amount of time for learning in IT.
+### About future
+I'm now rewriting this program to a Java language.
+I'm willing to learn Appium and other automation tools in close future or asap if someone will offer me a job which will include some of tools which i don't have currently in my bag of knowledge :) I can create in a short period of time a new project using desired tool/language and prove you that i will get into it pretty fast. 
+
 ## Main
 ![Screenshot](resources/Gladiatus_main_form.JPG)
 
-### Displays whole data about player
+### :chart_with_upwards_trend: Displays whole data about player
 If player is on location where dungeons are unavaliable it will show 0.
-### Sleep
+### :zzz: Sleep
 Deactivate on mouse-move detect.
-### Take gold 
+### :moneybag: Take gold
 Starts taking gold from packages.
-### Sell Items
+### :bank: Sell Items
 Starts selling items from packages.
-### Botting 
+### :sparkles: Botting
 Determines if program is currently running in normal mode.
-### Status of buttons:
+### :radio_button: Status of buttons
 * Bold -> active
 * Regular -> !active
 
 If take gold or sell items action is pressed default scheme is deactivated untill user will turn it on back again.
 
-## Settings
+:heavy_exclamation_mark: By default runs minimized in taskbar as notify icon.
+
+## :wrench: Settings
 ![Screenshot](resources/Gladiatus_settings_form.JPG)
-### Backpacks
+### :handbag: Backpacks
 Determine where program should search described things.
-### General
+### :clipboard: General
 * Expedition
   * Counting enemies from left
 * Dungeon
   * Level of dungeon standard/advenced
   * If advenced dungeon is unavaliable then goes to standard one
 * Training 
-### Limits
+### :no_entry: Limits
 * Heal
   * Percentage
 * Gold pack
-  * Minimum gold
+  * Minimum gold to trigger packing gold on guild market
 * Gold take
-  * Maximum gold
+  * Maximum gold to reach (gold taking triggered from main form)
 * Food  
-  * Maximum number of pages in packages
+  * Maximum number of food pages in packages
 * Boosters
-  * Maximum number of pages in packages
+  * Maximum number of boosters pages in packages
 * Difference 
   * Maximum difference between price and value in auction house
-### Functions
+### :bulb: Functions
 * Expeditions
 * Dungeons
 * Event Wars
@@ -73,21 +86,26 @@ Determine where program should search described things.
 * Colours 
   * Specify which colours bot should extract and sell
   
-### Buttons
+### :radio_button: Buttons
 * Save all
 * Download packages 
   * Goes to guild market and saves all found items to settings/packages.txt 
 
-## Built with
-* C#
-* WinForms
-* [Selenium Framework](https://github.com/SeleniumHQ/selenium)
-* [Gladiatus Crazy Addon](https://github.com/DinoDevs/GladiatusCrazyAddon)
+## :hammer: Built with
+:books: C#
 
-## Authors
-* Daniel Sobczak - whole work - student of WI ZUT SZCZECIN, POLAND.
+:books: WinForms
 
-## Future
+:link: [Selenium Framework](https://github.com/SeleniumHQ/selenium)
+
+:link: [Gladiatus Crazy Addon](https://github.com/DinoDevs/GladiatusCrazyAddon)
+
+## :person_with_blond_hair: Authors
+:computer: Daniel Sobczak
+
+:mortar_board: Student of WI ZUT Szczecin, Poland
+
+## :pushpin: Future
 * Installator
 * Buying items from auction house
   * Rings
@@ -96,7 +114,7 @@ Determine where program should search described things.
   * Boosters
 * Auto-Hades
 
-## Acknowledgments
+## :trophy: Acknowledgments
 * Community of
   * Visual Studio
   * StackOverFlow
