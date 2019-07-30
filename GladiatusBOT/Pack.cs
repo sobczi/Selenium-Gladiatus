@@ -38,7 +38,7 @@ namespace GladiatusBOT
 
         public static void Buy()
         {
-            if (RegistryValues.Read_b("c_pack") || RegistryValues.Read_i("gold_pack") > Get.Gold())
+            if (!RegistryValues.Read_b("c_pack") || RegistryValues.Read_i("gold_pack") > Get.Gold())
                 return;
             Read_packages();
             while (Get.Gold() > Settings.gold_pack)
@@ -152,16 +152,15 @@ namespace GladiatusBOT
             }
 
             Navigation.Packages();
-            Navigation.Backpack(Settings.b_sell);
             while (true)
             {
+                Navigation.Backpack(Settings.b_sell);
                 elements = Bot.driver.FindElementsByXPath("//div[@id='packages']//div[contains(@class,'draggable')]");
                 found_element = Find_element(elements);
                 if (found_element != null)
                 {
                     Prepare_xpath(found_it);
-                    Basic.Move_move(found_element, "//div[@id='inv']");
-                    Basic.Release("//div[@class='ui-droppable grid-droparea image-grayed active']");
+                    Take_from_packages();
                     Sell_on_market();
                     continue;
                 }
@@ -174,7 +173,7 @@ namespace GladiatusBOT
 
         public static void Save()
         {
-            string path = "packages.txt";
+            string path = "settings/packages.txt";
             if (File.Exists(path))
                 File.Delete(path);
 
@@ -228,6 +227,22 @@ namespace GladiatusBOT
                 return true;
             else
                 return false;
+        }
+
+        public static bool Compare_all_packages(IWebElement element)
+        {
+            Read_packages();
+            for(int it=0; it<lines.Length; it++)
+            {
+                if (element.GetAttribute("soul") != null && element.GetAttribute("soul") != soulbounds[it] || 
+                    !element.GetAttribute("class").Contains(classes[it]) ||
+                    element.GetAttribute("data-level") != levels[it] ||
+                    element.GetAttribute("data-amount") != amounts[it] ||
+                    element.GetAttribute("data-quality") != qualities[it] ||
+                    Check_sold(element) != solds[it])
+                    return false;
+            }
+            return true;
         }
 
          static IWebElement Find_element(IReadOnlyCollection<IWebElement> elements)
@@ -294,6 +309,7 @@ namespace GladiatusBOT
                 if (Basic.Search_element("//div[@class='ui-droppable grid-droparea image-grayed active']"))
                 {
                     Basic.Release("//div[@class='ui-droppable grid-droparea image-grayed active']");
+                    Basic.Wait_for_element(xpath2);
                     return true;
                 }
             }
