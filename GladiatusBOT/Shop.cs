@@ -1,6 +1,10 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.Data;
 using Microsoft.Win32;
 using OpenQA.Selenium;
+using OpenQA.Selenium.Interactions;
 
 namespace GladiatusBOT
 {
@@ -13,7 +17,7 @@ namespace GladiatusBOT
 
             int category = 1;
             int shop = 1;
-            while(category <= 10)
+            while (category <= 10)
             {
                 Navigation.Packages();
                 while (category <= 10)
@@ -25,14 +29,14 @@ namespace GladiatusBOT
                     if (elements.Count == 0)
                         category++;
                     if (!Double_click_items(elements, true))
-                            break;
+                        break;
                 }
 
                 while (true)
                 {
                     if (!Choose_shop(shop))
                     {
-                        if(!RegistryValues.Read_b("c_rubles"))
+                        if (!RegistryValues.Read_b("c_rubles"))
                             return;
                         else
                             shop = 1;
@@ -47,9 +51,40 @@ namespace GladiatusBOT
 
         public static void Buy()
         {
-
+            if (RegistryValues.Read_b("c_food"))
+                Buy("Jadalne");
+            if (RegistryValues.Read_b("c_boosters"))
+                Buy("Przyspieszacze");
+            if (RegistryValues.Read_b("c_auctions"))
+            {
+                Buy("Pierścienie");
+                Buy("Amulety");
+            }
         }
 
+        private static void Buy(string category)
+        {
+            if (category == "Jadalne" || category == "Przyspieszacze")
+            {
+                Navigation.Packages();
+                Navigation.Filter_packages(category, "");
+                string var = "food";
+                if (category == "Przyspieszacze")
+                    var = "boosters";
+                int pages = RegistryValues.Read_i(var+"_pages");
+                for (int i = 0; i < pages * 10; i++)
+                {
+                    if (Basic.Search_element(
+                        "//div[@class='paging_numbers']//a[@href][text()='" + Convert.ToString(i) + "']"))
+                        return;
+                }
+            }
+            Navigation.Main_menu("Dom aukcyjny");
+            Navigation.Filter_auction_house("", category);
+            string path = "//div[@class='auction_bid_div']//span[text()='Schowaj swoje złoto tu']/../../input[@value='Licytuj']";
+            while (!Basic.Search_element("//div[text()='Nie masz wystarczającej ilości złota!']") && Basic.Search_element(path))
+                Basic.Click_element(path);
+        }
          static bool Double_click_items(List<IWebElement> elements, bool packages)
         {
             bool result = false;
@@ -59,6 +94,11 @@ namespace GladiatusBOT
             foreach(IWebElement element in elements)
             {
                 string hash = element.GetAttribute("data-hash");
+                if (!packages)
+                {
+                    Bot.ac = new Actions(Bot.driver);
+                    Bot.ac.MoveToElement(Get.Element("//input[@value='Nowe towary']")).Perform();
+                }
                 Basic.Double_click(element);
                 if (!Basic.Search_element("//div[@id='" + var + "']//div[@data-hash='" + hash + "']"))
                 {
