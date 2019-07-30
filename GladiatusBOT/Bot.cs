@@ -67,6 +67,7 @@ namespace GladiatusBOT
                     if (!logged) { MessageBox.Show("Bot couldn't login into account..", "Error!"); work = false; break; }
                     Update_ui();
                     Task.Disable_notifications();
+                    Pack.Search();
                     if (true)
                     {
                         while (true)
@@ -83,10 +84,12 @@ namespace GladiatusBOT
                                     Pack.Buy();
                                 }
                                 if (!work) continue;
+                                Pack.Search();
                                 Shop.Sell();
                                 Extract.Extract_items();
                                 Pack.Buy();
                                 Pack.Search();
+                                Shop.Buy();
                                 Task.Take_food();
                                 driver.Close();
                                 break;
