@@ -41,8 +41,6 @@ namespace GladiatusBOT
             Bot.driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromMinutes(2);
             Bot.driver.FindElementByXPath(path);
             Bot.driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromMilliseconds(Bot.wait);
-            while (!Get.Element(path).Displayed)
-                Thread.Sleep(100);
         }
 
         public static void Move_move(string path1, string path2)
@@ -117,10 +115,7 @@ namespace GladiatusBOT
         public static void Click_element(string path)
         {
             Check_events();
-            IWebElement element = Get.Element(path);
-            ac = new Actions(Bot.driver);
-            ac.MoveToElement(element).Perform();
-            element.Click();
+            Get.Element(path).Click();
         }
 
         public static void Double_click(IWebElement element)
