@@ -195,8 +195,7 @@ namespace GladiatusBOT
 
         public static IWebElement Element(string path)
         {
-            while (!Basic.Search_element(path))
-                Thread.Sleep(200);
+            Basic.Wait_for_element(path);
             return Bot.driver.FindElementByXPath(path);
         }
 
