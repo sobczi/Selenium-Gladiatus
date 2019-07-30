@@ -23,6 +23,14 @@ namespace GladiatusBOT
             Basic.Click_element("//input[@value='Filtr']");
         }
 
+        public static void Filter_auction_house(string variable, string category)
+        {
+            if (category == "")
+                category = "Wszystko";
+            Basic.Click_element("//select[@name='itemType']//option[text()='"+category+"']");
+            Basic.Click_element("//input[@value='Filtr']");
+        }
+
         public static void Guild_market()
         {
             while(!Basic.Search_element("//a[contains(@href,'guildMarket')][@class='map_label']"))
