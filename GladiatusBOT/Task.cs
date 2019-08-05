@@ -10,11 +10,20 @@ namespace GladiatusBOT
     {
         public static bool Login()
         {
-            Bot.driver.Navigate().GoToUrl("https://pl.gladiatus.gameforge.com/game/");
-            Get.Element("//input[@id='login_username']").SendKeys(Settings.username);
-            Get.Element("//input[@id='login_password']").SendKeys(Settings.password);
-            Basic.Click_element("//optgroup[@label='Prowincje']//option[contains(text(),'"+Settings.server+"')]");
-            Basic.Click_element("//*[@id='loginsubmit']");
+            Bot.driver.Navigate().GoToUrl("https://lobby.gladiatus.gameforge.com/pl_PL/?mod=start&submod=index");
+            Basic.Click_element("//ul[@class='tabsList']//span[text()='Login']");
+            Get.Element("//input[@type='email']").SendKeys(Settings.username);
+            Get.Element("//input[@type='password']").SendKeys(Settings.password);
+            Basic.Click_element("//button[@type='submit']");
+            Thread.Sleep(500);
+            if(Basic.Click_if("//span[text()='Użyj tego adresu e-mail']"))
+            {
+                Get.Element("//input[@type='password']").SendKeys(Settings.password);
+                Basic.Click_element("//span[text()='Dodaj konto lobby']");
+            }
+            Basic.Click_element("//span[text()='Ostatnia gra']");
+            foreach(string title in Bot.driver.WindowHandles)
+                Bot.driver.SwitchTo().Window(title);
             if (Basic.Search_element("//a[@href][text()='Profil']"))
                 return true;
             else
@@ -53,8 +62,8 @@ namespace GladiatusBOT
         {
             Navigation.Packages();
             Navigation.Filter_packages("Jadalne", "");
-            Navigation.Backpack(Settings.b_food);
             Basic.Click_if("//a[@class='paging_button paging_right_full']");
+            Navigation.Backpack(Settings.b_food);
             IReadOnlyCollection<IWebElement> elements = Bot.driver.FindElementsByXPath("//div[@id='packages']//div[@data-content-type='64']");
             foreach (IWebElement element in elements)
                 Basic.Double_click(element);
