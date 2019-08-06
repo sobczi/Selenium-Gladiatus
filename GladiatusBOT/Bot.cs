@@ -67,20 +67,23 @@ namespace GladiatusBOT
                     if (!logged) { MessageBox.Show("Bot couldn't login into account..", "Error!"); work = false; break; }
                     Update_ui();
                     Task.Disable_notifications();
-                    Pack.Search();
                     if (true)
                     {
                         while (true)
                         {
                             if (work)
                             {
+                                Pack.Search();
                                 bool exp = true;
                                 bool dung = true;
+                                bool event_exists = true;
                                 while (work && exp || dung || Task.Hades_costume())
                                 {
                                     Update_ui();
                                     exp = Task.Expedition();
                                     dung = Task.Dungeon();
+                                    if(event_exists)
+                                        event_exists = Task.Event();
                                     Pack.Buy();
                                 }
                                 if (!work) continue;

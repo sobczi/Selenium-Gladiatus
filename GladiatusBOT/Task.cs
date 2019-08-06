@@ -1,8 +1,9 @@
 ﻿using OpenQA.Selenium;
-using System.Threading;
 using System;
+using System.Text.RegularExpressions;
+using System.Threading;
 using System.Collections.Generic;
-using Microsoft.Win32;
+using System.Windows.Forms;
 
 namespace GladiatusBOT
 {
@@ -113,6 +114,29 @@ namespace GladiatusBOT
                 return false;
             else
                 return true;
+        }
+
+        public static bool Event()
+        {
+            if (!RegistryValues.Read_b("c_event"))
+                return false;
+            Heal_me();
+            Basic.Click_element("//div[@id='cooldown_bar_expedition']/a[@class='cooldown_bar_link']");
+            if (Basic.Click_if("//a[contains(@class,'menuitem glow eyecatcher')]"))
+            {
+                string text = Bot.driver.FindElementByXPath("//div[@class='section-header']/p[2]").GetAttribute("textContent");
+                int points = Convert.ToInt32(Regex.Match(text, @"\d+").Value);
+                if (points > 0)
+                {
+                    if(!Basic.Search_element("//span[@class='ticker'][contains(text(),'Czas do następnej ekspedycji')]"))
+                        Basic.Click_element("//button[@class='expedition_button awesome-button ']");
+                }
+                else
+                    return false;
+            }
+            else
+                return false;
+            return true;
         }
 
         public static bool Dungeon()
