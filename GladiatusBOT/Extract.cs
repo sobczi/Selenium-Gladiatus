@@ -37,6 +37,7 @@ namespace GladiatusBOT
             }
             Store();
         }
+
          static void Get_items()
         {
             Navigation.Main_menu("Roztapiarka");
