@@ -49,7 +49,6 @@ namespace GladiatusBOT
                 try
                 {
                     if (!Bot.work) continue;
-                    Sys.Kill_chromes();
                     var driverService = ChromeDriverService.CreateDefaultService();
                     driverService.HideCommandPromptWindow = true;
                     var driverOptions = new ChromeOptions();
@@ -109,7 +108,12 @@ namespace GladiatusBOT
                         }
                     }
                 }
-                catch (Exception ex) { Sys.Handle_exception(ex); continue; }
+                catch (Exception ex)
+                {
+                    if(driver != null)
+                        driver.Quit();
+                    Sys.Handle_exception(ex); continue;
+                }
                 form.Invoke((MethodInvoker) delegate { form.Close(); });
                 Sys.Sleep();
                 return;
