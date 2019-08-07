@@ -72,7 +72,7 @@ namespace GladiatusBOT
 
         public static void Heal_me()
         {
-            if (RegistryValues.Read_b("c_heal"))
+            if (!RegistryValues.Read_b("c_heal"))
                 return;
             while(Get.Hp() < Settings.heal_level)
             {
