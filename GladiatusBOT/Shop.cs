@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Data;
+using System.Threading;
 using Microsoft.Win32;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Interactions;
@@ -94,17 +95,9 @@ namespace GladiatusBOT
             foreach(IWebElement element in elements)
             {
                 string hash = element.GetAttribute("data-hash");
-                if (!packages)
-                {
-                    Bot.ac = new Actions(Bot.driver);
-                    Bot.ac.MoveToElement(Get.Element("//input[@value='Nowe towary']")).Perform();
-                }
                 Basic.Double_click(element);
                 if (!Basic.Search_element("//div[@id='" + var + "']//div[@data-hash='" + hash + "']"))
-                {
-                    result = !result;
-                    break;
-                }
+                { result = !result; break; }
             }
             if (packages)
                 return !result;
