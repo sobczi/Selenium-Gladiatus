@@ -42,15 +42,5 @@ namespace GladiatusBOT
             if(Bot.sleep_mode)
                 SetSuspendState(false, true, false);
         }
-
-        public static void Kill_chromes()
-        {
-            foreach(Process process in Process.GetProcesses())
-            {
-                string name = process.ProcessName;
-                if (name == "chromedriver" || name == "chrome")
-                    try { process.Kill(); } catch { }
-            }
-        }
     }
 }
