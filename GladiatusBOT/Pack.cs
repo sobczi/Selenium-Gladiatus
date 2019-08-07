@@ -10,23 +10,23 @@ namespace GladiatusBOT
 {
     class Pack
     {
-         static Actions ac = Bot.ac;
+        static Actions ac = Bot.ac;
 
-         static string[] lines;
-         static string[] classes;
-         static string[] soulbounds;
-         static string[] prices;
-         static string[] levels;
-         static string[] qualities;
-         static string[] amounts;
-         static string[] solds;
-         static string[] categories;
+        static string[] lines;
+        static string[] classes;
+        static string[] soulbounds;
+        static string[] prices;
+        static string[] levels;
+        static string[] qualities;
+        static string[] amounts;
+        static string[] solds;
+        static string[] categories;
 
-         static string xpath1;
-         static string xpath2;
+        static string xpath1;
+        static string xpath2;
 
-         static int found_it = -1;
-         struct Item
+        static int found_it = -1;
+        struct Item
         {
             public string name;
             public string price;
@@ -50,7 +50,7 @@ namespace GladiatusBOT
                 int orginal_case = 0;
 
                 int gold_level = Get.Gold();
-                for(int i=0; i<lines.Count(); i++)
+                for (int i = 0; i < lines.Count(); i++)
                 {
                     if (gold_level - Convert.ToInt32(prices[i]) > 0)
                     {
@@ -64,7 +64,7 @@ namespace GladiatusBOT
                 int it = first_it + second_it;
 
                 Item item = new Item();
-                while(true)
+                while (true)
                 {
                     item = new Item
                     {
@@ -78,9 +78,9 @@ namespace GladiatusBOT
 
                     List<IWebElement> elements = new List<IWebElement>();
                     List<int> positions = new List<int>();
-                    for (int i=2; i<it+1; i++)
+                    for (int i = 2; i < it + 1; i++)
                     {
-                        if(Basic.Search_element("//section[@id='market_table']//tr[position()='"+Convert.ToString(i)+"']/" + "td[@align='center']/input[@value='Kup']"))
+                        if (Basic.Search_element("//section[@id='market_table']//tr[position()='" + Convert.ToString(i) + "']/" + "td[@align='center']/input[@value='Kup']"))
                         {
                             elements.Add(Get.Element("//section[@id='market_table']//" + "tr[position()='" + Convert.ToString(i) + "']/td[@style]/div[@style]"));
                             positions.Add(i);
@@ -88,9 +88,9 @@ namespace GladiatusBOT
                     }
 
                     int found_i = -1;
-                    for(int i=0; i<elements.Count; i++)
+                    for (int i = 0; i < elements.Count; i++)
                     {
-                        if(Compare_elements(elements.ElementAt(i), found_case))
+                        if (Compare_elements(elements.ElementAt(i), found_case))
                         {
                             found_i = positions[i];
                             found_it = found_case;
@@ -215,41 +215,24 @@ namespace GladiatusBOT
             }
         }
 
-         static bool Compare_elements(IWebElement element, int it)
+        static bool Compare_elements(IWebElement element, int it)
         {
-            if (element.GetAttribute("soul") != null && element.GetAttribute("soul") != soulbounds[it])
-                return false;
             if (element.GetAttribute("class").Contains(classes[it]) &&
                 element.GetAttribute("data-level") == levels[it] &&
                 element.GetAttribute("data-amount") == amounts[it] &&
                 element.GetAttribute("data-quality") == qualities[it] &&
+                element.GetAttribute("data-soulbound-to") == soulbounds[it] &&
                 Check_sold(element) == solds[it])
                 return true;
             else
                 return false;
         }
 
-        public static bool Compare_all_packages(IWebElement element)
+        static IWebElement Find_element(IReadOnlyCollection<IWebElement> elements)
         {
-            Read_packages();
-            for(int it=0; it<lines.Length; it++)
+            foreach (IWebElement element in elements)
             {
-                if (element.GetAttribute("soul") != null && element.GetAttribute("soul") != soulbounds[it] || 
-                    !element.GetAttribute("class").Contains(classes[it]) ||
-                    element.GetAttribute("data-level") != levels[it] ||
-                    element.GetAttribute("data-amount") != amounts[it] ||
-                    element.GetAttribute("data-quality") != qualities[it] ||
-                    Check_sold(element) != solds[it])
-                    return false;
-            }
-            return true;
-        }
-
-         static IWebElement Find_element(IReadOnlyCollection<IWebElement> elements)
-        {
-            foreach(IWebElement element in elements)
-            {
-                for(int i=0; i<classes.Count(); i++)
+                for (int i = 0; i < classes.Count(); i++)
                 {
                     if (Compare_elements(element, i))
                     {
@@ -261,7 +244,7 @@ namespace GladiatusBOT
             return null;
         }
 
-         static void Sell_on_market()
+        static void Sell_on_market()
         {
             while (true)
             {
@@ -284,7 +267,7 @@ namespace GladiatusBOT
             }
         }
 
-         static bool Take_from_packages()
+        static bool Take_from_packages()
         {
             bool found = false;
             if (!Basic.Search_element(xpath1) && Basic.Search_element(xpath2))
@@ -293,8 +276,9 @@ namespace GladiatusBOT
                 found = true;
             else
             {
-                while(Basic.Search_element("//a[@class='paging_button paging_right_step']"))
+                while (Basic.Search_element("//a[@class='paging_button paging_right_step']"))
                 {
+                    Basic.Click_element("//a[@class='paging_button paging_right_step']");
                     if (Basic.Search_element(xpath1) && Check_sold())
                     {
                         found = true;
@@ -303,7 +287,7 @@ namespace GladiatusBOT
                 }
             }
 
-            if(found)
+            if (found)
             {
                 Basic.Move_move(xpath1, "//div[@id='inv']");
                 if (Basic.Search_element("//div[@class='ui-droppable grid-droparea image-grayed active']"))
@@ -316,7 +300,7 @@ namespace GladiatusBOT
             return false;
         }
 
-         static bool Check_sold()
+        static bool Check_sold()
         {
             Basic.Mouse_move(xpath1);
             if (Basic.Search_element("//p[contains(text(),'Wskazówka')]"))
@@ -325,7 +309,7 @@ namespace GladiatusBOT
                 return false;
         }
 
-         static string Check_sold(IWebElement element)
+        static string Check_sold(IWebElement element)
         {
             Basic.Mouse_move(element);
             if (Basic.Search_element("//p[contains(text(),'Wskazówka')]"))
@@ -334,7 +318,7 @@ namespace GladiatusBOT
                 return "False";
         }
 
-         static void Prepare_xpath(int it)
+        static void Prepare_xpath(int it)
         {
             Item item = new Item
             {
@@ -348,7 +332,7 @@ namespace GladiatusBOT
             Prepare_xpath(item);
         }
 
-         static void Prepare_xpath(Item item)
+        static void Prepare_xpath(Item item)
         {
             xpath1 = "//div[@class='packageItem']//div";
             xpath2 = "//div[@id='inv']//div";
@@ -371,7 +355,7 @@ namespace GladiatusBOT
             }
         }
 
-         static void Read_packages()
+        static void Read_packages()
         {
             if (!File.Exists("settings/packages.txt"))
                 return;
@@ -404,12 +388,12 @@ namespace GladiatusBOT
             }
 
             bool changed = true;
-            while(changed)
+            while (changed)
             {
                 changed = false;
-                for(int i=0; i<lines.Length-1; i++)
+                for (int i = 0; i < lines.Length - 1; i++)
                 {
-                    if(Convert.ToInt32(prices[i]) < Convert.ToInt32(prices[i+1]))
+                    if (Convert.ToInt32(prices[i]) < Convert.ToInt32(prices[i + 1]))
                     {
                         changed = true;
                         string temp = classes[i];
