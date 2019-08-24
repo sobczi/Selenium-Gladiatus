@@ -130,7 +130,9 @@ namespace GladiatusBOT
                     Navigation.Main_menu("Broń");
                     if (RegistryValues.Read_b("c_rubles"))
                         Basic.Click_element("//input[@value='Nowe towary']");
-                    return false;
+                    else
+                        return false;
+                    break;
             }
             Basic.Click_element("//div[contains(@class,'shopTab')][contains(text(),'sprzedaj')]");
             Navigation.Backpack(Settings.b_sell);
