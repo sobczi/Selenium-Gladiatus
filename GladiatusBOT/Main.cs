@@ -49,8 +49,7 @@ namespace GladiatusBOT
         {
             Bot.work = false;
             this.Hide();
-            while (Bot.driver == null) { }
-            Bot.driver.Quit();
+            Basic.Kill_Chrome_Drivers();
             Application.Exit();
         }
 

@@ -3,6 +3,7 @@ using System.Threading;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Interactions;
 using System.Text.RegularExpressions;
+using System.Diagnostics;
 using System;
 
 namespace GladiatusBOT
@@ -36,11 +37,29 @@ namespace GladiatusBOT
                 return false;
         }
 
+        public static void Kill_Chrome_Drivers()
+        {
+            if (Bot.driver != null)
+                Bot.driver.Quit();
+            Process killing = new Process();
+            killing.StartInfo.CreateNoWindow = true;
+            killing.StartInfo.WindowStyle = ProcessWindowStyle.Hidden;
+            killing.StartInfo.WorkingDirectory = @"resources";
+            killing.StartInfo.FileName = "kill.bat";
+            killing.Start();
+        }
+
         public static void Wait_for_element(string path)
         {
-            Bot.driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromMinutes(2);
-            Bot.driver.FindElementByXPath(path);
-            Bot.driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromMilliseconds(Bot.wait);
+            int iterator = 0;
+            while(iterator < 360)
+            {
+                if (!Basic.Search_element(path))
+                    Thread.Sleep(500);
+                else
+                    return;
+                iterator++;
+            }
         }
 
         public static void Move_move(string path1, string path2)
