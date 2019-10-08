@@ -28,7 +28,7 @@ namespace GladiatusBOT
                     if (elements.Count == 0)
                     { category++; continue; }
 
-                    if (!Double_click_items(elements, true))
+                    if (!Basic.Move_to_inventory(elements))
                         break;
                 }
 
@@ -41,7 +41,9 @@ namespace GladiatusBOT
                         else
                             shop = 1;
                     }
-                    if (!Double_click_items(Get_items(Bot.driver.FindElementsByXPath("//div[@id='inv']//div[contains(@class,'draggable')]")), false))
+                    List<IWebElement> elements = Get_items(Bot.driver.FindElementsByXPath("//div[@id='inv']//div[contains(@class,'draggable')]"));
+                    if (elements.Count == 0) { break; }
+                    if (!Basic.Move_to_shop(elements))
                         break;
                     else
                         shop++;
@@ -51,15 +53,15 @@ namespace GladiatusBOT
 
         public static void Buy()
         {
-            if (RegistryValues.Read_b("c_food"))
-                Buy("Jadalne");
-            if (RegistryValues.Read_b("c_boosters"))
-                Buy("Przyspieszacze");
             if (RegistryValues.Read_b("c_auctions"))
             {
                 Buy("Pierścienie");
                 Buy("Amulety");
             }
+            if (RegistryValues.Read_b("c_boosters"))
+                Buy("Przyspieszacze");
+            if (RegistryValues.Read_b("c_food"))
+                Buy("Jadalne");
         }
 
         private static void Buy(string category)
@@ -81,36 +83,9 @@ namespace GladiatusBOT
             }
             Navigation.Main_menu("Dom aukcyjny");
             Navigation.Filter_auction_house("", category);
-            string path = "//div[@class='auction_bid_div']//span[text()='Schowaj swoje złoto tu']/../../input[@value='Licytuj']";
+            string path = "//div[@id='auction_table']//div[@class='auction_bid_div']//div[contains(text(),'Brak ofert')]/../input[@value='Licytuj']";
             while (!Basic.Search_element("//div[text()='Nie masz wystarczającej ilości złota!']") && Basic.Search_element(path))
                 Basic.Click_element(path);
-        }
-
-        static bool Double_click_items(List<IWebElement> elements, bool packages)
-        {
-            bool result = false;
-            string var = "inv";
-            if (!packages)
-            {
-                var = "shop";
-                Actions ac = new Actions(Bot.driver);
-                ac.MoveToElement(Bot.driver.FindElementByXPath("//a[@class='menuitem '][text() = 'Brama miasta']")).Perform();
-            }
-
-            foreach (IWebElement element in elements)
-            {
-                string hash = element.GetAttribute("data-hash");
-                Basic.Double_click(element);
-                if (!Basic.Search_element("//div[@id='" + var + "']//div[@data-hash='" + hash + "']"))
-                {
-                    result = !result;
-                    break;
-                }
-            }
-
-            if (packages)
-                return !result;
-            return result;
         }
 
          static bool Choose_shop(int shop)
