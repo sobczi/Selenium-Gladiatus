@@ -133,7 +133,6 @@ namespace GladiatusBOT
                     !RegistryValues.Read_b("c_extract_red") && quality == 4) continue;
                 string hash = element.GetAttribute("data-hash");
                 Basic.Move_to_inventory(element);
-                while (Basic.Search_element("//div[@id='packages']//div[contains(@class,'disabled')]")) { }
                 if (Basic.Search_element("//div[@id='inv']//div[@data-hash='" + hash + "']"))
                     it--;
                 else
