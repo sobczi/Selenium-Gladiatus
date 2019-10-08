@@ -5,6 +5,7 @@ using System.Linq;
 using OpenQA.Selenium.Interactions;
 using System;
 using System.Collections.Generic;
+using Microsoft.Win32;
 
 namespace GladiatusBOT
 {
@@ -78,7 +79,7 @@ namespace GladiatusBOT
 
                     List<IWebElement> elements = new List<IWebElement>();
                     List<int> positions = new List<int>();
-                    for (int i = 2; i < it + 1; i++)
+                    for (int i = 2; i < it + 2; i++)
                     {
                         if (Basic.Search_element("//section[@id='market_table']//tr[position()='" + Convert.ToString(i) + "']/" + "td[@align='center']/input[@value='Kup']"))
                         {
@@ -185,6 +186,8 @@ namespace GladiatusBOT
                 int second_it = Bot.driver.FindElementsByXPath("//input[@value='Anuluj']").Count;
                 int it = first_it + second_it;
 
+                int minimum = 0;
+                bool first_minimum = true;
                 for (int i = 2; i < it + 2; i++)
                 {
                     string price = Get.Element("//section[@id='market_table']//" +
@@ -198,6 +201,9 @@ namespace GladiatusBOT
                     string category = element.GetAttribute("data-content-type");
                     string name = Regex.Match(element.GetAttribute("class"), @"item-i-\d{1,2}-\d{1,2}").Value;
                     bool solds = false;
+                    if (first_minimum) { minimum = Convert.ToInt32(price); first_minimum = false; }
+                    else if (minimum > Convert.ToInt32(price))
+                        minimum = Convert.ToInt32(price);
                     ac = new Actions(Bot.driver);
                     ac.MoveToElement(Get.Element("//section[@id='market_table']//tr[position()='" +
                         Convert.ToString(i) + "']/td[@style]/div[@style]")).Perform();
@@ -209,19 +215,21 @@ namespace GladiatusBOT
                         "' sold='" + solds + "'";
                     File.AppendAllText(path, ready_line + Environment.NewLine);
                 }
+                RegistryValues.SetKey("gold_pack", minimum);
                 if (Basic.Click_if("//a[contains(text(), 'Następna strona')]")) { }
-                else
-                    return;
+                else return;
             }
         }
 
         static bool Compare_elements(IWebElement element, int it)
         {
+            if (soulbounds[it] == "")
+                soulbounds[it] = null;
             if (element.GetAttribute("class").Contains(classes[it]) &&
                 element.GetAttribute("data-level") == levels[it] &&
                 element.GetAttribute("data-amount") == amounts[it] &&
                 element.GetAttribute("data-quality") == qualities[it] &&
-                element.GetAttribute("data-soulbound-to") == soulbounds[it] &&
+                element.GetAttribute("data-soulbound-to") == soulbounds[it] && 
                 Check_sold(element) == solds[it])
                 return true;
             else
@@ -251,7 +259,7 @@ namespace GladiatusBOT
                 Navigation.Guild_market();
                 Navigation.Backpack(Settings.b_sell);
                 Basic.Drag_and_drop(xpath2, "//div[@id='market_sell']/div[@class='ui-droppable']");
-                Basic.Click_element("//select[@id='dauer']//option[@value='3']");
+                Get.Element("//select[@id='dauer']//option[@value='3']").Click();
                 IWebElement element = Get.Element("//input[@name='preis']");
                 element.Clear();
                 element.SendKeys(prices[found_it]);
@@ -287,16 +295,8 @@ namespace GladiatusBOT
                 }
             }
 
-            if (found)
-            {
-                Basic.Move_move(xpath1, "//div[@id='inv']");
-                if (Basic.Search_element("//div[@class='ui-droppable grid-droparea image-grayed active']"))
-                {
-                    Basic.Release("//div[@class='ui-droppable grid-droparea image-grayed active']");
-                    Basic.Wait_for_element(xpath2);
-                    return true;
-                }
-            }
+            if (found && Basic.Move_to_inventory(xpath1))
+                return true;
             return false;
         }
 
@@ -344,7 +344,7 @@ namespace GladiatusBOT
                 "[@data-amount='" + item.amount + "']",
             };
 
-            if (item.soulbound != "")
+            if (item.soulbound != "" && item.soulbound != null)
                 xpaths.Add("[@data-soulbound-to='" + item.soulbound + "']");
 
 
