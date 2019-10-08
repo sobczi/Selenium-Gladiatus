@@ -59,15 +59,15 @@
             this.label5 = new System.Windows.Forms.Label();
             this.textHeal = new System.Windows.Forms.TextBox();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
-            this.label13 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
-            this.textDifference = new System.Windows.Forms.TextBox();
             this.textGoldTake = new System.Windows.Forms.TextBox();
             this.textBoosters = new System.Windows.Forms.TextBox();
             this.label14 = new System.Windows.Forms.Label();
             this.textFood = new System.Windows.Forms.TextBox();
             this.label15 = new System.Windows.Forms.Label();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.checkTurma = new System.Windows.Forms.CheckBox();
+            this.checkArena = new System.Windows.Forms.CheckBox();
             this.checkTraining = new System.Windows.Forms.CheckBox();
             this.checkCostume = new System.Windows.Forms.CheckBox();
             this.checkPack = new System.Windows.Forms.CheckBox();
@@ -91,8 +91,6 @@
             this.label16 = new System.Windows.Forms.Label();
             this.checkExtractOrange = new System.Windows.Forms.CheckBox();
             this.checkExtractPurple = new System.Windows.Forms.CheckBox();
-            this.checkArena = new System.Windows.Forms.CheckBox();
-            this.checkTurma = new System.Windows.Forms.CheckBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -327,9 +325,7 @@
             // 
             // groupBox4
             // 
-            this.groupBox4.Controls.Add(this.label13);
             this.groupBox4.Controls.Add(this.label12);
-            this.groupBox4.Controls.Add(this.textDifference);
             this.groupBox4.Controls.Add(this.textGoldTake);
             this.groupBox4.Controls.Add(this.textBoosters);
             this.groupBox4.Controls.Add(this.textGoldPack);
@@ -343,21 +339,10 @@
             this.groupBox4.Name = "groupBox4";
             this.groupBox4.TabStop = false;
             // 
-            // label13
-            // 
-            resources.ApplyResources(this.label13, "label13");
-            this.label13.Name = "label13";
-            // 
             // label12
             // 
             resources.ApplyResources(this.label12, "label12");
             this.label12.Name = "label12";
-            // 
-            // textDifference
-            // 
-            resources.ApplyResources(this.textDifference, "textDifference");
-            this.textDifference.Name = "textDifference";
-            this.textDifference.TextChanged += new System.EventHandler(this.Only_digits);
             // 
             // textGoldTake
             // 
@@ -410,6 +395,18 @@
             this.groupBox5.Name = "groupBox5";
             this.groupBox5.TabStop = false;
             // 
+            // checkTurma
+            // 
+            resources.ApplyResources(this.checkTurma, "checkTurma");
+            this.checkTurma.Name = "checkTurma";
+            this.checkTurma.UseVisualStyleBackColor = true;
+            // 
+            // checkArena
+            // 
+            resources.ApplyResources(this.checkArena, "checkArena");
+            this.checkArena.Name = "checkArena";
+            this.checkArena.UseVisualStyleBackColor = true;
+            // 
             // checkTraining
             // 
             resources.ApplyResources(this.checkTraining, "checkTraining");
@@ -453,7 +450,6 @@
             resources.ApplyResources(this.checkAuctions, "checkAuctions");
             this.checkAuctions.Name = "checkAuctions";
             this.checkAuctions.UseVisualStyleBackColor = true;
-            this.checkAuctions.CheckedChanged += new System.EventHandler(this.Check_Avability_Auction);
             // 
             // checkBoosters
             // 
@@ -565,18 +561,6 @@
             this.checkExtractPurple.Name = "checkExtractPurple";
             this.checkExtractPurple.UseVisualStyleBackColor = true;
             // 
-            // checkArena
-            // 
-            resources.ApplyResources(this.checkArena, "checkArena");
-            this.checkArena.Name = "checkArena";
-            this.checkArena.UseVisualStyleBackColor = true;
-            // 
-            // checkTurma
-            // 
-            resources.ApplyResources(this.checkTurma, "checkTurma");
-            this.checkTurma.Name = "checkTurma";
-            this.checkTurma.UseVisualStyleBackColor = true;
-            // 
             // Settings
             // 
             resources.ApplyResources(this, "$this");
@@ -642,8 +626,6 @@
         private System.Windows.Forms.GroupBox groupBox4;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.TextBox textGoldTake;
-        private System.Windows.Forms.Label label13;
-        private System.Windows.Forms.TextBox textDifference;
         private System.Windows.Forms.TextBox textBoosters;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.TextBox textFood;

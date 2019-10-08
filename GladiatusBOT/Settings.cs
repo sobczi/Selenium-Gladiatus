@@ -52,7 +52,6 @@ namespace GladiatusBOT
             key.SetValue("gold_take", Convert.ToInt32(textGoldTake.Text));
             key.SetValue("food_pages", Convert.ToInt32(textFood.Text));
             key.SetValue("boosters_pages", Convert.ToInt32(textBoosters.Text));
-            key.SetValue("difference", Convert.ToInt32(textDifference.Text));
 
             key.SetValue("server", comboServer.SelectedIndex);
             key.SetValue("b_extract", comboExtract.SelectedIndex);
@@ -96,7 +95,6 @@ namespace GladiatusBOT
             textGoldTake.Text = RegistryValues.Read_s("gold_take");
             textFood.Text = RegistryValues.Read_s("food_pages");
             textBoosters.Text = RegistryValues.Read_s("boosters_pages");
-            textDifference.Text = RegistryValues.Read_s("difference");
 
             comboServer.SelectedIndex = RegistryValues.Read_i("server");
             comboExtract.SelectedIndex = RegistryValues.Read_i("b_extract");
@@ -132,7 +130,6 @@ namespace GladiatusBOT
 
             Check_Avability_Sell(null, null);
             Check_Avability_Extract(null, null);
-            Check_Avability_Auction(null, null);
             Check_Avability_Boosters(null, null);
             Check_Avability_Pack(null, null);
             Check_Avability_Food(null, null);
@@ -141,7 +138,6 @@ namespace GladiatusBOT
             Check_Avability_Dungeon(null, null);
             Check_Avability_Expedition(null, null);
             Check_Avability_Training(null, null);
-            Check_Avability_Difference();
         }
 
         void Check_Avability_Expedition(object sender, EventArgs e)
@@ -185,14 +181,6 @@ namespace GladiatusBOT
             Check_Avability_Backpack_Food(null, null);
         }
 
-        void Check_Avability_Difference()
-        {
-            if (checkAuctions.Checked || checkFood.Checked || checkBoosters.Checked)
-                textDifference.Enabled = true;
-            else
-                textDifference.Enabled = false;
-        }
-
         void Check_Avability_Pack(object sender, EventArgs e)
         {
             if (!checkPack.Checked)
@@ -201,22 +189,12 @@ namespace GladiatusBOT
                 textGoldPack.Enabled = true;
         }
 
-        void Check_Avability_Auction(object sender, EventArgs e)
-        {
-            if (!checkAuctions.Checked)
-                textDifference.Enabled = false;
-            else
-                textDifference.Enabled = true;
-            Check_Avability_Difference();
-        }
-
         void Check_Avability_Food(object sender, EventArgs e)
         {
             if (!checkFood.Checked)
                 textFood.Enabled = false;
             else
                 textFood.Enabled = true;
-            Check_Avability_Difference();
             Check_Avability_Backpack_Food(null, null);
         }
 
@@ -226,7 +204,6 @@ namespace GladiatusBOT
                 textBoosters.Enabled = false;
             else
                 textBoosters.Enabled = true;
-            Check_Avability_Difference();
         }
 
         void Check_Avability_Sell(object sender, EventArgs e)
