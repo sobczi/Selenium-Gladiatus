@@ -18,8 +18,8 @@ namespace GladiatusBOT
             try { Convert.ToInt32(quality); quality = Get.Quality_pack(quality); }
             catch { }
 
-            Basic.Click_element("//select[@name='f']//option[text() = '" + category + "']");
-            Basic.Click_element("//select[@name='fq']//option[text() = '" + quality + "']");
+            Get.Element("//select[@name='f']//option[text() = '" + category + "']").Click();
+            Get.Element("//select[@name='fq']//option[text() = '" + quality + "']").Click();
             Basic.Click_element("//input[@value='Filtr']");
         }
 
@@ -27,7 +27,7 @@ namespace GladiatusBOT
         {
             if (category == "")
                 category = "Wszystko";
-            Basic.Click_element("//select[@name='itemType']//option[text()='"+category+"']");
+            Get.Element("//select[@name='itemType']//option[text()='"+category+"']").Click();
             Basic.Click_element("//input[@value='Filtr']");
         }
 
