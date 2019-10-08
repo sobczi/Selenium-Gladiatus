@@ -10,6 +10,8 @@ namespace GladiatusBOT
     {
         public static void Extract_items()
         {
+            if (!RegistryValues.Read_b("c_extract"))
+                return;
             Get_items();
             Navigation.Main_menu("Roztapiarka");
             Navigation.Backpack(Settings.b_extract);
@@ -30,9 +32,6 @@ namespace GladiatusBOT
                 Basic.Move_release(inv_draggable, "//fieldset[@id='crafting_input']//div[@class='ui-droppable']");
                 while (!Get.Element("//div[@class='icon_gold']").Displayed) { Thread.Sleep(100); }
                 Basic.Click_element("//div[@class='icon_gold']");
-                Thread.Sleep(750);
-                if (Basic.Search_element("//div[@id='ajaxErrorDialog']"))
-                    break;
                 Basic.Wait_for_element("//div[@class='forge_crafting "+Convert.ToString(i)+" tabActive']");
             }
             Store();
@@ -68,7 +67,7 @@ namespace GladiatusBOT
                     break;
                 }
 
-                it = Move_items(elements, it);
+                it = Move_items(elements, it, false);
                 if (it < 0)
                     return;
                 Basic.Click_if("//a[@class='paging_button paging_left_step']");
@@ -93,7 +92,7 @@ namespace GladiatusBOT
                         List<IWebElement> elements = Load_items();
                         if (elements.Count == 0)
                             break;
-                        it = Move_items(elements, it);
+                        it = Move_items(elements, it, false);
                         if (it < 0)
                             return;
                     } while (Basic.Click_if("//a[@class='paging_button paging_left_step']"));
@@ -114,25 +113,28 @@ namespace GladiatusBOT
                             continue;
                         break;
                     }
-                    it = Move_items(elements, it);
+                    it = Move_items(elements, it, true);
                     if (it < 0)
                         return;
                 }
             }
         }
 
-         static int Move_items(List<IWebElement> elements, int it)
+         static int Move_items(List<IWebElement> elements, int it, bool getAll)
         {
             Navigation.Backpack(Settings.b_extract);
             foreach (IWebElement element in elements)
             {
+                if (it == 0)
+                    return -1;
                 int quality = Convert.ToInt32(element.GetAttribute("data-quality"));
-                if (!RegistryValues.Read_b("c_extract_purple") && quality == 2 ||
+                if (!getAll && !RegistryValues.Read_b("c_extract_purple") && quality == 2 ||
                     !RegistryValues.Read_b("c_extract_orange") && quality == 3 ||
                     !RegistryValues.Read_b("c_extract_red") && quality == 4) continue;
                 string hash = element.GetAttribute("data-hash");
-                Basic.Double_click(element);
-                if (Basic.Search_element("//div[@id='packages']//div[@data-hash='" + hash + "']"))
+                Basic.Move_to_inventory(element);
+                while (Basic.Search_element("//div[@id='packages']//div[contains(@class,'disabled')]")) { }
+                if (Basic.Search_element("//div[@id='inv']//div[@data-hash='" + hash + "']"))
                     it--;
                 else
                     return -1;
