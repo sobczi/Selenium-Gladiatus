@@ -35,7 +35,6 @@ namespace GladiatusBOT
 
         void Read_settings()
         {
-            labelName.Text = RegistryValues.Read_s("username");
             labelServer.Text = Get.Read_server(RegistryValues.Read_i("server"));
             FontStyle var = FontStyle.Regular;
             if (RegistryValues.Read_b("c_sleep"))
