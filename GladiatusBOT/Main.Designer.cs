@@ -75,7 +75,7 @@
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Location = new System.Drawing.Point(12, 12);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(205, 128);
+            this.groupBox1.Size = new System.Drawing.Size(197, 128);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "User";
@@ -166,9 +166,9 @@
             this.groupBox2.Controls.Add(this.label7);
             this.groupBox2.Controls.Add(this.labelExpedition);
             this.groupBox2.Controls.Add(this.label6);
-            this.groupBox2.Location = new System.Drawing.Point(223, 12);
+            this.groupBox2.Location = new System.Drawing.Point(215, 12);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(203, 128);
+            this.groupBox2.Size = new System.Drawing.Size(195, 128);
             this.groupBox2.TabIndex = 1;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Points";
@@ -258,7 +258,7 @@
             this.groupBox3.Controls.Add(this.settings_btn);
             this.groupBox3.Location = new System.Drawing.Point(12, 146);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(414, 122);
+            this.groupBox3.Size = new System.Drawing.Size(398, 122);
             this.groupBox3.TabIndex = 2;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "author: sobczi";
@@ -269,7 +269,7 @@
             this.btnBotting.Font = new System.Drawing.Font("Verdana", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.btnBotting.Location = new System.Drawing.Point(9, 88);
             this.btnBotting.Name = "btnBotting";
-            this.btnBotting.Size = new System.Drawing.Size(398, 27);
+            this.btnBotting.Size = new System.Drawing.Size(383, 27);
             this.btnBotting.TabIndex = 7;
             this.btnBotting.Text = "Botting";
             this.btnBotting.UseVisualStyleBackColor = true;
@@ -278,9 +278,9 @@
             // sell_btn
             // 
             this.sell_btn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.sell_btn.Location = new System.Drawing.Point(211, 55);
+            this.sell_btn.Location = new System.Drawing.Point(209, 55);
             this.sell_btn.Name = "sell_btn";
-            this.sell_btn.Size = new System.Drawing.Size(196, 27);
+            this.sell_btn.Size = new System.Drawing.Size(183, 27);
             this.sell_btn.TabIndex = 6;
             this.sell_btn.Text = "Sell Items";
             this.sell_btn.UseVisualStyleBackColor = true;
@@ -291,7 +291,7 @@
             this.gold_btn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.gold_btn.Location = new System.Drawing.Point(9, 55);
             this.gold_btn.Name = "gold_btn";
-            this.gold_btn.Size = new System.Drawing.Size(196, 27);
+            this.gold_btn.Size = new System.Drawing.Size(188, 27);
             this.gold_btn.TabIndex = 5;
             this.gold_btn.Text = "Take Gold";
             this.gold_btn.UseVisualStyleBackColor = true;
@@ -302,7 +302,7 @@
             this.sleep_btn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.sleep_btn.Location = new System.Drawing.Point(9, 22);
             this.sleep_btn.Name = "sleep_btn";
-            this.sleep_btn.Size = new System.Drawing.Size(196, 27);
+            this.sleep_btn.Size = new System.Drawing.Size(188, 27);
             this.sleep_btn.TabIndex = 4;
             this.sleep_btn.Text = "Sleep";
             this.sleep_btn.UseVisualStyleBackColor = true;
@@ -311,9 +311,9 @@
             // settings_btn
             // 
             this.settings_btn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.settings_btn.Location = new System.Drawing.Point(211, 22);
+            this.settings_btn.Location = new System.Drawing.Point(209, 22);
             this.settings_btn.Name = "settings_btn";
-            this.settings_btn.Size = new System.Drawing.Size(196, 27);
+            this.settings_btn.Size = new System.Drawing.Size(183, 27);
             this.settings_btn.TabIndex = 3;
             this.settings_btn.Text = "Settings";
             this.settings_btn.UseVisualStyleBackColor = true;
@@ -338,7 +338,7 @@
             // 
             this.exitToolStripMenuItem.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(210, 22);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(104, 22);
             this.exitToolStripMenuItem.Text = "Exit";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.ExitToolStripMenuItem_Click);
             // 
@@ -346,7 +346,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(432, 273);
+            this.ClientSize = new System.Drawing.Size(419, 273);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
@@ -373,7 +373,6 @@
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Label labelServer;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label labelName;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
@@ -397,5 +396,6 @@
         private System.Windows.Forms.NotifyIcon taskbar;
         private System.Windows.Forms.ContextMenuStrip taskbarMenu;
         private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
+        public System.Windows.Forms.Label labelName;
     }
 }
