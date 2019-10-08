@@ -1,5 +1,4 @@
 ﻿using OpenQA.Selenium;
-using System.Threading;
 using System;
 
 namespace GladiatusBOT
@@ -8,31 +7,31 @@ namespace GladiatusBOT
     {
         public static string Level()
         {
-            return Element("//div[@id='header_values_level']").Text;
+            return ElementString("//div[@id='header_values_level']");
         }
 
         public static string Progress()
         {
-            return Element("//div[@id='header_values_xp_percent']").Text;
+            return ElementString("//div[@id='header_values_xp_percent']");
         }
         public static string Rubles()
         {
-            return Element("//*[@id='sstat_ruby_val']").Text;
+            return ElementString("//*[@id='sstat_ruby_val']");
         }
 
         public static string Gold_s()
         {
-            return Element("//*[@id='sstat_gold_val']").Text;
+            return ElementString("//*[@id='sstat_gold_val']");
         }
 
         public static string Points_expedition()
         {
-            return Element("//span[@id='expeditionpoints_value_point']").Text;
+            return ElementString("//span[@id='expeditionpoints_value_point']");
         }
 
         public static string Points_dungeon()
         {
-            string p = Element("//span[@id='dungeonpoints_value_point']").Text;
+            string p = ElementString("//span[@id='dungeonpoints_value_point']");
             if(p=="")
                 return "0";
             return p;
@@ -197,6 +196,19 @@ namespace GladiatusBOT
         {
             Basic.Wait_for_element(path);
             return Bot.driver.FindElementByXPath(path);
+        }
+
+        private static string ElementString(string path)
+        {
+            while (true)
+            {
+                try
+                {
+                    Basic.Wait_for_element(path);
+                    return Bot.driver.FindElementByXPath(path).Text;
+                }
+                catch { }
+            }
         }
 
     }
