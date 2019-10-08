@@ -5,6 +5,7 @@ using OpenQA.Selenium.Interactions;
 using System.Text.RegularExpressions;
 using System.Diagnostics;
 using System;
+using System.Security.Policy;
 
 namespace GladiatusBOT
 {
@@ -45,6 +46,35 @@ namespace GladiatusBOT
                 Basic.Release("//div[@class='ui-droppable grid-droparea image-grayed active']");
             else
                 return false;
+            while (Basic.Search_element("//div[@id='packages']//div[contains(@class,'disabled')]")) { }
+            return true;
+        }
+
+        public static bool Move_to_inventory(List<IWebElement> elements)
+        {
+            foreach(IWebElement element in elements)
+            {
+                Basic.Move_move(element, "//div[@id='inv']");
+                if (Basic.Search_element("//div[@class='ui-droppable grid-droparea image-grayed active']"))
+                    Basic.Release("//div[@class='ui-droppable grid-droparea image-grayed active']");
+                else
+                    return false;
+                while (Basic.Search_element("//div[@id='packages']//div[contains(@class,'disabled')]")) { }
+            }
+            return true;
+        }
+
+        public static bool Move_to_shop(List<IWebElement> elements)
+        {
+            foreach(IWebElement element in elements)
+            {
+                Basic.Move_move(element, "//div[@id='shop']");
+                if (Basic.Search_element("//div[@id='shop']//div[@class='ui-droppable grid-droparea image-grayed active']"))
+                    Basic.Release("//div[@id='shop']//div[@class='ui-droppable grid-droparea image-grayed active']");
+                else
+                    return false;
+                while (Basic.Search_element("//div[@id='inv']//div[contains(@class,'disabled')]")) { }
+            }
             return true;
         }
 
@@ -55,6 +85,7 @@ namespace GladiatusBOT
                 Basic.Release("//div[@class='ui-droppable grid-droparea image-grayed active']");
             else
                 return false;
+            while (Basic.Search_element("//div[@id='packages']//div[contains(@class,'disabled')]")) { }
             return true;
         }
 
