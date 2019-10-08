@@ -19,7 +19,8 @@ namespace GladiatusBOT
                 "//a[contains(@onclick,'MAX_simplepop')]",
                 "//*[@id='linkcancelnotification']",
                 "//*[@id='linknotification']",
-                "//a[@id='accept_btn']"
+                "//a[@id='accept_btn']",
+                "//input[@value='Zamknij']"
             };
             Bot.driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromMilliseconds(0);
             foreach (string path in paths)
@@ -35,6 +36,26 @@ namespace GladiatusBOT
                 return true;
             else
                 return false;
+        }
+
+        public static bool Move_to_inventory(IWebElement element)
+        {
+            Basic.Move_move(element, "//div[@id='inv']");
+            if (Basic.Search_element("//div[@class='ui-droppable grid-droparea image-grayed active']"))
+                Basic.Release("//div[@class='ui-droppable grid-droparea image-grayed active']");
+            else
+                return false;
+            return true;
+        }
+
+        public static bool Move_to_inventory(string path)
+        {
+            Basic.Move_move(path, "//div[@id='inv']");
+            if (Basic.Search_element("//div[@class='ui-droppable grid-droparea image-grayed active']"))
+                Basic.Release("//div[@class='ui-droppable grid-droparea image-grayed active']");
+            else
+                return false;
+            return true;
         }
 
         public static void Kill_Chrome_Drivers()
@@ -134,7 +155,10 @@ namespace GladiatusBOT
         public static void Click_element(string path)
         {
             Check_events();
-            Get.Element(path).Click();
+            IWebElement element = Get.Element(path);
+            ac = new Actions(Bot.driver);
+            ac.MoveToElement(element).Perform();
+            element.Click();
         }
 
         public static void Double_click(IWebElement element)
