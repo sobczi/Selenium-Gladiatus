@@ -1,9 +1,5 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Data;
-using System.Threading;
-using Microsoft.Win32;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Interactions;
 
@@ -13,7 +9,7 @@ namespace GladiatusBOT
     {
         public static void Sell()
         {
-            if (!Settings.c_sell)
+            if (!Settings.c_sell && !Bot.Sell_items)
                 return;
 
             int category = 1;
@@ -27,8 +23,11 @@ namespace GladiatusBOT
                     Navigation.Backpack(Settings.b_sell);
                     Basic.Click_if("//a[@clas='paging_button paging_right_full']");
                     List<IWebElement> elements = Get_items(Bot.driver.FindElementsByXPath("//div[@id='packages']//div[contains(@class,'draggable')]"));
+                    elements.Reverse();
+
                     if (elements.Count == 0)
-                        category++;
+                    { category++; continue; }
+
                     if (!Double_click_items(elements, true))
                         break;
                 }
@@ -72,7 +71,7 @@ namespace GladiatusBOT
                 string var = "food";
                 if (category == "Przyspieszacze")
                     var = "boosters";
-                int pages = RegistryValues.Read_i(var+"_pages");
+                int pages = RegistryValues.Read_i(var + "_pages");
                 for (int i = 0; i < pages * 10; i++)
                 {
                     if (Basic.Search_element(
@@ -86,19 +85,29 @@ namespace GladiatusBOT
             while (!Basic.Search_element("//div[text()='Nie masz wystarczającej ilości złota!']") && Basic.Search_element(path))
                 Basic.Click_element(path);
         }
-         static bool Double_click_items(List<IWebElement> elements, bool packages)
+
+        static bool Double_click_items(List<IWebElement> elements, bool packages)
         {
             bool result = false;
             string var = "inv";
             if (!packages)
+            {
                 var = "shop";
-            foreach(IWebElement element in elements)
+                Actions ac = new Actions(Bot.driver);
+                ac.MoveToElement(Bot.driver.FindElementByXPath("//a[@class='menuitem '][text() = 'Brama miasta']")).Perform();
+            }
+
+            foreach (IWebElement element in elements)
             {
                 string hash = element.GetAttribute("data-hash");
                 Basic.Double_click(element);
                 if (!Basic.Search_element("//div[@id='" + var + "']//div[@data-hash='" + hash + "']"))
-                { result = !result; break; }
+                {
+                    result = !result;
+                    break;
+                }
             }
+
             if (packages)
                 return !result;
             return result;
@@ -130,9 +139,7 @@ namespace GladiatusBOT
                     Navigation.Main_menu("Broń");
                     if (RegistryValues.Read_b("c_rubles"))
                         Basic.Click_element("//input[@value='Nowe towary']");
-                    else
-                        return false;
-                    break;
+                    return false;
             }
             Basic.Click_element("//div[contains(@class,'shopTab')][contains(text(),'sprzedaj')]");
             Navigation.Backpack(Settings.b_sell);
