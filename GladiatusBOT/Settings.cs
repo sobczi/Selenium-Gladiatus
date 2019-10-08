@@ -1,6 +1,5 @@
 ﻿using Microsoft.Win32;
 using System;
-using System.Runtime.CompilerServices;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
 
@@ -84,6 +83,8 @@ namespace GladiatusBOT
             key.SetValue("c_sell_purple", checkSellPurple.Checked);
             key.SetValue("c_sell_orange", checkSellOrange.Checked);
             key.SetValue("c_sell_red", checkSellRed.Checked);
+            key.SetValue("c_arena", checkArena.Checked);
+            key.SetValue("c_turma", checkTurma.Checked);
         }
 
         void Read_settings()
@@ -120,12 +121,148 @@ namespace GladiatusBOT
             checkPack.Checked = RegistryValues.Read_b("c_pack");
             checkCostume.Checked = RegistryValues.Read_b("c_costume");
             checkTraining.Checked = RegistryValues.Read_b("c_training");
-            checkExtractPurple.Checked = RegistryValues.Read_b("c_extract_purple");
-            checkExtractOrange.Checked = RegistryValues.Read_b("c_extract_orange");
-            checkExtractRed.Checked = RegistryValues.Read_b("c_extract_red");
             checkSellPurple.Checked = RegistryValues.Read_b("c_sell_purple");
             checkSellOrange.Checked = RegistryValues.Read_b("c_sell_orange");
             checkSellRed.Checked = RegistryValues.Read_b("c_sell_red");
+            checkExtractPurple.Checked = RegistryValues.Read_b("c_extract_purple");
+            checkExtractOrange.Checked = RegistryValues.Read_b("c_extract_orange");
+            checkExtractRed.Checked = RegistryValues.Read_b("c_extract_red");
+            checkArena.Checked = RegistryValues.Read_b("c_arena");
+            checkTurma.Checked = RegistryValues.Read_b("c_turma");
+
+            Check_Avability_Sell(null, null);
+            Check_Avability_Extract(null, null);
+            Check_Avability_Auction(null, null);
+            Check_Avability_Boosters(null, null);
+            Check_Avability_Pack(null, null);
+            Check_Avability_Food(null, null);
+            Check_Avability_Health(null, null);
+            Check_Avability_Backpack_Food(null, null);
+            Check_Avability_Dungeon(null, null);
+            Check_Avability_Expedition(null, null);
+            Check_Avability_Training(null, null);
+            Check_Avability_Difference();
+        }
+
+        void Check_Avability_Expedition(object sender, EventArgs e)
+        {
+            if (!checkExpedition.Checked)
+                comboExpedition.Enabled = false;
+            else
+                comboExpedition.Enabled = true;
+        }
+
+        void Check_Avability_Dungeon(object sender, EventArgs e)
+        {
+            if (!checkDungeon.Checked)
+                comboDungeon.Enabled = false;
+            else
+                comboDungeon.Enabled = true;
+        }
+
+        void Check_Avability_Training(object sender, EventArgs e)
+        {
+            if (!checkTraining.Checked)
+                comboTraining.Enabled = false;
+            else
+                comboTraining.Enabled = true;
+        }
+
+        void Check_Avability_Backpack_Food(object sender, EventArgs e)
+        {
+            if (!checkHeal.Checked && !checkFood.Checked)
+                comboFood.Enabled = false;
+            else
+                comboFood.Enabled = true;
+        }
+
+        void Check_Avability_Health(object sender, EventArgs e)
+        {
+            if (!checkHeal.Checked)
+                textHeal.Enabled = false;
+            else
+                textHeal.Enabled = true;
+            Check_Avability_Backpack_Food(null, null);
+        }
+
+        void Check_Avability_Difference()
+        {
+            if (checkAuctions.Checked || checkFood.Checked || checkBoosters.Checked)
+                textDifference.Enabled = true;
+            else
+                textDifference.Enabled = false;
+        }
+
+        void Check_Avability_Pack(object sender, EventArgs e)
+        {
+            if (!checkPack.Checked)
+                textGoldPack.Enabled = false;
+            else
+                textGoldPack.Enabled = true;
+        }
+
+        void Check_Avability_Auction(object sender, EventArgs e)
+        {
+            if (!checkAuctions.Checked)
+                textDifference.Enabled = false;
+            else
+                textDifference.Enabled = true;
+            Check_Avability_Difference();
+        }
+
+        void Check_Avability_Food(object sender, EventArgs e)
+        {
+            if (!checkFood.Checked)
+                textFood.Enabled = false;
+            else
+                textFood.Enabled = true;
+            Check_Avability_Difference();
+            Check_Avability_Backpack_Food(null, null);
+        }
+
+        void Check_Avability_Boosters(object sender, EventArgs e)
+        {
+            if (!checkBoosters.Checked)
+                textBoosters.Enabled = false;
+            else
+                textBoosters.Enabled = true;
+            Check_Avability_Difference();
+        }
+
+        void Check_Avability_Sell(object sender, EventArgs e)
+        {
+            if(checkSell.Checked)
+            {
+                checkSellPurple.Enabled = true;
+                checkSellOrange.Enabled = true;
+                checkSellRed.Enabled = true;
+                comboSell.Enabled = true;
+            }
+            else
+            {
+                checkSellPurple.Enabled = false;
+                checkSellOrange.Enabled = false;
+                checkSellRed.Enabled = false;
+                comboSell.Enabled = false;
+            }
+        }
+
+        void Check_Avability_Extract(object sender, EventArgs e)
+        {
+            if(checkExtract.Checked)
+            {
+                checkExtractPurple.Enabled = true;
+                checkExtractOrange.Enabled = true;
+                checkExtractRed.Enabled = true;
+                comboExtract.Enabled = true;
+            }
+            else
+            {
+                checkExtractPurple.Enabled = false;
+                checkExtractOrange.Enabled = false;
+                checkExtractRed.Enabled = false;
+                comboExtract.Enabled = false;
+            }
         }
 
         void BtnSave_Click(object sender, EventArgs e) { Save_settings(); }

@@ -91,6 +91,8 @@
             this.label16 = new System.Windows.Forms.Label();
             this.checkExtractOrange = new System.Windows.Forms.CheckBox();
             this.checkExtractPurple = new System.Windows.Forms.CheckBox();
+            this.checkArena = new System.Windows.Forms.CheckBox();
+            this.checkTurma = new System.Windows.Forms.CheckBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -240,12 +242,14 @@
             resources.ApplyResources(this.checkExpedition, "checkExpedition");
             this.checkExpedition.Name = "checkExpedition";
             this.checkExpedition.UseVisualStyleBackColor = true;
+            this.checkExpedition.CheckedChanged += new System.EventHandler(this.Check_Avability_Expedition);
             // 
             // checkDungeon
             // 
             resources.ApplyResources(this.checkDungeon, "checkDungeon");
             this.checkDungeon.Name = "checkDungeon";
             this.checkDungeon.UseVisualStyleBackColor = true;
+            this.checkDungeon.CheckedChanged += new System.EventHandler(this.Check_Avability_Dungeon);
             // 
             // groupBox3
             // 
@@ -385,6 +389,8 @@
             // 
             // groupBox5
             // 
+            this.groupBox5.Controls.Add(this.checkTurma);
+            this.groupBox5.Controls.Add(this.checkArena);
             this.groupBox5.Controls.Add(this.checkTraining);
             this.groupBox5.Controls.Add(this.checkCostume);
             this.groupBox5.Controls.Add(this.checkPack);
@@ -409,6 +415,7 @@
             resources.ApplyResources(this.checkTraining, "checkTraining");
             this.checkTraining.Name = "checkTraining";
             this.checkTraining.UseVisualStyleBackColor = true;
+            this.checkTraining.CheckedChanged += new System.EventHandler(this.Check_Avability_Training);
             // 
             // checkCostume
             // 
@@ -421,6 +428,7 @@
             resources.ApplyResources(this.checkPack, "checkPack");
             this.checkPack.Name = "checkPack";
             this.checkPack.UseVisualStyleBackColor = true;
+            this.checkPack.CheckedChanged += new System.EventHandler(this.Check_Avability_Pack);
             // 
             // checkSpentRubles
             // 
@@ -445,36 +453,42 @@
             resources.ApplyResources(this.checkAuctions, "checkAuctions");
             this.checkAuctions.Name = "checkAuctions";
             this.checkAuctions.UseVisualStyleBackColor = true;
+            this.checkAuctions.CheckedChanged += new System.EventHandler(this.Check_Avability_Auction);
             // 
             // checkBoosters
             // 
             resources.ApplyResources(this.checkBoosters, "checkBoosters");
             this.checkBoosters.Name = "checkBoosters";
             this.checkBoosters.UseVisualStyleBackColor = true;
+            this.checkBoosters.CheckedChanged += new System.EventHandler(this.Check_Avability_Boosters);
             // 
             // checkSell
             // 
             resources.ApplyResources(this.checkSell, "checkSell");
             this.checkSell.Name = "checkSell";
             this.checkSell.UseVisualStyleBackColor = true;
+            this.checkSell.CheckedChanged += new System.EventHandler(this.Check_Avability_Sell);
             // 
             // checkExtract
             // 
             resources.ApplyResources(this.checkExtract, "checkExtract");
             this.checkExtract.Name = "checkExtract";
             this.checkExtract.UseVisualStyleBackColor = true;
+            this.checkExtract.CheckedChanged += new System.EventHandler(this.Check_Avability_Extract);
             // 
             // checkHeal
             // 
             resources.ApplyResources(this.checkHeal, "checkHeal");
             this.checkHeal.Name = "checkHeal";
             this.checkHeal.UseVisualStyleBackColor = true;
+            this.checkHeal.CheckedChanged += new System.EventHandler(this.Check_Avability_Health);
             // 
             // checkFood
             // 
             resources.ApplyResources(this.checkFood, "checkFood");
             this.checkFood.Name = "checkFood";
             this.checkFood.UseVisualStyleBackColor = true;
+            this.checkFood.CheckedChanged += new System.EventHandler(this.Check_Avability_Food);
             // 
             // groupBox6
             // 
@@ -550,6 +564,18 @@
             resources.ApplyResources(this.checkExtractPurple, "checkExtractPurple");
             this.checkExtractPurple.Name = "checkExtractPurple";
             this.checkExtractPurple.UseVisualStyleBackColor = true;
+            // 
+            // checkArena
+            // 
+            resources.ApplyResources(this.checkArena, "checkArena");
+            this.checkArena.Name = "checkArena";
+            this.checkArena.UseVisualStyleBackColor = true;
+            // 
+            // checkTurma
+            // 
+            resources.ApplyResources(this.checkTurma, "checkTurma");
+            this.checkTurma.Name = "checkTurma";
+            this.checkTurma.UseVisualStyleBackColor = true;
             // 
             // Settings
             // 
@@ -646,6 +672,8 @@
         private System.Windows.Forms.CheckBox checkExtractOrange;
         private System.Windows.Forms.CheckBox checkExtractPurple;
         private System.Windows.Forms.CheckBox checkTraining;
+        private System.Windows.Forms.CheckBox checkTurma;
+        private System.Windows.Forms.CheckBox checkArena;
     }
 }
 

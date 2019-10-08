@@ -126,10 +126,10 @@
     <value>Verdana, 7.8pt</value>
   </data>
   <data name="btnSave.Location" type="System.Drawing.Point, System.Drawing">
-    <value>210, 21</value>
+    <value>233, 21</value>
   </data>
   <data name="btnSave.Size" type="System.Drawing.Size, System.Drawing">
-    <value>198, 35</value>
+    <value>204, 35</value>
   </data>
   <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="btnSave.TabIndex" type="System.Int32, mscorlib">
@@ -742,7 +742,7 @@
     <value>groupBox5</value>
   </data>
   <data name="&gt;&gt;checkEvent.ZOrder" xml:space="preserve">
-    <value>14</value>
+    <value>16</value>
   </data>
   <data name="checkExpedition.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -751,7 +751,7 @@
     <value>Verdana, 7.8pt</value>
   </data>
   <data name="checkExpedition.Location" type="System.Drawing.Point, System.Drawing">
-    <value>9, 22</value>
+    <value>9, 23</value>
   </data>
   <data name="checkExpedition.Size" type="System.Drawing.Size, System.Drawing">
     <value>104, 21</value>
@@ -772,7 +772,7 @@
     <value>groupBox5</value>
   </data>
   <data name="&gt;&gt;checkExpedition.ZOrder" xml:space="preserve">
-    <value>12</value>
+    <value>14</value>
   </data>
   <data name="checkDungeon.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -802,7 +802,7 @@
     <value>groupBox5</value>
   </data>
   <data name="&gt;&gt;checkDungeon.ZOrder" xml:space="preserve">
-    <value>13</value>
+    <value>15</value>
   </data>
   <data name="&gt;&gt;comboSell.Name" xml:space="preserve">
     <value>comboSell</value>
@@ -1267,7 +1267,7 @@
     <value>12, 132</value>
   </data>
   <data name="groupBox4.Size" type="System.Drawing.Size, System.Drawing">
-    <value>443, 105</value>
+    <value>443, 104</value>
   </data>
   <data name="groupBox4.TabIndex" type="System.Int32, mscorlib">
     <value>20</value>
@@ -1503,176 +1503,71 @@
   <data name="&gt;&gt;label15.ZOrder" xml:space="preserve">
     <value>9</value>
   </data>
-  <data name="&gt;&gt;checkTraining.Name" xml:space="preserve">
-    <value>checkTraining</value>
+  <data name="checkTurma.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
   </data>
-  <data name="&gt;&gt;checkTraining.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;checkTraining.Parent" xml:space="preserve">
-    <value>groupBox5</value>
-  </data>
-  <data name="&gt;&gt;checkTraining.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;checkCostume.Name" xml:space="preserve">
-    <value>checkCostume</value>
-  </data>
-  <data name="&gt;&gt;checkCostume.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;checkCostume.Parent" xml:space="preserve">
-    <value>groupBox5</value>
-  </data>
-  <data name="&gt;&gt;checkCostume.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;checkPack.Name" xml:space="preserve">
-    <value>checkPack</value>
-  </data>
-  <data name="&gt;&gt;checkPack.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;checkPack.Parent" xml:space="preserve">
-    <value>groupBox5</value>
-  </data>
-  <data name="&gt;&gt;checkPack.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="&gt;&gt;checkSpentRubles.Name" xml:space="preserve">
-    <value>checkSpentRubles</value>
-  </data>
-  <data name="&gt;&gt;checkSpentRubles.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;checkSpentRubles.Parent" xml:space="preserve">
-    <value>groupBox5</value>
-  </data>
-  <data name="&gt;&gt;checkSpentRubles.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="&gt;&gt;checkHeadless.Name" xml:space="preserve">
-    <value>checkHeadless</value>
-  </data>
-  <data name="&gt;&gt;checkHeadless.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;checkHeadless.Parent" xml:space="preserve">
-    <value>groupBox5</value>
-  </data>
-  <data name="&gt;&gt;checkHeadless.ZOrder" xml:space="preserve">
-    <value>4</value>
-  </data>
-  <data name="&gt;&gt;checkSleep.Name" xml:space="preserve">
-    <value>checkSleep</value>
-  </data>
-  <data name="&gt;&gt;checkSleep.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;checkSleep.Parent" xml:space="preserve">
-    <value>groupBox5</value>
-  </data>
-  <data name="&gt;&gt;checkSleep.ZOrder" xml:space="preserve">
-    <value>5</value>
-  </data>
-  <data name="&gt;&gt;checkAuctions.Name" xml:space="preserve">
-    <value>checkAuctions</value>
-  </data>
-  <data name="&gt;&gt;checkAuctions.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;checkAuctions.Parent" xml:space="preserve">
-    <value>groupBox5</value>
-  </data>
-  <data name="&gt;&gt;checkAuctions.ZOrder" xml:space="preserve">
-    <value>6</value>
-  </data>
-  <data name="&gt;&gt;checkBoosters.Name" xml:space="preserve">
-    <value>checkBoosters</value>
-  </data>
-  <data name="&gt;&gt;checkBoosters.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;checkBoosters.Parent" xml:space="preserve">
-    <value>groupBox5</value>
-  </data>
-  <data name="&gt;&gt;checkBoosters.ZOrder" xml:space="preserve">
-    <value>7</value>
-  </data>
-  <data name="&gt;&gt;checkSell.Name" xml:space="preserve">
-    <value>checkSell</value>
-  </data>
-  <data name="&gt;&gt;checkSell.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;checkSell.Parent" xml:space="preserve">
-    <value>groupBox5</value>
-  </data>
-  <data name="&gt;&gt;checkSell.ZOrder" xml:space="preserve">
-    <value>8</value>
-  </data>
-  <data name="&gt;&gt;checkExtract.Name" xml:space="preserve">
-    <value>checkExtract</value>
-  </data>
-  <data name="&gt;&gt;checkExtract.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;checkExtract.Parent" xml:space="preserve">
-    <value>groupBox5</value>
-  </data>
-  <data name="&gt;&gt;checkExtract.ZOrder" xml:space="preserve">
-    <value>9</value>
-  </data>
-  <data name="&gt;&gt;checkHeal.Name" xml:space="preserve">
-    <value>checkHeal</value>
-  </data>
-  <data name="&gt;&gt;checkHeal.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;checkHeal.Parent" xml:space="preserve">
-    <value>groupBox5</value>
-  </data>
-  <data name="&gt;&gt;checkHeal.ZOrder" xml:space="preserve">
-    <value>10</value>
-  </data>
-  <data name="&gt;&gt;checkFood.Name" xml:space="preserve">
-    <value>checkFood</value>
-  </data>
-  <data name="&gt;&gt;checkFood.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;checkFood.Parent" xml:space="preserve">
-    <value>groupBox5</value>
-  </data>
-  <data name="&gt;&gt;checkFood.ZOrder" xml:space="preserve">
-    <value>11</value>
-  </data>
-  <data name="groupBox5.Font" type="System.Drawing.Font, System.Drawing">
+  <data name="checkTurma.Font" type="System.Drawing.Font, System.Drawing">
     <value>Verdana, 7.8pt</value>
   </data>
-  <data name="groupBox5.Location" type="System.Drawing.Point, System.Drawing">
-    <value>461, 132</value>
+  <data name="checkTurma.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
   </data>
-  <data name="groupBox5.Size" type="System.Drawing.Size, System.Drawing">
-    <value>549, 105</value>
+  <data name="checkTurma.Location" type="System.Drawing.Point, System.Drawing">
+    <value>9, 131</value>
   </data>
-  <data name="groupBox5.TabIndex" type="System.Int32, mscorlib">
-    <value>21</value>
+  <data name="checkTurma.Size" type="System.Drawing.Size, System.Drawing">
+    <value>74, 21</value>
   </data>
-  <data name="groupBox5.Text" xml:space="preserve">
-    <value>Functions</value>
+  <data name="checkTurma.TabIndex" type="System.Int32, mscorlib">
+    <value>35</value>
   </data>
-  <data name="&gt;&gt;groupBox5.Name" xml:space="preserve">
+  <data name="checkTurma.Text" xml:space="preserve">
+    <value>Turma</value>
+  </data>
+  <data name="&gt;&gt;checkTurma.Name" xml:space="preserve">
+    <value>checkTurma</value>
+  </data>
+  <data name="&gt;&gt;checkTurma.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;checkTurma.Parent" xml:space="preserve">
     <value>groupBox5</value>
   </data>
-  <data name="&gt;&gt;groupBox5.Type" xml:space="preserve">
-    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="&gt;&gt;checkTurma.ZOrder" xml:space="preserve">
+    <value>0</value>
   </data>
-  <data name="&gt;&gt;groupBox5.Parent" xml:space="preserve">
-    <value>$this</value>
+  <data name="checkArena.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
   </data>
-  <data name="&gt;&gt;groupBox5.ZOrder" xml:space="preserve">
-    <value>2</value>
+  <data name="checkArena.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Verdana, 7.8pt</value>
+  </data>
+  <data name="checkArena.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="checkArena.Location" type="System.Drawing.Point, System.Drawing">
+    <value>9, 104</value>
+  </data>
+  <data name="checkArena.Size" type="System.Drawing.Size, System.Drawing">
+    <value>71, 21</value>
+  </data>
+  <data name="checkArena.TabIndex" type="System.Int32, mscorlib">
+    <value>34</value>
+  </data>
+  <data name="checkArena.Text" xml:space="preserve">
+    <value>Arena</value>
+  </data>
+  <data name="&gt;&gt;checkArena.Name" xml:space="preserve">
+    <value>checkArena</value>
+  </data>
+  <data name="&gt;&gt;checkArena.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;checkArena.Parent" xml:space="preserve">
+    <value>groupBox5</value>
+  </data>
+  <data name="&gt;&gt;checkArena.ZOrder" xml:space="preserve">
+    <value>1</value>
   </data>
   <data name="checkTraining.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -1684,7 +1579,7 @@
     <value>NoControl</value>
   </data>
   <data name="checkTraining.Location" type="System.Drawing.Point, System.Drawing">
-    <value>443, 76</value>
+    <value>119, 131</value>
   </data>
   <data name="checkTraining.Size" type="System.Drawing.Size, System.Drawing">
     <value>85, 21</value>
@@ -1705,7 +1600,7 @@
     <value>groupBox5</value>
   </data>
   <data name="&gt;&gt;checkTraining.ZOrder" xml:space="preserve">
-    <value>0</value>
+    <value>2</value>
   </data>
   <data name="checkCostume.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -1717,7 +1612,7 @@
     <value>NoControl</value>
   </data>
   <data name="checkCostume.Location" type="System.Drawing.Point, System.Drawing">
-    <value>443, 50</value>
+    <value>206, 104</value>
   </data>
   <data name="checkCostume.Size" type="System.Drawing.Size, System.Drawing">
     <value>93, 21</value>
@@ -1738,7 +1633,7 @@
     <value>groupBox5</value>
   </data>
   <data name="&gt;&gt;checkCostume.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>3</value>
   </data>
   <data name="checkPack.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -1750,7 +1645,7 @@
     <value>NoControl</value>
   </data>
   <data name="checkPack.Location" type="System.Drawing.Point, System.Drawing">
-    <value>443, 20</value>
+    <value>119, 50</value>
   </data>
   <data name="checkPack.Size" type="System.Drawing.Size, System.Drawing">
     <value>61, 21</value>
@@ -1771,7 +1666,7 @@
     <value>groupBox5</value>
   </data>
   <data name="&gt;&gt;checkPack.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>4</value>
   </data>
   <data name="checkSpentRubles.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -1783,7 +1678,7 @@
     <value>NoControl</value>
   </data>
   <data name="checkSpentRubles.Location" type="System.Drawing.Point, System.Drawing">
-    <value>317, 23</value>
+    <value>300, 23</value>
   </data>
   <data name="checkSpentRubles.Size" type="System.Drawing.Size, System.Drawing">
     <value>120, 21</value>
@@ -1804,7 +1699,7 @@
     <value>groupBox5</value>
   </data>
   <data name="&gt;&gt;checkSpentRubles.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>5</value>
   </data>
   <data name="checkHeadless.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -1816,7 +1711,7 @@
     <value>NoControl</value>
   </data>
   <data name="checkHeadless.Location" type="System.Drawing.Point, System.Drawing">
-    <value>317, 50</value>
+    <value>300, 50</value>
   </data>
   <data name="checkHeadless.Size" type="System.Drawing.Size, System.Drawing">
     <value>92, 21</value>
@@ -1837,7 +1732,7 @@
     <value>groupBox5</value>
   </data>
   <data name="&gt;&gt;checkHeadless.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>6</value>
   </data>
   <data name="checkSleep.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -1849,7 +1744,7 @@
     <value>NoControl</value>
   </data>
   <data name="checkSleep.Location" type="System.Drawing.Point, System.Drawing">
-    <value>317, 75</value>
+    <value>206, 131</value>
   </data>
   <data name="checkSleep.Size" type="System.Drawing.Size, System.Drawing">
     <value>68, 21</value>
@@ -1870,7 +1765,7 @@
     <value>groupBox5</value>
   </data>
   <data name="&gt;&gt;checkSleep.ZOrder" xml:space="preserve">
-    <value>5</value>
+    <value>7</value>
   </data>
   <data name="checkAuctions.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -1879,7 +1774,7 @@
     <value>Verdana, 7.8pt</value>
   </data>
   <data name="checkAuctions.Location" type="System.Drawing.Point, System.Drawing">
-    <value>213, 50</value>
+    <value>206, 50</value>
   </data>
   <data name="checkAuctions.Size" type="System.Drawing.Size, System.Drawing">
     <value>91, 21</value>
@@ -1900,7 +1795,7 @@
     <value>groupBox5</value>
   </data>
   <data name="&gt;&gt;checkAuctions.ZOrder" xml:space="preserve">
-    <value>6</value>
+    <value>8</value>
   </data>
   <data name="checkBoosters.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -1909,7 +1804,7 @@
     <value>Verdana, 7.8pt</value>
   </data>
   <data name="checkBoosters.Location" type="System.Drawing.Point, System.Drawing">
-    <value>213, 75</value>
+    <value>206, 77</value>
   </data>
   <data name="checkBoosters.Size" type="System.Drawing.Size, System.Drawing">
     <value>94, 21</value>
@@ -1930,7 +1825,7 @@
     <value>groupBox5</value>
   </data>
   <data name="&gt;&gt;checkBoosters.ZOrder" xml:space="preserve">
-    <value>7</value>
+    <value>9</value>
   </data>
   <data name="checkSell.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -1939,7 +1834,7 @@
     <value>Verdana, 7.8pt</value>
   </data>
   <data name="checkSell.Location" type="System.Drawing.Point, System.Drawing">
-    <value>213, 23</value>
+    <value>119, 104</value>
   </data>
   <data name="checkSell.Size" type="System.Drawing.Size, System.Drawing">
     <value>54, 21</value>
@@ -1960,7 +1855,7 @@
     <value>groupBox5</value>
   </data>
   <data name="&gt;&gt;checkSell.ZOrder" xml:space="preserve">
-    <value>8</value>
+    <value>10</value>
   </data>
   <data name="checkExtract.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -1969,7 +1864,7 @@
     <value>Verdana, 7.8pt</value>
   </data>
   <data name="checkExtract.Location" type="System.Drawing.Point, System.Drawing">
-    <value>126, 76</value>
+    <value>119, 77</value>
   </data>
   <data name="checkExtract.Size" type="System.Drawing.Size, System.Drawing">
     <value>81, 21</value>
@@ -1990,7 +1885,7 @@
     <value>groupBox5</value>
   </data>
   <data name="&gt;&gt;checkExtract.ZOrder" xml:space="preserve">
-    <value>9</value>
+    <value>11</value>
   </data>
   <data name="checkHeal.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -1999,7 +1894,7 @@
     <value>Verdana, 7.8pt</value>
   </data>
   <data name="checkHeal.Location" type="System.Drawing.Point, System.Drawing">
-    <value>126, 23</value>
+    <value>119, 23</value>
   </data>
   <data name="checkHeal.Size" type="System.Drawing.Size, System.Drawing">
     <value>59, 21</value>
@@ -2020,7 +1915,7 @@
     <value>groupBox5</value>
   </data>
   <data name="&gt;&gt;checkHeal.ZOrder" xml:space="preserve">
-    <value>10</value>
+    <value>12</value>
   </data>
   <data name="checkFood.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -2029,7 +1924,7 @@
     <value>Verdana, 7.8pt</value>
   </data>
   <data name="checkFood.Location" type="System.Drawing.Point, System.Drawing">
-    <value>126, 50</value>
+    <value>206, 23</value>
   </data>
   <data name="checkFood.Size" type="System.Drawing.Size, System.Drawing">
     <value>65, 21</value>
@@ -2050,7 +1945,34 @@
     <value>groupBox5</value>
   </data>
   <data name="&gt;&gt;checkFood.ZOrder" xml:space="preserve">
-    <value>11</value>
+    <value>13</value>
+  </data>
+  <data name="groupBox5.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Verdana, 7.8pt</value>
+  </data>
+  <data name="groupBox5.Location" type="System.Drawing.Point, System.Drawing">
+    <value>461, 132</value>
+  </data>
+  <data name="groupBox5.Size" type="System.Drawing.Size, System.Drawing">
+    <value>549, 175</value>
+  </data>
+  <data name="groupBox5.TabIndex" type="System.Int32, mscorlib">
+    <value>21</value>
+  </data>
+  <data name="groupBox5.Text" xml:space="preserve">
+    <value>Functions</value>
+  </data>
+  <data name="&gt;&gt;groupBox5.Name" xml:space="preserve">
+    <value>groupBox5</value>
+  </data>
+  <data name="&gt;&gt;groupBox5.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;groupBox5.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;groupBox5.ZOrder" xml:space="preserve">
+    <value>2</value>
   </data>
   <data name="&gt;&gt;buttonDownloadPackages.Name" xml:space="preserve">
     <value>buttonDownloadPackages</value>
@@ -2068,10 +1990,10 @@
     <value>Verdana, 7.8pt</value>
   </data>
   <data name="groupBox6.Location" type="System.Drawing.Point, System.Drawing">
-    <value>594, 243</value>
+    <value>12, 242</value>
   </data>
   <data name="groupBox6.Size" type="System.Drawing.Size, System.Drawing">
-    <value>416, 65</value>
+    <value>443, 65</value>
   </data>
   <data name="groupBox6.TabIndex" type="System.Int32, mscorlib">
     <value>22</value>
@@ -2104,7 +2026,7 @@
     <value>6, 21</value>
   </data>
   <data name="buttonDownloadPackages.Size" type="System.Drawing.Size, System.Drawing">
-    <value>198, 35</value>
+    <value>212, 35</value>
   </data>
   <data name="buttonDownloadPackages.TabIndex" type="System.Int32, mscorlib">
     <value>4</value>
@@ -2521,7 +2443,7 @@
     <value>True</value>
   </data>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>1022, 313</value>
+    <value>1021, 311</value>
   </data>
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
