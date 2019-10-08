@@ -9,26 +9,16 @@ namespace GladiatusBOT
 {
     class Task
     {
-        public static bool Login()
+        public static void Login()
         {
             Bot.driver.Navigate().GoToUrl("https://lobby.gladiatus.gameforge.com/pl_PL/?mod=start&submod=index");
             Basic.Click_element("//ul[@class='tabsList']//span[text()='Login']");
             Get.Element("//input[@type='email']").SendKeys(Settings.username);
             Get.Element("//input[@type='password']").SendKeys(Settings.password);
             Basic.Click_element("//button[@type='submit']");
-            Thread.Sleep(500);
-            if(Basic.Click_if("//span[text()='Użyj tego adresu e-mail']"))
-            {
-                Get.Element("//input[@type='password']").SendKeys(Settings.password);
-                Basic.Click_element("//span[text()='Dodaj konto lobby']");
-            }
             Basic.Click_element("//span[text()='Ostatnia gra']");
             foreach(string title in Bot.driver.WindowHandles)
                 Bot.driver.SwitchTo().Window(title);
-            if (Basic.Search_element("//a[@href][text()='Profil']"))
-                return true;
-            else
-                return false;
         }
 
         public static void Training()
@@ -42,23 +32,6 @@ namespace GladiatusBOT
                 [RegistryValues.Read_i("o_training")+1].Click();
         }
 
-        public static void Disable_notifications()
-        {
-            Basic.Click_element("//a[@href][text() = 'Profil']");
-            Basic.Click_element("//input[@value='Ustawienia']");
-
-            Basic.Click_element("//label[@for='top_fixed_bar__false']");
-            Basic.Click_element("//input[@value='Zapisz wszystko']");
-            Basic.Click_element("//label[@for='browser_notifications__false']");
-            Basic.Click_element("//label[@for='sound_notifications__false']");
-            Basic.Click_element("//label[@for='cooldown_sound_notifications__false']");
-            Basic.Click_element("//input[@value='Zapisz wszystko']");
-
-            Basic.Click_element("//li[@data-category='market']");
-            Basic.Click_element("//label[@for='soulbound_warning__false']");
-            Basic.Click_element("//input[@value='Zapisz wszystko']");
-        }
-
         public static void Take_food()
         {
             Navigation.Packages();
@@ -67,7 +40,8 @@ namespace GladiatusBOT
             Navigation.Backpack(Settings.b_food);
             IReadOnlyCollection<IWebElement> elements = Bot.driver.FindElementsByXPath("//div[@id='packages']//div[@data-content-type='64']");
             foreach (IWebElement element in elements)
-                Basic.Double_click(element);
+                if (!Basic.Move_to_inventory(element))
+                    return;
         }
 
         public static void Heal_me()
@@ -78,8 +52,7 @@ namespace GladiatusBOT
             {
                 Navigation.Main_menu("Podgląd");
                 Navigation.Backpack(Settings.b_food);
-                if (!Basic.Search_element("//div[@id='inv']//div[@data-content-type='64']"))
-                    return;
+                if (!Basic.Search_element("//div[@id='inv']//div[@data-content-type='64']")) { Take_food(); continue; }
                 Basic.Drag_and_drop("//div[@id='inv']//div[@data-content-type='64']","//div[@id='avatar']//div[@class='ui-droppable']");
                 Thread.Sleep(2000);
             }
@@ -100,20 +73,42 @@ namespace GladiatusBOT
 
         public static bool Expedition()
         {
-            int points = Convert.ToInt32(Get.Element("//*[@id='expeditionpoints_value_point']").Text);
+            int points = Convert.ToInt32(Get.Points_expedition());
             if (!RegistryValues.Read_b("c_expedition") || points == 0)
                 return false;
             Heal_me();
             Basic.Wait_for_element("//div[@id='cooldown_bar_expedition']/div[@class='cooldown_bar_text']");
             Basic.Click_element("//div[@id='cooldown_bar_expedition']/a[@class='cooldown_bar_link']");
-
-            Basic.Click_element("//button[contains(@onclick,'"+Settings.o_expedition+"')]");
+            Basic.Click_element("//div[@class='expedition_box']["+Convert.ToString(Settings.o_expedition)+"]//button[contains(@class,'awesome')]");
             Basic.Wait_for_element("//table[@style='border-spacing:0;']//td[2]");
 
             if (points == 1)
                 return false;
             else
                 return true;
+        }
+
+        public static bool Arena()
+        {
+            if (!RegistryValues.Read_b("c_arena"))
+                return false;
+            Heal_me();
+            Basic.Wait_for_element("//div[@id='cooldown_bar_arena']//div[@class='cooldown_bar_text']");
+            Basic.Click_element("//div[@id='cooldown_bar_arena']//a[@class='cooldown_bar_link']");
+            Basic.Click_element("//div[@class='attack']");
+            Basic.Wait_for_element("//body[@id='reportsPage']");
+            return true;
+        }
+
+        public static bool Circus_Turma()
+        {
+            if (!RegistryValues.Read_b("c_turma"))
+                return false;
+            Basic.Wait_for_element("//div[@id='cooldown_bar_ct']//div[@class='cooldown_bar_text']");
+            Basic.Click_element("//div[@id='cooldown_bar_ct']//a[@class='cooldown_bar_link']");
+            Basic.Click_element("//div[@class='attack']");
+            Basic.Wait_for_element("//body[@id='reportsPage']");
+            return true;
         }
 
         public static bool Event()
@@ -124,6 +119,8 @@ namespace GladiatusBOT
             Basic.Click_element("//div[@id='cooldown_bar_expedition']/a[@class='cooldown_bar_link']");
             if (Basic.Click_if("//a[contains(@class,'menuitem glow eyecatcher')]"))
             {
+                if (Basic.Search_element("//div[@class='serverquest_reward_header']"))
+                    return false;
                 string text = Bot.driver.FindElementByXPath("//div[@class='section-header']/p[2]").GetAttribute("textContent");
                 int points = Convert.ToInt32(Regex.Match(text, @"\d+").Value);
                 if (points > 0)
@@ -148,16 +145,16 @@ namespace GladiatusBOT
             if (!RegistryValues.Read_b("c_dungeon") || points == 0)
                 return false;
             Basic.Wait_for_element("//div[@id='cooldown_bar_dungeon']/div[@class='cooldown_bar_text']");
-            Basic.Click_element("//div[@id='cooldown_bar_dungeon']/div[@class='cooldown_bar_link']");
-            if(Basic.Search_element("input[@value='Normalne']") || Basic.Search_element("input[@value='zaawansowane']"))
+            Basic.Click_element("//div[@id='cooldown_bar_dungeon']/a[@class='cooldown_bar_link']");
+            if(Basic.Search_element("//input[@value='normalne']") || Basic.Search_element("//input[@value='zaawansowane']"))
             {
                 if(Settings.o_dungeon == 1 && Basic.Click_if("input[@value='zaawansowane']")) { }
                 else
-                    Basic.Click_element("//input[@value='Normalne']");
+                    Basic.Click_element("//input[@value='normalne']");
             }
             Basic.Wait_for_element("//span[@class='dungeon_header_open']");
             Basic.Click_element("//img[contains(@src,'combatloc.gif')]");
-            Basic.Wait_for_element("//table[@style='border-spacing:0;]//td[2]");
+            Basic.Wait_for_element("//table[@style='border-spacing:0;']//td[2]");
 
             if (points == 1)
                 return true;
