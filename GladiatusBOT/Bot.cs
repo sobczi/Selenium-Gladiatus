@@ -99,10 +99,10 @@ namespace GladiatusBOT
                                         Pack.Buy();
                                     }
                                     if (!work) continue;
-                                    Shop.Sell();
-                                    Extract.Extract_items();
-                                    Pack.Buy();
                                     Pack.Search();
+                                    Extract.Extract_items();
+                                    Shop.Sell();
+                                    Pack.Buy();
                                     Shop.Buy();
                                     Task.Take_food();
                                     Basic.Kill_Chrome_Drivers();
