@@ -16,8 +16,8 @@ namespace GladiatusBOT
         {
             List<string> paths = new List<string>
             {
-                "//input[@id='linkLoginBonus']",
                 "//a[contains(@onclick,'MAX_simplepop')]",
+                "//input[@id='linkLoginBonus']",
                 "//*[@id='linkcancelnotification']",
                 "//*[@id='linknotification']",
                 "//a[@id='accept_btn']",
