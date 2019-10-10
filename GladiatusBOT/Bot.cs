@@ -77,7 +77,6 @@ namespace GladiatusBOT
                     {
                         Task.Login();
                         Update_name();
-                        Update_ui();
                         if (true)
                         {
                             while (true)
@@ -89,7 +88,6 @@ namespace GladiatusBOT
                                     bool event_exists = true;
                                     while (work && exp || dung || Task.Hades_costume())
                                     {
-                                        Update_ui();
                                         exp = Task.Expedition();
                                         dung = Task.Dungeon();
                                         if (event_exists)
@@ -138,18 +136,20 @@ namespace GladiatusBOT
             form.Invoke((MethodInvoker)delegate { form.labelName.Text = nickname; });
         }
 
-        static void Update_ui()
+        public static void Update_ui()
         {
-            try
+            while (true)
             {
-                form.Invoke((MethodInvoker)delegate { form.labelGold.Text = Convert.ToString(Get.Gold_s()); });
-                form.Invoke((MethodInvoker)delegate { form.labelRubles.Text = Convert.ToString(Get.Rubles()); });
-                form.Invoke((MethodInvoker)delegate { form.labelExpedition.Text = Convert.ToString(Get.Points_expedition()); });
-                form.Invoke((MethodInvoker)delegate { form.labelDungeon.Text = Convert.ToString(Get.Points_dungeon()); });
-                form.Invoke((MethodInvoker)delegate { form.labelLevel.Text = Convert.ToString(Get.Level()); });
-                form.Invoke((MethodInvoker)delegate { form.labelProgress.Text = Convert.ToString(Get.Progress()); });
+                try
+                {
+                    form.Invoke((MethodInvoker)delegate { form.labelGold.Text = Convert.ToString(Get.Gold_s()); });
+                    form.Invoke((MethodInvoker)delegate { form.labelRubles.Text = Convert.ToString(Get.Rubles()); });
+                    form.Invoke((MethodInvoker)delegate { form.labelExpedition.Text = Convert.ToString(Get.Points_expedition()); });
+                    form.Invoke((MethodInvoker)delegate { form.labelDungeon.Text = Convert.ToString(Get.Points_dungeon()); });
+                    form.Invoke((MethodInvoker)delegate { form.labelLevel.Text = Convert.ToString(Get.Level()); });
+                    form.Invoke((MethodInvoker)delegate { form.labelProgress.Text = Convert.ToString(Get.Progress()); });
+                } catch { }
             }
-            catch { }
         }
 
         static void Set_regular_text(Button b)

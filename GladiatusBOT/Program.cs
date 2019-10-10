@@ -23,6 +23,11 @@ namespace GladiatusBOT
             bot.IsBackground = true;
             bot.Start();
 
+            Thread ui = new Thread(Bot.Update_ui);
+            ui.Name = "ui";
+            ui.IsBackground = true;
+            ui.Start();
+
             Bot.form = new Main();
             Application.Run(Bot.form);
         }
