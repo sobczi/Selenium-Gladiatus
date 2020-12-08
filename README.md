@@ -88,7 +88,7 @@ Determine where program should search described things.
 
 :link: [Selenium Framework](https://github.com/SeleniumHQ/selenium)
 
-## :person_with_blond_hair: Authors
+## :trollface: Authors
 :computer: Daniel Sobczak
 
 :mortar_board: Student of WI ZUT Szczecin, Poland
